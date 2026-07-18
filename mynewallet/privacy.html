@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | MyneWallet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0A0A0A; color: #FAFAFA; }
+        .content h2 { font-size: 1.5rem; font-weight: 800; margin-top: 2rem; margin-bottom: 1rem; color: #fff; }
+        .content p, .content ul { color: #9CA3AF; margin-bottom: 1rem; line-height: 1.7; }
+        .content ul { list-style-type: disc; padding-left: 1.5rem; }
+    </style>
+</head>
+<body class="min-h-screen p-6 md:p-12">
+    
+    <div class="max-w-3xl mx-auto">
+        <a href="/mynewallet" class="text-blue-500 hover:text-blue-400 font-semibold mb-8 inline-block">&larr; Back to MyneWallet</a>
+        
+        <h1 class="text-4xl font-extrabold mb-2">Privacy Policy</h1>
+        <p class="text-gray-500 font-medium mb-12">Effective Date: July 2026 | Application: MyneWallet</p>
+
+        <div class="content">
+            <p>The Brink Labs ("we," "us," or "our") provides the MyneWallet mobile application (the "App"). We believe financial data is deeply personal. This Privacy Policy outlines our uncompromising commitment to your privacy and explains exactly how information is handled when you use MyneWallet.</p>
+
+            <h2>1. Local-First Architecture (Zero Data Harvesting)</h2>
+            <p>MyneWallet is engineered to operate strictly offline by default. We do not require you to create an account, nor do we require banking credentials.</p>
+            <ul>
+                <li><strong>Local Storage:</strong> All financial logs, budgets, and preferences are written directly to an encrypted SQLite database stored securely within your device's internal sandbox.</li>
+                <li><strong>No Remote Servers:</strong> We do not own, operate, or rent servers to host your financial data. We do not collect, intercept, transmit, or monetize your personal information.</li>
+            </ul>
+
+            <h2>2. Optional Cloud Backup & Google API Limited Use</h2>
+            <p>To prevent data loss, the App offers an explicit, opt-in feature to back up your local database to your personal Google Drive account.</p>
+            <ul>
+                <li><strong>User Consent:</strong> This sync feature must be actively enabled by you via Google OAuth authentication.</li>
+                <li><strong>End-to-End Encryption:</strong> Before leaving your device, backups are encrypted locally using AES-256 cryptography with randomized Initialization Vectors (IV).</li>
+                <li><strong>Google API Services User Data Policy:</strong> MyneWallet's use and transfer of information received from Google APIs to any other app will adhere to <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" class="text-blue-400 hover:underline">Google API Services User Data Policy</a>, including the Limited Use requirements.</li>
+                <li><strong>No Developer Access:</strong> The Brink Labs has zero access to your Google Drive, your cryptographic keys, or your Google account credentials.</li>
+            </ul>
+
+            <h2>3. Monetization and Play Billing</h2>
+            <p>All "PRO" tier transactions are processed natively and securely through Google Play Billing. The Brink Labs does not collect, process, or store your credit card numbers or billing identities. We only receive an anonymous cryptographic receipt verifying your purchase status.</p>
+
+            <h2>4. Limitation of Liability ("As-Is" Provision)</h2>
+            <p>MyneWallet is provided on an "AS IS" and "AS AVAILABLE" basis. While we strive to provide accurate calculations, we make no warranties regarding absolute accuracy. You are solely responsible for your financial decisions and for maintaining manual backups of your data. The Brink Labs shall not be held liable for any data loss resulting from device failure, app deletion, or failure to utilize the optional backup features.</p>
+
+            <h2>5. Contact Us</h2>
+            <p>For questions regarding data sovereignty, contact us directly at <a href="mailto:support@thebrinklabs.com" class="text-blue-400 hover:underline">support@thebrinklabs.com</a>.</p>
+        </div>
+    </div>
+
+</body>
+</html>
