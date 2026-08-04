@@ -3,29 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Brink Labs: An independent development studio focused on high-performance architecture, kinetic UI, and absolute data sovereignty.">
     <title>The Brink Labs | Elite Digital Utilities</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0A0A0A; color: #FAFAFA; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050505; color: #FAFAFA; }
         .fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(20px); }
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center p-6 md:p-12 selection:bg-blue-500 selection:text-white">
     
     <nav class="w-full max-w-5xl flex justify-between items-center py-6 fade-in-up">
-        <div class="text-xl font-extrabold tracking-tight">THE BRINK <span class="text-blue-500">LABS</span></div>
-        <a href="mailto:support@thebrinklabs.com" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Contact</a>
+        <div class="text-xl font-extrabold tracking-tight text-white">THE BRINK <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">LABS</span></div>
+        <div class="flex gap-6">
+            <a href="https://thebrinklabs.com/mynewallet/privacy.html" class="text-sm font-medium text-gray-500 hover:text-white transition-colors">Privacy Policy</a>
+            <a href="mailto:support@thebrinklabs.com" class="text-sm font-medium text-gray-500 hover:text-white transition-colors">Contact</a>
+        </div>
     </nav>
 
     <main class="w-full max-w-5xl flex-grow mt-20 md:mt-32">
         <div class="max-w-3xl fade-in-up delay-1">
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter leading-tight mb-6">
-                Engineering <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Uncompromising</span> Digital Utilities.
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter leading-tight mb-6 text-white">
+                Engineering <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Uncompromising</span> <br>
+                Digital Utilities.
             </h1>
             <p class="text-xl text-gray-400 font-medium mb-16 leading-relaxed">
                 An independent development studio focused on high-performance architecture, kinetic UI, and absolute data sovereignty.
@@ -35,25 +41,25 @@
         <h2 class="text-sm font-bold text-gray-500 tracking-widest uppercase mb-6 fade-in-up delay-2">Active Projects</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-in-up delay-2">
-            <!-- MyneWallet Card -->
-            <a href="/mynewallet" class="glass-card p-8 rounded-2xl hover:border-blue-500/50 transition-all duration-300 group block relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <h3 class="text-2xl font-bold mb-3 flex items-center justify-between">
+            <!-- MyneWallet Card (Emerald/Cyan Hover Branding) -->
+            <a href="/mynewallet" class="glass-card p-8 rounded-2xl hover:border-emerald-500/50 hover:bg-white/5 transition-all duration-300 group block relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <h3 class="text-2xl font-bold mb-3 flex items-center justify-between text-white">
                     MyneWallet 
-                    <span class="text-blue-400 group-hover:translate-x-1 transition-transform">&rarr;</span>
+                    <span class="text-emerald-400 group-hover:translate-x-1 transition-transform">&rarr;</span>
                 </h3>
-                <p class="text-gray-400">S-Tier offline-first financial engine. Kinetic 3D analytics with absolute zero telemetry.</p>
+                <p class="text-gray-400 leading-relaxed">The private financial vault. S-Tier offline-first engine, kinetic 3D analytics, and absolute zero telemetry.</p>
             </a>
             
             <!-- Future Project Placeholder -->
             <div class="glass-card p-8 rounded-2xl border-dashed border-gray-800 opacity-50 flex items-center justify-center">
-                <p class="text-gray-500 font-medium">Classified Project // In Development</p>
+                <p class="text-gray-500 font-medium tracking-wide">Classified Project // In Development</p>
             </div>
         </div>
     </main>
 
     <footer class="w-full max-w-5xl py-8 mt-20 border-t border-gray-900 text-gray-600 text-sm flex justify-between">
-        <p>&copy; 2026 The Brink Labs.</p>
+        <p>&copy; 2026 The Brink Labs. All rights reserved.</p>
     </footer>
 
 </body>
