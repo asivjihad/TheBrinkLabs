@@ -47,7 +47,7 @@
         .delay-2 { animation-delay: 0.3s; }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
         
-        /* Premium Glassmorphism Cards */
+        /* Premium Glassmorphism & Interactive Cards */
         .glass-card { 
             background: rgba(255, 255, 255, 0.015); 
             backdrop-filter: blur(24px); 
@@ -55,6 +55,12 @@
             border: 1px solid rgba(255, 255, 255, 0.05); 
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
+        .scanline-hover::after {
+            content: ""; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(16, 185, 129, 0.1), transparent);
+            transform: skewX(-20deg); transition: all 0.5s ease;
+        }
+        .group:hover .scanline-hover::after { left: 200%; transition: all 0.7s ease; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center p-6 md:p-12 selection:bg-emerald-500 selection:text-white relative">
@@ -83,9 +89,8 @@
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Uncompromising</span> <br>
                 Digital Utilities.
             </h1>
-            <!-- Title Cased Paragraph as Requested -->
             <p class="text-xl text-gray-400 font-medium mb-20 leading-relaxed max-w-3xl">
-                An Independent Development Studio Engineering High-Performance Architecture, Kinetic UI, And Military-Grade Data Sovereignty For Utilities And Interactive Media.
+                An Independent Development Studio Engineering High-Performance Architecture, Kinetic UI, and Military-Grade Data Sovereignty for Utilities and Interactive Media.
             </p>
         </div>
 
@@ -97,8 +102,10 @@
         <!-- Grid layout for projects -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-in-up delay-2 pb-12">
             
-            <!-- MyneWallet Card -->
-            <a href="/mynewallet" class="glass-card p-8 rounded-3xl hover:bg-white/[0.03] hover:border-emerald-500/30 transition-all duration-500 group block relative overflow-hidden">
+            <!-- MyneWallet Card (Interactive Restored) -->
+            <a href="/mynewallet" class="glass-card p-8 rounded-3xl hover:border-emerald-500/40 transition-all duration-300 group block relative overflow-hidden scanline-hover">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                
                 <div class="mb-6">
                     <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
@@ -111,14 +118,15 @@
                     <span class="text-emerald-400 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">&rarr;</span>
                 </h3>
                 
-                <!-- Title Cased Feature Text as Requested -->
                 <p class="text-gray-400 leading-relaxed text-sm font-medium">
-                    The 100% Offline Personal Finance Vault. Sub-3-Second Expense Logging, Kinetic 3D Analytics, And AES-256 Encrypted Local Storage.
+                    The 100% Offline Personal Finance Vault. Sub-3-Second Expense Logging, Kinetic 3D Analytics, and AES-256 Encrypted Local Storage.
                 </p>
             </a>
             
-            <!-- Future Project Placeholder -->
-            <div class="glass-card p-8 rounded-3xl flex flex-col justify-between relative overflow-hidden">
+            <!-- Future Project Placeholder (Interactive Restored) -->
+            <div class="glass-card p-8 rounded-3xl border border-gray-800/50 flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjMDAwIiBmaWxsLW9wYWNpdHk9IjAiPjwvcmVjdD4KPHBhdGggZD0iTTAgMEw4IDhaTTAgOEw4IDBaIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')] opacity-20 group-hover:opacity-40 transition-opacity rounded-bl-full"></div>
+                
                 <div>
                     <div class="mb-6">
                         <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-800 border border-gray-700 text-gray-400 text-xs font-bold uppercase tracking-wider">
@@ -129,9 +137,8 @@
                         Project Vanguard
                     </h3>
                     
-                    <!-- Title Cased Feature Text as Requested -->
                     <p class="text-gray-600 leading-relaxed text-sm font-medium">
-                        Next-Generation Tactical Utility & Interactive Media. Architecture, Scope, And Deployment Date Currently Heavily Classified.
+                        Next-Generation Tactical Utility & Interactive Media. Architecture, Scope, and Deployment Date Currently Heavily Classified.
                     </p>
                 </div>
             </div>
