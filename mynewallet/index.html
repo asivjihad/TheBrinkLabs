@@ -1,107 +1,365 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The 100% offline personal finance vault. Securely track daily expenses, manage budgets, and visualize spending with zero ads and zero data harvesting.">
-    <title>MyneWallet: The Private Expense Tracker</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030303; color: #FAFAFA; overflow-x: hidden; }
-        .ambient-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; background: #030303; }
-        .orb-1 { position: absolute; top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(3,3,3,0) 70%); border-radius: 50%; filter: blur(80px); }
-        .orb-2 { position: absolute; bottom: -20%; right: -10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, rgba(3,3,3,0) 70%); border-radius: 50%; filter: blur(100px); }
-        .glass-panel { background: rgba(255, 255, 255, 0.015); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); }
-        .accent-glow { box-shadow: 0 0 50px rgba(16, 185, 129, 0.15); }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MyneWallet: Budget Tracker — The Private Financial Vault</title>
+<meta name="description" content="Private offline budget planner and expense tracker. Pure on-device data vault. Zero ads, zero telemetry, no monthly subscriptions.">
+<link rel="canonical" href="https://thebrinklabs.com/mynewallet/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#08090C">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="MyneWallet: Budget Tracker — The Private Financial Vault">
+<meta property="og:description" content="Private offline budget planner and expense tracker. Pure on-device data vault. Buy it once, own it forever.">
+<meta property="og:url" content="https://thebrinklabs.com/mynewallet/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=Instrument+Serif&amp;family=Manrope:wght@400..800&amp;display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=Instrument+Serif&amp;family=Manrope:wght@400..800&amp;display=swap"></noscript>
+<script>document.documentElement.className+=" js";</script>
+<style>
+/* Using The Brink Labs Master Design System */
+:root{
+  --void:#08090C; --vault:#0B0D12; --plate:#12151C; --plate-2:#171B23; --edge:#1E222B; --edge-hi:#2B313D;
+  --ink:#F1F2F5; --ink-2:#B3B9C5; --ink-3:#79808F;
+  --jade:#35C98C; --alarm:#E4606A;
+  --serif:"Instrument Serif",Georgia,serif; --sans:"Manrope",system-ui,sans-serif; --mono:"IBM Plex Mono",monospace;
+  --max:1180px; --pad:clamp(20px,5vw,44px); --gut:clamp(28px,4vw,44px); --r:14px; --r-lg:20px; --t:180ms cubic-bezier(.2,.7,.3,1);
+  /* MyneWallet Specific Accents */
+  --accent:#7A6BFF; --accent-hi:#22C6E8; --accent-ink:#0A0912;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--void);color:var(--ink);font-family:var(--sans);font-size:17px;font-weight:400;line-height:1.66;-webkit-font-smoothing:antialiased;}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(900px 560px at 94% 2%, rgba(122,107,255,.075), transparent 58%),linear-gradient(180deg,#0A0C11 0%,#08090C 44%,#07080A 100%);}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.022) 0 1px,transparent 1px 118px);-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.85),transparent 62%);}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+p{margin:0 0 1.05em}
+strong,b{font-weight:700;color:var(--ink)}
+::selection{background:var(--accent);color:var(--ink)}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
+.narrow{max-width:74ch}
+.band{padding-block:clamp(64px,9vw,132px)}
+.band--alt{background:linear-gradient(180deg,transparent,rgba(11,13,18,.72) 12%,rgba(11,13,18,.72) 88%,transparent)}
+.eyebrow{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 18px;display:flex;align-items:center;gap:12px;}
+.eyebrow::after{content:"";height:1px;flex:1;max-width:120px;background:linear-gradient(90deg,var(--edge-hi),transparent)}
+h1,h2,h3,h4{margin:0;text-wrap:balance}
+.d1{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5.4vw,76px);line-height:1.0;letter-spacing:-.026em}
+.d2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5.4vw,66px);line-height:1.02;letter-spacing:-.024em}
+.d3{font-family:var(--serif);font-weight:400;font-size:clamp(27px,3.4vw,42px);line-height:1.1;letter-spacing:-.02em}
+.h4{font-family:var(--sans);font-weight:700;font-size:19px;letter-spacing:-.015em;line-height:1.3}
+.accentx{background:linear-gradient(135deg,var(--accent),var(--accent-hi));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.lede{font-size:clamp(17.5px,1.8vw,21px);line-height:1.6;color:var(--ink-2);max-width:64ch}
+.muted{color:var(--ink-3)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.nav{position:sticky;top:0;z-index:100;background:rgba(8,9,12,.94);border-bottom:1px solid var(--edge);transition:border-color var(--t)}
+@supports ((-webkit-backdrop-filter:blur(2px)) or (backdrop-filter:blur(2px))){.nav{background:rgba(8,9,12,.72);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%)}}
+.nav__in{max-width:var(--max);margin:0 auto;padding:14px var(--pad);display:flex;align-items:center;gap:var(--gut)}
+.brand{display:flex;align-items:center;gap:11px;margin-right:auto;min-width:0}
+.brand__mk{width:34px;height:34px;flex:0 0 auto}
+.brand__tx{display:flex;flex-direction:column;line-height:1;min-width:0}
+.brand__n{font-weight:800;font-size:16.5px;letter-spacing:-.025em;white-space:nowrap}
+.navlinks{display:flex;gap:26px}
+.navlinks a{font-size:14px;font-weight:500;color:var(--ink-2);transition:color var(--t);padding-block:6px;position:relative}
+.navlinks a:hover{color:var(--ink)}
+@media(max-width:900px){.navlinks{display:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:15px;border-radius:999px;padding:14px 26px;border:1px solid transparent;transition:transform var(--t);will-change:transform}
+.btn:active{transform:translateY(1px)}
+.btn--ghost{border-color:var(--edge-hi);color:var(--ink);background:rgba(255,255,255,.02)}
+.btn--ghost:hover{border-color:var(--accent);background:rgba(255,255,255,.045)}
+.gplay{display:inline-flex;align-items:center;gap:13px;background:#000;border:1px solid #A6A6A6;border-radius:9px;padding:9px 18px 9px 15px;transition:border-color var(--t),transform var(--t)}
+.gplay:hover{border-color:#FFF;transform:translateY(-1px)}
+.gplay__mk{width:26px;height:29px;flex:0 0 auto}
+.gplay__tx{display:flex;flex-direction:column;line-height:1;color:#FFF}
+.gplay__a{font-size:10px;letter-spacing:.055em;text-transform:uppercase;font-weight:500;font-family:Roboto,Arial,sans-serif}
+.gplay__b{font-size:21px;font-weight:500;letter-spacing:-.005em;margin-top:4px;font-family:"Product Sans",Roboto,sans-serif}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--ink-2);border:1px solid var(--edge);background:rgba(255,255,255,.018);border-radius:999px;padding:7px 14px;white-space:nowrap}
+.chip b{color:var(--accent-hi);font-weight:500}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:860px){.g3,.g2{grid-template-columns:1fr}}
+.card{background:linear-gradient(180deg,var(--plate),rgba(18,21,28,.55));border:1px solid var(--edge);border-radius:var(--r-lg);padding:clamp(22px,2.6vw,30px);position:relative;overflow:hidden;transition:border-color var(--t),transform var(--t)}
+.card--hover:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card p{margin:12px 0 0;color:var(--ink-2);font-size:15.5px;line-height:1.6}
+.flist{list-style:none;padding:0;margin:22px 0 0}
+.flist li{padding:13px 0 13px 28px;border-top:1px solid var(--edge);position:relative;color:var(--ink-2);font-size:15.5px;line-height:1.58}
+.flist li::before{content:"";position:absolute;left:2px;top:21px;width:8px;height:8px;border:1px solid var(--accent);transform:rotate(45deg)}
+.flist li b{color:var(--ink)}
+.row{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(32px,5vw,74px);align-items:center}
+.row+.row{margin-top:clamp(56px,7vw,104px)}
+.row--hero{grid-template-columns:1.18fr .82fr}
+@media(max-width:940px){.row{grid-template-columns:1fr;gap:30px}.row__v{order:2}.row--hero{grid-template-columns:1fr}}
+.panel{background:linear-gradient(165deg,var(--plate-2),#0C0F15);border:1px solid var(--edge);border-radius:var(--r-lg);padding:clamp(22px,2.6vw,30px);display:flex;flex-direction:column;gap:14px}
+.panel__h{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.fig{font-family:var(--serif);font-size:clamp(34px,5vw,52px);line-height:1;letter-spacing:-.02em}
+.krow{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:14.5px;color:var(--ink-2)}
+.krow b{color:var(--ink);font-weight:600}
+.bar{height:8px;border-radius:99px;background:#1A1E27;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent-hi))}
+.grid7{display:grid;grid-template-columns:repeat(14,1fr);gap:4px;margin:12px 0}
+.grid7 span{aspect-ratio:1;border-radius:3px;background:var(--edge-hi)}
+.faq{border-top:1px solid var(--edge)}
+.faq details{border-bottom:1px solid var(--edge)}
+.faq summary{cursor:pointer;list-style:none;padding:22px 44px 22px 0;position:relative;font-weight:700;font-size:17.5px;letter-spacing:-.015em;color:var(--ink);transition:color var(--t)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--accent-hi)}
+.faq summary::after{content:"+";position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--accent-hi);font-size:24px;font-weight:300;}
+.faq details[open] summary::after{content:"-";}
+.faq .ans{padding:0 clamp(0px,4vw,60px) 26px 0;color:var(--ink-2);font-size:16px;line-height:1.65}
+.js .rv{opacity:0;transform:translateY(16px)}
+.js .rv.in{opacity:1;transform:none;transition:opacity .62s cubic-bezier(.2,.7,.3,1),transform .62s cubic-bezier(.2,.7,.3,1)}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}}
+</style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-emerald-500 selection:text-white relative">
-    <div class="ambient-bg"><div class="orb-1"></div><div class="orb-2"></div></div>
+<body>
+
+<svg class="skip" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00E3FF"/><stop offset="1" stop-color="#00A0FF"/></linearGradient>
+    <linearGradient id="pG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22E27C"/><stop offset="1" stop-color="#00B860"/></linearGradient>
+    <linearGradient id="pA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE000"/><stop offset="1" stop-color="#FFBC00"/></linearGradient>
+    <linearGradient id="pR" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF544A"/><stop offset="1" stop-color="#C31162"/></linearGradient>
+    <linearGradient id="gMyne" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8E7DFF"/><stop offset=".55" stop-color="#6C5CFF"/><stop offset="1" stop-color="#22C6E8"/></linearGradient>
+    <symbol id="mk-myne" viewBox="0 0 48 48">
+      <rect width="48" height="48" rx="12.5" fill="url(#gMyne)"/>
+      <rect x="10.5" y="14" width="27" height="20" rx="5.5" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+      <rect x="25.5" y="21" width="8" height="6" rx="2" fill="#fff"/>
+    </symbol>
+    <symbol id="mk-play" viewBox="0 0 24 26">
+      <path d="M2.4 1.1 13.1 13 2.4 24.9c-.55-.45-.9-1.2-.9-2.15V3.25c0-.95.35-1.7.9-2.15z" fill="url(#pB)"/>
+      <path d="M2.4 1.1c.62-.5 1.5-.55 2.36-.06L16.9 8.06 13.1 13 2.4 1.1z" fill="url(#pG)"/>
+      <path d="m16.9 8.06 3.86 2.2c1.28.73 1.28 2.75 0 3.48l-3.86 2.2L13.1 13l3.8-4.94z" fill="url(#pA)"/>
+      <path d="M2.4 24.9c.62.5 1.5.55 2.36.06L16.9 17.94 13.1 13 2.4 24.9z" fill="url(#pR)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="nav">
+<div class="nav__in">
+  <a class="brand" href="/">
+    <svg class="brand__mk" viewBox="0 0 48 48"><use href="#mk-myne"/></svg>
+    <span class="brand__tx"><span class="brand__n">MyneWallet</span></span>
+  </a>
+  <nav class="navlinks"><a href="#budget">Smart Budgeting</a><a href="#analysis">Analytics</a><a href="#vault">The Vault</a><a href="#pricing">Pricing</a></nav>
+  <a class="btn btn--ghost btn--sm" href="privacy.html">Privacy Policy</a>
+</div>
+</header>
+
+<main>
+
+<section class="band" style="padding-top:clamp(52px,7vw,96px)">
+  <div class="wrap">
+    <div class="row row--hero" style="align-items:center">
+      <div>
+        <p class="eyebrow rv">MyneWallet: Budget Tracker</p>
+        <h1 class="d1 rv" style="margin-bottom:26px">
+          Your Money. Your Device.<br><span class="accentx">Nobody Else's Business.</span>
+        </h1>
+        <p class="lede rv" style="margin-bottom:34px">
+          Most money apps ask for three things before they will help you: a Bank Login, a Monthly Payment, and Permission to Study what you Buy. MyneWallet asks for <b>NONE</b> of them.
+        </p>
+        <div class="rv" style="margin-bottom:34px">
+          <a class="gplay" href="https://play.google.com/store/apps/details?id=com.thebrinklabs.mynewallet.expensetracker" target="_blank" rel="noopener">
+            <svg class="gplay__mk" viewBox="0 0 24 26" aria-hidden="true"><use href="#mk-play"/></svg>
+            <span class="gplay__tx"><span class="gplay__a">Get it on</span><span class="gplay__b">Google Play</span></span>
+          </a>
+        </div>
+        <div class="chips rv">
+          <span class="chip"><b>100%</b> Offline First</span>
+          <span class="chip"><b>0</b> Telemetry SDKs</span>
+          <span class="chip"><b>60fps</b> Aura Interface</span>
+        </div>
+      </div>
+      
+      <div class="row__v rv" aria-hidden="true" style="display:flex;justify-content:center;">
+        <!-- Simulated Premium UI Mockup purely in CSS -->
+        <div class="panel" style="width:100%;max-width:380px;border-color:var(--accent-hi);box-shadow:0 20px 60px rgba(122,107,255,0.15)">
+          <div class="panel__h"><span>Spendable Cash</span><span>V2.2.0</span></div>
+          <div class="fig accentx" style="font-size:48px;margin-bottom:20px;">$4,300.00</div>
+          <div class="krow"><span>Emergency Fund</span><b class="num" style="color:var(--ink-3)">Hidden</b></div>
+          <div class="bar"><i style="width:100%"></i></div>
+          <div class="krow" style="margin-top:16px"><span>Credit Card (Liability)</span><b class="num" style="color:var(--alarm)">-$890.00</b></div>
+          <div class="bar"><i style="width:40%;background:var(--alarm)"></i></div>
+          <p class="num" style="font-size:10px;letter-spacing:.1em;color:var(--ink-3);text-transform:uppercase;text-align:center;margin-top:24px;">Military-Grade AES-256 Vault</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--alt" id="budget">
+  <div class="wrap">
+    <div class="narrow rv" style="margin-bottom:clamp(34px,4vw,54px)">
+      <p class="eyebrow">Smart Budgeting</p>
+      <h2 class="d2">Every Cent Has A Job.</h2>
+      <p class="lede">Zero-Based Budgeting without the spreadsheet. Every dollar that arrives gets a destination before it can wander off.</p>
+    </div>
+
+    <div class="row">
+      <div class="rv">
+        <h3 class="d3" style="margin-top:0">Assign Money Live</h3>
+        <p class="lede" style="font-size:17px">Auto Assign uses fill-from-last-month, fill-your-goals and proportional modes, updating live as you drag.</p>
+        <ul class="flist">
+          <li><b>The Truth:</b> A "To Assign" counter that tells you the plan is finished only when it reads zero.</li>
+          <li><b>Safe to Spend:</b> One honest figure separating liquid cash from money already committed elsewhere.</li>
+          <li><b>Smart Fund Exclusions:</b> Hide the emergency fund out of daily spendable, so you stop borrowing from your future self.</li>
+        </ul>
+      </div>
+      <div class="row__v rv">
+        <div class="panel">
+          <div class="panel__h"><span>To Assign</span><span>Every Cent Has A Job</span></div>
+          <div class="fig accentx" style="font-size:42px;margin:8px 0 16px">$0.00</div>
+          <div class="krow"><span>Home</span><b class="num">$1,865 / $1,865</b></div>
+          <div class="bar"><i style="width:100%"></i></div>
+          <div class="krow"><span>Food & Dining</span><b class="num">$1,204 / $1,550</b></div>
+          <div class="bar"><i style="width:78%"></i></div>
+          <div class="krow"><span>Transportation</span><b class="num">$318 / $520</b></div>
+          <div class="bar"><i style="width:61%"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="analysis">
+  <div class="wrap">
+    <div class="narrow rv" style="margin-bottom:clamp(34px,4vw,54px)">
+      <p class="eyebrow">Kinetic Analytics</p>
+      <h2 class="d2">An Analysis Engine, Not A Pie Chart.</h2>
+      <p class="lede">Everyone else derives insight from a bank feed. MyneWallet derives it from your own ledger, on your own device, at 60 frames per second.</p>
+    </div>
+
+    <div class="row">
+      <div class="rv" style="order:2">
+        <h3 class="d3" style="margin-top:0">Find The Day Your Money Leaks</h3>
+        <p class="lede" style="font-size:17px">A spending calendar heatmap that reveals the truth a monthly total hides.</p>
+        <ul class="flist">
+          <li><b>Needs / Wants / Extras:</b> Drill into a nested sunburst to see how much of your month was genuinely non-negotiable.</li>
+          <li><b>Watch The Line Turn:</b> Net Worth Trend and a 30-Day Outlook built from your real obligations, never a hand-waved average.</li>
+          <li><b>Payee Intelligence:</b> Budget Burn-Down pacing and Cash Flow river mapping natively processed.</li>
+        </ul>
+      </div>
+      <div class="row__v rv" style="order:1">
+        <div class="panel">
+          <div class="panel__h"><span>Spending Heatmap</span><span>Past 6 Months</span></div>
+          <div class="grid7" id="hm"></div>
+          <div class="krow" style="font-size:12px;margin-top:-6px"><span style="color:var(--ink-3)">Less</span><span style="color:var(--ink-3)">More</span></div>
+          <div class="krow" style="margin-top:16px"><span style="color:var(--ink-3)">Rhythm</span><b>Saturday</b></div>
+          <div class="krow"><span style="color:var(--ink-3)">Heaviest day</span><b class="num">$1,955.53</b></div>
+          <div class="krow"><span style="color:var(--ink-3)">Average day</span><b class="num">$197.63</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--alt" id="vault">
+  <div class="wrap">
+    <div class="narrow rv" style="margin-bottom:clamp(34px,4vw,54px)">
+      <p class="eyebrow">The Private Financial Vault</p>
+      <h2 class="d2">Your Vault. Your Rules.</h2>
+      <p class="lede">MyneWallet is not an Expense Tracker with privacy bolted on. It is a Private, Offline Money Manager built as a Financial Vault first.</p>
+    </div>
+    <div class="grid g2 rv">
+      <div class="card">
+        <h3 class="h4">Military-Grade Encryption</h3>
+        <p>Optional Google Drive Backup, Encrypted with AES-256 and a randomised initialisation vector before it ever leaves your device.</p>
+      </div>
+      <div class="card">
+        <h3 class="h4">Privacy On The Screen Too</h3>
+        <p>App Lock with Biometrics or PIN/Pattern. Block Screenshots stops screen recording and app-switcher previews. One tap masks every figure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="pricing">
+  <div class="wrap">
+    <div class="narrow rv" style="margin-bottom:clamp(34px,4vw,54px);text-align:center">
+      <p class="eyebrow" style="justify-content:center">Transparent Pricing</p>
+      <h2 class="d2">Say Goodbye to Endless Monthly Subscriptions!</h2>
+    </div>
     
-    <nav class="w-full max-w-6xl mx-auto px-6 md:px-12 py-6 flex justify-between items-center">
-        <a href="/" class="text-xl font-extrabold tracking-tight text-white">THE BRINK <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">LABS</span></a>
-        <a href="privacy.html" class="px-5 py-2 rounded-full border border-white/10 hover:bg-white/5 transition-all text-sm font-semibold text-gray-300 hover:text-white">Privacy Policy</a>
-    </nav>
+    <div class="grid g2 rv" style="max-width:900px;margin:0 auto">
+      <div class="card">
+        <span class="card__idx">FREE TIER</span>
+        <h3 class="d3" style="margin-top:0">The Core Engine</h3>
+        <p>A complete, private, offline money manager that never expires and never shows you an advertisement.</p>
+        <ul class="flist">
+          <li>Zero-Based Budgeting & Auto Assign</li>
+          <li>Quick Add Logging (Under 3 seconds)</li>
+          <li>Category, Nature & Heatmap Analytics</li>
+          <li>Encrypted Google Drive Backups</li>
+        </ul>
+      </div>
+      <div class="card card--hover" style="border-color:var(--accent);box-shadow:0 10px 40px rgba(122,107,255,0.08)">
+        <span class="card__idx" style="color:var(--accent-hi)">PRO LIFETIME UNLOCK</span>
+        <h3 class="d3" style="margin-top:0;color:var(--accent-hi)">Buy Once. Own Forever.</h3>
+        <p>It survives reinstalls, new phones and every future update, and new capabilities land in PRO as the app grows.</p>
+        <ul class="flist">
+          <li><b>Unlimited</b> Accounts, Envelopes & Categories</li>
+          <li>Net Worth Trend & 30-Day Outlook</li>
+          <li>Burn-Down pacing & Cash-Flow Mapping</li>
+          <li>Premium Aura Themes (Quantum, Aurum Noir)</li>
+          <li>Full CSV Export & PDF Statements</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="rv" style="text-align:center;margin-top:54px">
+      <a class="gplay" href="https://play.google.com/store/apps/details?id=com.thebrinklabs.mynewallet.expensetracker" target="_blank" rel="noopener">
+        <svg class="gplay__mk" viewBox="0 0 24 26" aria-hidden="true"><use href="#mk-play"/></svg>
+        <span class="gplay__tx"><span class="gplay__a">Get it on</span><span class="gplay__b">Google Play</span></span>
+      </a>
+    </div>
+  </div>
+</section>
 
-    <main class="w-full max-w-6xl mx-auto mt-12 md:mt-16 px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center flex-grow">
-        <div class="z-10">
-            <div class="inline-block px-4 py-1.5 mb-4 text-xs font-bold tracking-wide text-emerald-400 bg-emerald-400/10 rounded-full border border-emerald-400/20 uppercase">
-                100% Offline Architecture
-            </div>
-            <h2 class="text-sm md:text-base font-extrabold tracking-widest text-gray-400 uppercase mb-2">
-                MyneWallet: Expense Tracker
-            </h2>
-            <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6 text-white">
-                The Private <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">Financial Vault.</span>
-            </h1>
-            <p class="text-lg md:text-xl text-gray-400 mb-6 leading-relaxed font-medium">
-                Sub-3-Second Expense Logging, Kinetic 3D Analytics, and Absolute Privacy. 
-                <span class="text-gray-200">No Ads. No Hidden Fees. No Corporate Telemetry.</span>
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 mt-2">
-                <a href="https://play.google.com/store/apps/details?id=com.thebrinklabs.mynewallet.expensetracker&hl=en" target="_blank" rel="noopener noreferrer" class="inline-block transition-transform duration-300 hover:scale-105 hover:drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">
-                    <img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" class="h-16 md:h-20 -ml-3" />
-                </a>
-            </div>
-            <div class="mt-4 flex items-center gap-2 text-sm text-gray-400 font-medium tracking-wide">
-                <span class="flex text-yellow-400">★★★★★</span>
-                Based on Early Indie Reviews
-            </div>
-        </div>
-        <div class="relative w-full h-full flex justify-center items-center">
-            <img src="1.png" alt="MyneWallet Expense Tracker App Interface" class="w-full max-w-xs md:max-w-sm rounded-3xl shadow-2xl accent-glow border border-gray-800 transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
-        </div>
-    </main>
+</main>
+<footer style="border-top:1px solid var(--edge);padding:44px 0;text-align:center;font-size:14px;color:var(--ink-3);">
+  <a href="/" style="color:var(--ink-2);font-weight:600;margin-right:20px;">&larr; The Brink Labs</a>
+  <a href="privacy.html" style="color:var(--ink-2);margin-right:20px;">Privacy Policy</a>
+  <a href="mailto:support@thebrinklabs.com" style="color:var(--ink-2);">Contact Support</a>
+  <div style="margin-top:24px;font-family:var(--mono);font-size:11px;letter-spacing:0.05em">&copy; 2026 The Brink Labs. Built offline, on purpose.</div>
+</footer>
 
-    <section class="w-full max-w-6xl mx-auto mt-24 px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="glass-panel p-8 rounded-3xl hover:bg-white/[0.03] transition-colors">
-            <h3 class="text-xl font-bold mb-3 text-emerald-400">Zero Telemetry</h3>
-            <p class="text-sm text-gray-400 leading-relaxed">No ads, no hidden tracking pixels, and no account registration required. We completely stripped Firebase out of our code.</p>
-        </div>
-        <div class="glass-panel p-8 rounded-3xl hover:bg-white/[0.03] transition-colors">
-            <h3 class="text-xl font-bold mb-3 text-cyan-400">Intelligent Balance</h3>
-            <p class="text-sm text-gray-400 leading-relaxed">The "Spendable" Metric separates your liquid cash from emergency funds so you always know your true daily position.</p>
-        </div>
-        <div class="glass-panel p-8 rounded-3xl hover:bg-white/[0.03] transition-colors">
-            <h3 class="text-xl font-bold mb-3 text-purple-400">Kinetic Analytics</h3>
-            <p class="text-sm text-gray-400 leading-relaxed">60fps hardware-accelerated 3D Sunburst charts to drill down into your Needs, Wants, and Extras instantly.</p>
-        </div>
-        <div class="glass-panel p-8 rounded-3xl hover:bg-white/[0.03] transition-colors">
-            <h3 class="text-xl font-bold mb-3 text-rose-400">AES-256 Backups</h3>
-            <p class="text-sm text-gray-400 leading-relaxed">Your data never leaves your device unless you opt-in to Google Drive sync, secured with military-grade IV cryptography.</p>
-        </div>
-    </section>
+<script>
+(function(){
+  // Intersection Observer Reveal
+  var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.rv');
+  if (rm || !('IntersectionObserver' in window)) {
+    for (var i=0;i<els.length;i++) els[i].classList.add('in');
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      for (var i=0;i<entries.length;i++){
+        if (entries[i].isIntersecting){ entries[i].target.classList.add('in'); io.unobserve(entries[i].target); }
+      }
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+    for (var j=0;j<els.length;j++) io.observe(els[j]);
+  }
 
-    <section class="w-full max-w-4xl mx-auto mt-24 px-6 md:px-12 text-center">
-        <h2 class="text-3xl font-bold mb-6 text-white">Uncompromising Utility. Transparent Pricing.</h2>
-        <p class="text-gray-400 mb-8 max-w-2xl mx-auto">We are actively fighting subscription fatigue. Our core tracking engine is free forever. Need advanced predictive analytics and custom themes? Choose a flexible monthly plan, or better yet—buy our Lifetime Unlock once, and own it for life.</p>
-        <div class="inline-flex flex-wrap gap-4 items-center justify-center bg-gray-900/60 backdrop-blur-md rounded-full p-2 border border-white/10">
-            <span class="px-6 py-2 bg-gray-800/80 rounded-full text-sm font-bold text-gray-300">Free Basic Tier</span>
-            <span class="px-6 py-2 bg-gray-800/80 rounded-full text-sm font-bold text-gray-300">Monthly / Yearly Flex</span>
-            <span class="px-6 py-2 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full text-sm font-bold text-black shadow-[0_0_15px_rgba(16,185,129,0.4)]">Lifetime Pro Unlock</span>
-        </div>
-    </section>
-
-    <section class="w-full max-w-4xl mx-auto mt-24 px-6 md:px-12">
-        <div class="p-8 glass-panel rounded-3xl">
-            <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Transparency & API Data Usage</h3>
-            <p class="text-sm text-gray-400 mb-4 leading-relaxed">
-                <strong>The exact purpose of the MyneWallet: Expense Tracker app</strong> is to provide a high-performance, strictly offline-first financial engine. It allows users to securely track daily expenses, manage budgets, and visualize spending locally on their device.
-            </p>
-            <p class="text-sm text-gray-400 leading-relaxed">
-                <strong>Why we request user data:</strong> This app requests OAuth access to your Google Drive API <em>strictly and exclusively</em> to allow you to securely back up and restore your encrypted financial ledger. We do not access, read, or transmit your data to any third-party servers. 
-            </p>
-        </div>
-    </section>
-
-    <footer class="w-full max-w-6xl mx-auto mt-24 mb-8 pt-8 border-t border-gray-900/50 flex flex-col md:flex-row justify-between items-center px-6 md:px-12 gap-4">
-        <a href="/" class="text-gray-500 hover:text-white font-medium transition-colors">&larr; The Brink Labs</a>
-        <div class="flex gap-6">
-            <a href="privacy.html" class="text-sm font-medium text-gray-400 hover:text-emerald-400 transition-colors">Privacy Policy</a>
-            <a href="mailto:support@thebrinklabs.com" class="text-sm font-medium text-gray-400 hover:text-emerald-400 transition-colors">Contact Support</a>
-        </div>
-    </footer>
+  // Generate CSS Heatmap (Deterministic pattern mapping the real CSV shape)
+  var host = document.getElementById('hm');
+  if(host) {
+    var levels = ['#161A29','#1D2C4D','#2B4A82','#486FCA','#7A6BFF'];
+    var s = 7;
+    for (var i=0; i<70; i++){
+      s = (s*1103515245 + 12345) % 2147483648;
+      var r = (s/2147483648);
+      var col = i % 14;
+      var weekend = (col % 7 === 5 || col % 7 === 6);
+      var lvl = Math.min(4, Math.floor(r * (weekend ? 5.2 : 3.4)));
+      var el = document.createElement('span');
+      el.style.background = levels[lvl];
+      host.appendChild(el);
+    }
+  }
+})();
+</script>
 </body>
 </html>
