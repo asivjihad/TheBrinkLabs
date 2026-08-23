@@ -1,37 +1,176 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | The Brink Labs</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0D121F; color: #FFFFFF; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy Policy — MyneWallet | The Brink Labs</title>
+<meta name="description" content="MyneWallet collects nothing. No account, no servers, no telemetry. Your financial vault lives on your device and nowhere else.">
+<link rel="canonical" href="https://thebrinklabs.com/mynewallet/privacy.html">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#08090C">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=Instrument+Serif&amp;family=Manrope:wght@400..800&amp;display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=Instrument+Serif&amp;family=Manrope:wght@400..800&amp;display=swap"></noscript>
+<style>
+:root{
+  --void:#08090C; --vault:#0B0D12; --plate:#12151C; --plate-2:#171B23; --edge:#1E222B; --edge-hi:#2B313D;
+  --ink:#F1F2F5; --ink-2:#B3B9C5; --ink-3:#79808F;
+  --brass:#C9A96A; --brass-hi:#EFDCAE; --brass-dim:#7E6A3E;
+  --jade:#35C98C; --alarm:#E4606A;
+  --serif:"Instrument Serif",Georgia,serif; --sans:"Manrope",system-ui,sans-serif; --mono:"IBM Plex Mono",monospace;
+  --max:1180px; --pad:clamp(20px,5vw,44px); --gut:clamp(28px,4vw,44px); --r-lg:20px; --t:180ms ease;
+  --accent:#7A6BFF; --accent-hi:#B3A8FF; --accent-ink:#0A0912;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--void);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.66;-webkit-font-smoothing:antialiased;}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(1100px 620px at 10% -10%, rgba(122,107,255,.075), transparent 60%),linear-gradient(180deg,#0A0C11 0%,#08090C 44%,#07080A 100%);}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.022) 0 1px,transparent 1px 118px);-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.85),transparent 62%);}
+a{color:var(--accent-hi);text-decoration:none}
+a:hover{text-decoration:underline}
+p{margin:0 0 1.05em}
+strong,b{font-weight:700;color:var(--ink)}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
+.narrow{max-width:74ch;margin:0 auto}
+.band{padding-block:clamp(64px,9vw,132px)}
+.eyebrow{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 18px;display:flex;align-items:center;gap:12px;}
+.eyebrow::after{content:"";height:1px;flex:1;max-width:120px;background:linear-gradient(90deg,var(--edge-hi),transparent)}
+h1,h2,h3{margin:0;text-wrap:balance}
+.d2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5.4vw,56px);line-height:1.02;letter-spacing:-.024em;margin-bottom:24px;}
+.d3{font-family:var(--serif);font-weight:400;font-size:clamp(24px,3.4vw,32px);line-height:1.1;letter-spacing:-.02em;margin:32px 0 12px;}
+.h4{font-family:var(--sans);font-weight:700;font-size:19px;letter-spacing:-.015em;line-height:1.3;margin:24px 0 8px;}
+.lede{font-size:clamp(17.5px,1.8vw,21px);line-height:1.6;color:var(--ink-2);margin-bottom:32px;}
+.flist{list-style:none;padding:0;margin:16px 0 24px}
+.flist li{padding:8px 0 8px 24px;border-top:1px solid var(--edge);position:relative;color:var(--ink-2);font-size:16px;}
+.flist li::before{content:"";position:absolute;left:2px;top:16px;width:6px;height:6px;background:var(--accent);border-radius:50%;}
+.tablewrap{overflow-x:auto;border:1px solid var(--edge);border-radius:var(--r-lg);background:linear-gradient(180deg,var(--plate),rgba(18,21,28,.4));margin-bottom:32px;}
+table{width:100%;border-collapse:collapse;min-width:620px;font-size:15px}
+th,td{text-align:left;padding:15px 20px;border-bottom:1px solid var(--edge)}
+thead th{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:500;background:rgba(255,255,255,.018)}
+td.yes{color:var(--jade);font-weight:600}
+.nav{position:sticky;top:0;z-index:100;background:rgba(8,9,12,.94);border-bottom:1px solid var(--edge);}
+@supports ((-webkit-backdrop-filter:blur(2px)) or (backdrop-filter:blur(2px))){.nav{background:rgba(8,9,12,.72);-webkit-backdrop-filter:blur(14px) saturate(140%);}}
+.nav__in{max-width:var(--max);margin:0 auto;padding:14px var(--pad);display:flex;align-items:center;justify-content:space-between;}
+.brand{font-weight:800;font-size:18px;letter-spacing:-.025em;color:var(--ink);text-decoration:none !important;}
+.btn{display:inline-flex;padding:10px 18px;font-size:13.5px;font-weight:700;border-radius:999px;border:1px solid var(--edge-hi);color:var(--ink);background:rgba(255,255,255,.02);text-decoration:none !important;}
+.btn:hover{border-color:var(--accent-hi);background:rgba(255,255,255,.05);}
+.pull{border-left:2px solid var(--accent);padding:6px 0 6px 24px;margin:28px 0;}
+.pull p{color:var(--ink-2);font-size:16px;}
+</style>
 </head>
-<body class="min-h-screen p-6 md:p-12">
-    
-    <div class="max-w-4xl mx-auto bg-gray-900 p-8 md:p-12 rounded-2xl border border-gray-800 shadow-2xl">
-        <a href="/" class="text-blue-500 hover:text-blue-400 font-semibold mb-8 inline-block">&larr; Back to Home</a>
-        
-        <h1 class="text-4xl font-extrabold mb-6">Privacy Policy</h1>
-        <p class="text-gray-400 mb-8">Effective Date: July 18, 2026</p>
+<body>
 
-        <div class="space-y-6 text-gray-300 leading-relaxed">
-            <h2 class="text-2xl font-bold text-white">1. Absolute Zero Telemetry</h2>
-            <p>The Brink Labs develops offline-first applications, including <strong>MyneWallet</strong>. We operate on a strict "Zero Telemetry" architecture. We do not collect, harvest, transmit, or store any personal or financial data on external servers.</p>
+<header class="nav">
+  <div class="nav__in">
+    <a class="brand" href="/">The Brink Labs</a>
+    <a class="btn" href="/mynewallet/">&larr; Back to MyneWallet</a>
+  </div>
+</header>
 
-            <h2 class="text-2xl font-bold text-white">2. Local Storage Only</h2>
-            <p>All data entered into our applications remains entirely on your physical device. We utilize local SQLite databases. If you uninstall the application or lose your device without executing a manual backup, your data cannot be recovered by us.</p>
+<main class="band">
+  <div class="wrap">
+    <div class="narrow">
+      <p class="eyebrow">Legal & Compliance</p>
+      <h1 class="d2">Privacy Policy</h1>
+      <p class="eyebrow eyebrow--plain" style="margin-bottom:34px;color:var(--ink-3)">Effective: 23 August 2026 &middot; Applies to: MyneWallet for Android</p>
+      
+      <p class="lede">Most privacy policies are written to explain what a company does with your data. This one is short because there is nothing to explain. MyneWallet has no user accounts, no servers, and no analytics. Your financial records are written to your own device and they stay there.</p>
 
-            <h2 class="text-2xl font-bold text-white">3. Google Drive Backups (Optional)</h2>
-            <p>Users may opt-in to use the Google Drive API to create encrypted manual backups of their local database. This connection is exclusively established between the user's device and the user's personal Google Drive account. The Brink Labs has zero access to this data, the cryptographic keys, or your Google account credentials.</p>
+      <h3 class="d3">The One-Minute Version</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+          <tbody>
+            <tr><td>Do you collect my transactions, balances, or budgets?</td><td class="yes">No</td></tr>
+            <tr><td>Do you require an account, email, or phone number?</td><td class="yes">No</td></tr>
+            <tr><td>Do you ask for bank logins or connect to my bank?</td><td class="yes">No</td></tr>
+            <tr><td>Do you run analytics, crash reporting, or advertising SDKs?</td><td class="yes">No</td></tr>
+            <tr><td>Do you operate servers that store my data?</td><td class="yes">No</td></tr>
+            <tr><td>Do you sell, rent, or share data with anyone?</td><td class="yes">No</td></tr>
+            <tr><td>Can the app work with the network switched off?</td><td class="yes">Yes</td></tr>
+            <tr><td>Is cloud backup optional and controlled by me?</td><td class="yes">Yes</td></tr>
+          </tbody>
+        </table>
+      </div>
 
-            <h2 class="text-2xl font-bold text-white">4. Contact Us</h2>
-            <p>If you have any questions regarding this privacy policy, you may contact us directly at <a href="mailto:support@thebrinklabs.com" class="text-blue-500 hover:underline">support@thebrinklabs.com</a>.</p>
-        </div>
+      <h3 class="d3">1. Who we are</h3>
+      <p>The Brink Labs (“we”, “us”, “our”) develops and publishes the MyneWallet mobile application (the “App”). This policy describes how information is handled when you use the App. It is written to be read, not to be survived. If any part of it is unclear, write to us and we will fix the wording.</p>
+
+      <h3 class="d3">2. The data we collect: none</h3>
+      <p>We do not collect personal data through the App. Specifically, we do not collect, receive, transmit, log, profile, or monetise any of the following:</p>
+      <ul class="flist">
+        <li>Transactions, amounts, categories, tags, payees, notes, or account names</li>
+        <li>Balances, budgets, envelopes, goals, obligations, loans, or net worth</li>
+        <li>Names, email addresses, phone numbers, or contacts</li>
+        <li>Bank credentials, card numbers, or financial institution identifiers</li>
+        <li>Precise or coarse location, advertising identifiers, or device fingerprints</li>
+        <li>Usage analytics, screen views, session lengths, feature telemetry, or crash traces</li>
+      </ul>
+      <p>There is no sign-up screen in MyneWallet because there is no account to sign up for. The App is fully functional on a device that has never been connected to a network.</p>
+
+      <h3 class="d3">3. Local-first architecture</h3>
+      <p>MyneWallet is engineered as an offline-first application. This is an architectural property, not a setting you have to find.</p>
+      <ul class="flist">
+        <li><strong>On-device storage.</strong> All financial records, budgets, settings, and preferences are written to an encrypted SQLite database held inside your device’s private application sandbox, which the operating system isolates from other apps.</li>
+        <li><strong>No remote database.</strong> We do not own, rent, or operate any server, database, or storage bucket that holds your financial data. There is no copy of your ledger for us to lose, leak, subpoena, or sell.</li>
+        <li><strong>No third-party data pipelines.</strong> The App contains no advertising network, no attribution SDK, and no product-analytics SDK. Google’s Firebase suite is not integrated into the App.</li>
+        <li><strong>No background transmission.</strong> The App does not upload your data on a schedule, on launch, or on any trigger you did not initiate yourself.</li>
+      </ul>
+
+      <h3 class="d3">4. When the App does use the network</h3>
+      <p>MyneWallet makes network requests in only two situations, both initiated by you:</p>
+
+      <h4 class="h4">4.1 Optional encrypted backup to your own Google Drive</h4>
+      <p>To protect you against a lost or replaced phone, the App offers an <strong>opt-in</strong> backup of your local database to <em>your</em> Google Drive account.</p>
+      <ul class="flist">
+        <li><strong>You turn it on.</strong> Backup is off until you enable it and complete Google OAuth consent yourself. Nothing is uploaded before that.</li>
+        <li><strong>Encrypted before it leaves.</strong> The backup file is encrypted on your device using AES-256 with a randomised initialisation vector, then transferred over TLS. The file that reaches Drive is ciphertext.</li>
+        <li><strong>It is your Drive, not ours.</strong> The file lands in your own Google account. We have no access to your Drive, your Google credentials, your OAuth tokens, or your encryption keys, and we receive no copy or notification of your backups.</li>
+        <li><strong>You can revoke it at any time</strong> from your <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google Account permissions page</a>, and delete the backup file from Drive yourself.</li>
+      </ul>
+      <div class="pull">
+        <p><strong>Google API Services User Data Policy:</strong> MyneWallet’s use and transfer of information received from Google APIs to any other app will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements. We request the narrowest Drive scope that allows the App to write and read back its own backup file, and we use that access for no purpose other than the backup and restore feature you asked for. We do not use Google user data for advertising, we do not transfer it to third parties, and we do not allow humans to read it.</p>
+      </div>
+
+      <h4 class="h4">4.2 Purchases through Google Play Billing</h4>
+      <p>The optional PRO unlock is processed entirely by Google Play Billing. Payment happens inside Google’s own flow — we never see, handle, or store your card number, billing address, or Google account identity. The App receives only a signed purchase receipt confirming entitlement. Google’s handling of that transaction is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google’s Privacy Policy</a>.</p>
+
+      <h3 class="d3">5. Device permissions</h3>
+      <p>Every permission the App requests exists to deliver a feature you can see, and none of them is used to gather information about you:</p>
+      <ul class="flist">
+        <li><strong>Network access</strong> — used only for the two purposes in Section 4. With backup disabled and no purchase in progress, the App has no reason to reach the network.</li>
+        <li><strong>Biometrics / device credential</strong> — used only to satisfy the App Lock you enable. Biometric data never leaves the secure hardware of your device and is never seen by the App or by us.</li>
+        <li><strong>Notifications</strong> — used only for local reminders and summaries generated on your device. There is no push server; we cannot send you a message.</li>
+        <li><strong>File access</strong> — used only when you personally choose a file to import, or a destination to export a CSV or PDF statement to.</li>
+      </ul>
+
+      <h3 class="d3">6. Security</h3>
+      <ul class="flist">
+        <li>Your ledger is stored inside the OS-enforced private app sandbox.</li>
+        <li>Backups are encrypted with AES-256 and a randomised initialisation vector before transfer.</li>
+        <li><strong>App Lock</strong> can require biometrics or a PIN/Pattern before the App will open.</li>
+        <li><strong>Block Screenshots</strong> prevents screenshots, screen recording, and app-switcher previews of your balances.</li>
+        <li>A one-tap privacy mask hides every monetary figure on screen.</li>
+      </ul>
+      <p>No system is perfect, and we will not pretend otherwise. What we can say precisely is that a breach of our infrastructure cannot expose your financial data, because your financial data is not on our infrastructure.</p>
+      <div class="pull">
+        <p>Found a security issue? Email <a href="mailto:support@thebrinklabs.com">support@thebrinklabs.com</a> with “Security” in the subject line. We will acknowledge you and we will not take legal action against good-faith research.</p>
+      </div>
+
+      <h3 class="d3">7. Data retention and deletion</h3>
+      <p>Because your data lives on your device, you control its entire lifecycle. We retain nothing, so we have no retention period to publish. Uninstalling the App, or clearing its storage from your device settings, removes the local database permanently. <strong>This cannot be undone by us</strong> — keep a backup before you do it.</p>
+
+      <h3 class="d3">8. Contact</h3>
+      <p>Questions about this policy, your data, or anything else: <a href="mailto:support@thebrinklabs.com">support@thebrinklabs.com</a>.<br>
+      Data controller: The Brink Labs. We aim to answer within five business days.</p>
+
     </div>
-
+  </div>
+</main>
+<footer style="border-top:1px solid var(--edge);padding:40px 0;text-align:center;font-size:14px;color:var(--ink-3);">
+  &copy; 2026 The Brink Labs. All rights reserved.
+</footer>
 </body>
 </html>
