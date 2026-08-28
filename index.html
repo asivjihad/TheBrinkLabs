@@ -4,277 +4,604 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Brink Labs — Software That Answers To You</title>
-<meta name="description" content="An independent software lab building offline-first, zero-telemetry applications you buy once and own forever. Makers of MyneWallet.">
+<meta name="description" content="An independent software lab building offline-first, zero-telemetry applications you buy once and own forever. No advertising, no data harvesting, no subscriptions. Makers of MyneWallet.">
 <link rel="canonical" href="https://thebrinklabs.com/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-<meta name="theme-color" content="#08090C">
+<meta name="theme-color" content="#030303">
 <meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Brink Labs">
+<meta property="og:title" content="The Brink Labs — Software That Answers To You">
+<meta property="og:description" content="An independent software lab building offline-first, zero-telemetry applications you buy once and own forever. No advertising, no data harvesting, no subscriptions. Makers of MyneWallet.">
+<meta property="og:url" content="https://thebrinklabs.com/">
+<meta property="og:image" content="https://thebrinklabs.com/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Brink Labs — Software That Answers To You">
+<meta name="twitter:description" content="An independent software lab building offline-first, zero-telemetry applications you buy once and own forever. No advertising, no data harvesting, no subscriptions. Makers of MyneWallet.">
+<meta name="twitter:image" content="https://thebrinklabs.com/assets/og-cover.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=Instrument+Serif&amp;family=Manrope:wght@400..800&amp;display=swap">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=Instrument+Serif&amp;family=Manrope:wght@400..800&amp;display=swap"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"></noscript>
+<script type="speculationrules">
+{"prerender":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}
+</script>
 <script>document.documentElement.className+=" js";</script>
 <style>
+/* ============================================================================
+   THE BRINK LABS — DESIGN SYSTEM v2
+   Inherited from the live site: #030303 ground, Plus Jakarta Sans, emerald→cyan.
+   Accent corrected to the logo's own green (#00F28F).
+   One variable typeface. No framework, no runtime CSS, no build step.
+   ========================================================================== */
+
+@property --ang { syntax: '<angle>'; inherits: false; initial-value: 100deg; }
+
 :root{
-  --void:#08090C; --vault:#0B0D12; --plate:#12151C; --plate-2:#171B23; --edge:#1E222B; --edge-hi:#2B313D;
-  --ink:#F1F2F5; --ink-2:#B3B9C5; --ink-3:#79808F;
-  --brass:#C9A96A; --brass-hi:#EFDCAE; --brass-dim:#7E6A3E;
-  --accent:#C9A96A; --accent-hi:#EFDCAE; --accent-ink:#08090C;
-  --jade:#35C98C; --alarm:#E4606A;
-  --serif:"Instrument Serif",Georgia,serif; --sans:"Manrope",system-ui,sans-serif; --mono:"IBM Plex Mono",monospace;
-  --max:1180px; --pad:clamp(20px,5vw,44px); --gut:clamp(28px,4vw,44px); --r:14px; --r-lg:20px; --t:180ms cubic-bezier(.2,.7,.3,1);
+  color-scheme: dark;
+
+  /* ground */
+  --void:#030303; --plate:#0A0B0E; --plate-2:#101216; --raise:#15171C;
+  --line:#1A1C22; --line-hi:#282B33;
+
+  /* ink (matches the live site's gray ramp) */
+  --ink:#FAFAFA; --ink-2:#9CA3AF; --ink-3:#6B7280;
+
+  /* brand — sampled from Logo - Brink Labs (SVG).svg */
+  --brand:#00F28F; --brand-2:#22D3EE; --brand-3:#60A5FA;
+  --brand-deep:#00B268; --alarm:#FB7185;
+  --grad: linear-gradient(var(--ang), var(--brand) 0%, var(--brand) 22%, var(--brand-2) 74%, var(--brand-3) 100%);
+
+  /* derived, so a palette change never needs a find-and-replace */
+  --brand-6: color-mix(in oklab, var(--brand) 6%, transparent);
+  --brand-12: color-mix(in oklab, var(--brand) 12%, transparent);
+  --brand-24: color-mix(in oklab, var(--brand) 24%, transparent);
+  --ink-glass: color-mix(in oklab, #FFF 3%, transparent);
+
+  --sans:"Plus Jakarta Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+
+  --max:1160px;
+  --pad:clamp(20px,5vw,40px);
+  --r:18px; --r-lg:26px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --t:.22s var(--ease);
 }
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--void);color:var(--ink);font-family:var(--sans);font-size:17px;font-weight:400;line-height:1.66;-webkit-font-smoothing:antialiased;}
-body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(1100px 620px at 10% -10%, rgba(201,169,106,.075), transparent 60%),radial-gradient(900px 560px at 94% 2%, rgba(122,107,255,.075), transparent 58%),linear-gradient(180deg,#0A0C11 0%,#08090C 44%,#07080A 100%);}
-body::after{content:"";position:fixed;inset:0;z-index:-1;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.022) 0 1px,transparent 1px 118px);-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.85),transparent 62%);}
-img,svg{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-p{margin:0 0 1.05em}
-strong,b{font-weight:700;color:var(--ink)}
-::selection{background:var(--accent);color:var(--accent-ink)}
-.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
-.narrow{max-width:74ch}
-.band{padding-block:clamp(64px,9vw,132px)}
-.band--alt{background:linear-gradient(180deg,transparent,rgba(11,13,18,.72) 12%,rgba(11,13,18,.72) 88%,transparent)}
-.eyebrow{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 18px;display:flex;align-items:center;gap:12px;}
-.eyebrow::after{content:"";height:1px;flex:1;max-width:120px;background:linear-gradient(90deg,var(--edge-hi),transparent)}
-h1,h2,h3,h4{margin:0;text-wrap:balance}
-.d1{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5.4vw,76px);line-height:1.0;letter-spacing:-.026em}
-.d2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5.4vw,66px);line-height:1.02;letter-spacing:-.024em}
-.d3{font-family:var(--serif);font-weight:400;font-size:clamp(27px,3.4vw,42px);line-height:1.1;letter-spacing:-.02em}
-.h4{font-family:var(--sans);font-weight:700;font-size:19px;letter-spacing:-.015em;line-height:1.3}
-.gold{color:var(--brass)}
-.lede{font-size:clamp(17.5px,1.8vw,21px);line-height:1.6;color:var(--ink-2);max-width:64ch}
-.muted{color:var(--ink-3)}
-.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
-.rule{height:1px;position:relative;margin:0 0 clamp(28px,4vw,46px);background:linear-gradient(90deg,var(--edge-hi),var(--edge) 30%,transparent)}
-.rule::before{content:"";position:absolute;inset:0 auto 0 0;width:64px;height:1px;background:var(--brass)}
-.nav{position:sticky;top:0;z-index:100;background:rgba(8,9,12,.94);border-bottom:1px solid var(--edge);transition:border-color var(--t)}
-@supports ((-webkit-backdrop-filter:blur(2px)) or (backdrop-filter:blur(2px))){.nav{background:rgba(8,9,12,.72);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%)}}
-.nav__in{max-width:var(--max);margin:0 auto;padding:14px var(--pad);display:flex;align-items:center;gap:var(--gut)}
-.brand{display:flex;align-items:center;gap:11px;margin-right:auto;min-width:0}
-.brand__mk{width:34px;height:34px;flex:0 0 auto}
-.brand__tx{display:flex;flex-direction:column;line-height:1;min-width:0}
-.brand__n{font-weight:800;font-size:16.5px;letter-spacing:-.025em;white-space:nowrap}
-.brand__s{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-top:5px;white-space:nowrap}
-.navlinks{display:flex;gap:26px}
-.navlinks a{font-size:14px;font-weight:500;color:var(--ink-2);transition:color var(--t);padding-block:6px;position:relative}
-.navlinks a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--accent);transition:right var(--t)}
-.navlinks a:hover{color:var(--ink)}
-.navlinks a:hover::after{right:0}
-@media(max-width:900px){.navlinks{display:none}}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:15px;letter-spacing:-.01em;border-radius:999px;padding:14px 26px;border:1px solid transparent;transition:transform var(--t),background-color var(--t),border-color var(--t),color var(--t);will-change:transform}
-.btn:active{transform:translateY(1px)}
-.btn--gold{background:linear-gradient(175deg,var(--brass-hi),var(--brass));color:#141007;box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 10px 30px -14px rgba(201,169,106,.8)}
-.btn--gold:hover{background:linear-gradient(175deg,#F6E7C2,var(--brass-hi))}
-.btn--ghost{border-color:var(--edge-hi);color:var(--ink);background:rgba(255,255,255,.02)}
-.btn--ghost:hover{border-color:var(--brass-dim);background:rgba(255,255,255,.045)}
-.btn--sm{padding:10px 18px;font-size:13.5px}
-.chips{display:flex;flex-wrap:wrap;gap:9px}
-.chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--ink-2);border:1px solid var(--edge);background:rgba(255,255,255,.018);border-radius:999px;padding:7px 14px;white-space:nowrap}
-.chip b{color:var(--brass);font-weight:500}
-.tag{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:5px 11px;border-radius:999px;border:1px solid var(--edge-hi);color:var(--ink-3)}
-.tag--live{color:var(--jade);border-color:rgba(53,201,140,.32);background:rgba(53,201,140,.07)}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--jade);flex:0 0 auto;box-shadow:0 0 0 3px rgba(53,201,140,.16)}
-.grid{display:grid;gap:14px}
-.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
-@media(max-width:860px){.g3{grid-template-columns:1fr}.g2{grid-template-columns:1fr}}
-.card{background:linear-gradient(180deg,var(--plate),rgba(18,21,28,.55));border:1px solid var(--edge);border-radius:var(--r-lg);padding:clamp(22px,2.6vw,30px);position:relative;overflow:hidden;transition:border-color var(--t),transform var(--t)}
-.card--hover:hover{border-color:var(--edge-hi);transform:translateY(-2px)}
-.card h3{margin:0 0 9px}
-.card p{margin:0;color:var(--ink-2);font-size:15.5px;line-height:1.6}
-.card__idx{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--brass-dim);display:block;margin-bottom:14px}
-.flist{list-style:none;padding:0;margin:22px 0 0}
-.flist li{padding:13px 0 13px 28px;border-top:1px solid var(--edge);position:relative;color:var(--ink-2);font-size:15.5px;line-height:1.58}
-.flist li::before{content:"";position:absolute;left:2px;top:21px;width:8px;height:8px;border:1px solid var(--brass);transform:rotate(45deg)}
-.flist li b{color:var(--ink)}
-.row{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(32px,5vw,74px);align-items:center}
-.row--hero{grid-template-columns:1.18fr .82fr}
-@media(max-width:940px){.row{grid-template-columns:1fr;gap:30px}.row__v{order:2}.row--hero{grid-template-columns:1fr}}
-.panel{background:linear-gradient(165deg,var(--plate-2),#0C0F15);border:1px solid var(--edge);border-radius:var(--r-lg);padding:clamp(22px,2.6vw,30px);display:flex;flex-direction:column;gap:14px}
-.panel__h{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);display:flex;justify-content:space-between;align-items:center;gap:12px}
-.krow{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:14.5px;color:var(--ink-2)}
-.krow b{color:var(--ink);font-weight:600}
-.bar{height:8px;border-radius:99px;background:#1A1E27;overflow:hidden}
-.bar--gold i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--brass-dim),var(--brass))}
-.pull{border-left:2px solid var(--brass);padding:6px 0 6px clamp(20px,3vw,34px);margin:clamp(28px,4vw,46px) 0}
-.pull p{font-family:var(--serif);font-size:clamp(23px,3vw,34px);line-height:1.24;letter-spacing:-.02em;color:var(--ink);margin:0}
-.pull p+p{margin-top:.5em}
-.ring{position:relative;width:min(78vw,460px);aspect-ratio:1;margin-inline:auto;display:grid;place-items:center;overflow:hidden}
-.ring i{position:absolute;border-radius:50%;border:1px solid var(--edge-hi);inset:0}
-.ring i:nth-child(2){inset:9%;border-color:rgba(201,169,106,.24)}
-.ring i:nth-child(3){inset:20%;border-color:var(--edge)}
-.ring i:nth-child(4){inset:32%;border-color:rgba(201,169,106,.16)}
-.ring i:nth-child(5){inset:44%;border-color:var(--edge-hi)}
-.ring__sheen{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,rgba(201,169,106,.20) 40deg,transparent 110deg,transparent 250deg,rgba(122,107,255,.16) 300deg,transparent 350deg);-webkit-mask:radial-gradient(circle closest-side,transparent 43%,#000 45%,#000 98%,transparent 100%);mask:radial-gradient(circle closest-side,transparent 43%,#000 45%,#000 98%,transparent 100%);animation:spin 42s linear infinite}
-.ring__core{position:relative;z-index:2;text-align:center}
-@keyframes spin{to{transform:rotate(360deg)}}
-.js .rv{opacity:0;transform:translateY(16px)}
-.js .rv.in{opacity:1;transform:none;transition:opacity .62s cubic-bezier(.2,.7,.3,1),transform .62s cubic-bezier(.2,.7,.3,1)}
-@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.ring__sheen{animation:none}}
-.foot{border-top:1px solid var(--edge);margin-top:clamp(56px,8vw,110px);padding-block:clamp(44px,5vw,68px) 34px}
-.foot__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:34px}
-@media(max-width:860px){.foot__grid{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.foot__grid{grid-template-columns:1fr}}
-.foot .fh{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin:0 0 16px;font-weight:500}
-.foot ul{list-style:none;margin:0;padding:0}
-.foot li{margin:0 0 11px}
-.foot li a{font-size:14.5px;color:var(--ink-2);transition:color var(--t)}
-.foot li a:hover{color:var(--brass-hi)}
-.foot__base{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:clamp(34px,4vw,54px);padding-top:24px;border-top:1px solid var(--edge);font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--ink-3)}
+
+/* Wide-gamut displays get the real logo green, not its sRGB clamp. */
+@supports (color: color(display-p3 1 1 1)) and (color: oklch(1 0 0)){
+  :root{
+    --brand: oklch(.868 .238 158.5);
+    --brand-2: oklch(.804 .142 208);
+    --brand-3: oklch(.735 .137 259);
+  }
+}
+
+*,*::before,*::after{ box-sizing:border-box }
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth }
+body{
+  margin:0; background:var(--void); color:var(--ink);
+  font-family:var(--sans); font-size:17px; font-weight:400; line-height:1.65;
+  font-synthesis-weight:none; -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale; overflow-x:hidden;
+  text-rendering:optimizeLegibility;
+}
+
+/* Ambient field. Static gradients + a node lattice echoing the logo mark —
+   no blur filters, so it composites for free on every GPU. */
+body::before{
+  content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+  background:
+    radial-gradient(72rem 40rem at 8% -12%, color-mix(in oklab,var(--brand) 11%,transparent), transparent 62%),
+    radial-gradient(60rem 36rem at 96% 2%, color-mix(in oklab,var(--brand-2) 9%,transparent), transparent 58%),
+    radial-gradient(50rem 40rem at 50% 108%, color-mix(in oklab,var(--brand-3) 6%,transparent), transparent 62%),
+    var(--void);
+}
+body::after{
+  content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.55;
+  background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.10) 1px, transparent 0);
+  background-size:34px 34px;
+  -webkit-mask-image:radial-gradient(120% 80% at 50% 0%, #000 0%, transparent 70%);
+  mask-image:radial-gradient(120% 80% at 50% 0%, #000 0%, transparent 70%);
+}
+
+img,svg{ display:block; max-width:100% }
+a{ color:inherit; text-decoration:none }
+p{ margin:0 0 1.05em; text-wrap:pretty }
+strong,b{ font-weight:700; color:var(--ink) }
+::selection{ background:var(--brand); color:#03110A }
+:focus-visible{ outline:2px solid var(--brand); outline-offset:3px; border-radius:8px }
+
+.sprite{ position:absolute; width:0; height:0; overflow:hidden }
+.skip{ position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden;
+  clip-path:inset(50%); white-space:nowrap }
+.skip:focus{ position:fixed; inset:12px auto auto 12px; width:auto; height:auto; margin:0;
+  clip-path:none; background:var(--raise); border:1px solid var(--line-hi);
+  padding:12px 18px; border-radius:12px; z-index:200 }
+
+/* ── layout ─────────────────────────────────────────────────────────── */
+.wrap{ max-width:var(--max); margin-inline:auto; padding-inline:var(--pad) }
+.narrow{ max-width:72ch }
+main{ container-type:inline-size; container-name:page }
+section{ position:relative }
+[id]{ scroll-margin-top:96px }
+.band{ padding-block:clamp(56px,8vw,116px) }
+.band--tight{ padding-block:clamp(40px,5vw,72px) }
+
+/* ── typography ─────────────────────────────────────────────────────── */
+.label{
+  font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--brand); margin:0 0 18px; display:flex; align-items:center; gap:12px;
+}
+.label::after{ content:""; height:1px; flex:1; max-width:110px;
+  background:linear-gradient(90deg,var(--line-hi),transparent) }
+.label--solo{ display:block }
+.label--solo::after{ display:none }
+
+h1,h2,h3{ margin:0; text-wrap:balance }
+.d1{ font-size:clamp(37px,4.9vw,66px); font-weight:800; line-height:1.0; letter-spacing:-.045em }
+.d2{ font-size:clamp(30px,4.2vw,54px); font-weight:800; line-height:1.06; letter-spacing:-.04em }
+.d3{ font-size:clamp(21px,2.3vw,29px); font-weight:700; line-height:1.2; letter-spacing:-.03em }
+.h4{ font-size:18px; font-weight:700; letter-spacing:-.02em; line-height:1.3 }
+.lede{ font-size:clamp(17px,1.7vw,21px); font-weight:500; line-height:1.6;
+  color:var(--ink-2); max-width:64ch }
+.small{ font-size:14.5px; line-height:1.6; color:var(--ink-2) }
+.muted{ color:var(--ink-3) }
+.num{ font-variant-numeric:tabular-nums; letter-spacing:-.01em }
+.on{
+  background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+
+.rule{ height:1px; margin-bottom:clamp(26px,3.5vw,44px);
+  background:linear-gradient(90deg,var(--line-hi),var(--line) 32%,transparent); position:relative }
+.rule::before{ content:""; position:absolute; inset:0 auto 0 0; width:56px; height:1px;
+  background:var(--brand) }
+
+/* ── nav ────────────────────────────────────────────────────────────── */
+.nav{ position:sticky; top:0; z-index:90; border-bottom:1px solid var(--line);
+  background:color-mix(in oklab,var(--void) 88%,transparent) }
+@supports ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){
+  .nav{ background:color-mix(in oklab,var(--void) 66%,transparent);
+    -webkit-backdrop-filter:blur(18px) saturate(150%); backdrop-filter:blur(18px) saturate(150%) }
+}
+.nav__in{ max-width:var(--max); margin-inline:auto; padding:13px var(--pad);
+  display:flex; align-items:center; gap:clamp(18px,3vw,40px) }
+.brand{ display:flex; align-items:center; gap:11px; margin-right:auto; min-width:0 }
+.brand__mk{ width:32px; height:32px; flex:0 0 auto; view-transition-name:brandmark }
+.brand__tx{ display:flex; flex-direction:column; line-height:1; min-width:0 }
+.brand__n{ font-weight:800; font-size:16px; letter-spacing:-.02em; white-space:nowrap }
+.brand__s{ font-size:9.5px; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--ink-3); margin-top:5px; white-space:nowrap }
+.navlinks{ display:flex; gap:clamp(16px,2.2vw,28px) }
+.navlinks a{ font-size:14px; font-weight:600; color:var(--ink-2); padding-block:6px;
+  position:relative; transition:color var(--t) }
+.navlinks a::after{ content:""; position:absolute; inset:auto auto 0 0; height:1px; width:0;
+  background:var(--brand); transition:width var(--t) }
+.navlinks a:hover{ color:var(--ink) }
+.navlinks a:hover::after{ width:100% }
+@media(max-width:920px){ .navlinks{ display:none } }
+
+/* quiet inline action — the only "button" outside the store badge */
+.go{ display:inline-flex; align-items:center; gap:9px; font-weight:700; font-size:15px;
+  color:var(--brand); transition:gap var(--t) }
+.go svg{ width:16px; height:16px; transition:transform var(--t) }
+.go:hover{ gap:13px }
+.go--ink{ color:var(--ink) }
+
+/* ── Google Play badge ──────────────────────────────────────────────────
+   Official badge geometry (646×250), rebuilt as inline SVG so it stays sharp
+   at any density and costs zero requests. To use Google's supplied artwork
+   instead, replace the <svg> inside .play with:
+   <img src="/assets/google-play-badge.png" alt="Get it on Google Play"
+        width="646" height="250"> */
+.play{ display:inline-block; transition:transform var(--t), filter var(--t) }
+.play svg{ height:56px; width:auto }
+.play:hover{ transform:translateY(-2px);
+  filter:drop-shadow(0 8px 22px color-mix(in oklab,var(--brand) 26%,transparent)) }
+.play--sm svg{ height:42px }
+
+/* ── surfaces ───────────────────────────────────────────────────────── */
+.grid{ display:grid; gap:14px }
+.g2{ grid-template-columns:repeat(2,minmax(0,1fr)) }
+.g3{ grid-template-columns:repeat(3,minmax(0,1fr)) }
+.g4{ grid-template-columns:repeat(4,minmax(0,1fr)) }
+@container page (max-width:1000px){ .g4{ grid-template-columns:repeat(2,minmax(0,1fr)) } }
+@container page (max-width:820px){ .g3,.g2{ grid-template-columns:1fr } }
+@container page (max-width:560px){ .g4{ grid-template-columns:1fr } }
+
+.card{
+  position:relative; overflow:hidden; border-radius:var(--r-lg);
+  border:1px solid var(--line); background:linear-gradient(180deg,var(--plate-2),var(--plate));
+  padding:clamp(22px,2.5vw,30px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045);
+  transition:border-color var(--t), transform var(--t), box-shadow var(--t);
+}
+.card--hover:hover{ border-color:var(--brand-24); transform:translateY(-3px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 20px 50px -30px var(--brand-24) }
+.card > .i{ width:26px; height:26px; color:var(--brand); margin-bottom:16px }
+.card h3{ margin:0 0 8px }
+.card p{ margin:0; color:var(--ink-2); font-size:15.5px; line-height:1.6 }
+.idx{ display:block; font-size:10.5px; font-weight:700; letter-spacing:.2em;
+  color:var(--ink-3); margin-bottom:14px }
+
+.chips{ display:flex; flex-wrap:wrap; gap:9px; align-items:center }
+.chip{ display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:600;
+  color:var(--ink-2); border:1px solid var(--line); background:var(--ink-glass);
+  border-radius:999px; padding:7px 14px; white-space:nowrap }
+.chip b{ color:var(--brand); font-weight:800 }
+.pip{ width:6px; height:6px; border-radius:50%; background:var(--brand); flex:0 0 auto;
+  box-shadow:0 0 0 3px var(--brand-12) }
+.tag{ display:inline-flex; align-items:center; gap:7px; font-size:10px; font-weight:800;
+  letter-spacing:.16em; text-transform:uppercase; padding:5px 11px; border-radius:999px;
+  border:1px solid var(--line-hi); color:var(--ink-3) }
+.tag--live{ color:var(--brand); border-color:var(--brand-24); background:var(--brand-6) }
+.tag--pro{ color:var(--brand-2); border-color:color-mix(in oklab,var(--brand-2) 26%,transparent);
+  background:color-mix(in oklab,var(--brand-2) 8%,transparent) }
+.tag--free{ color:var(--ink-2) }
+
+/* ── split rows ─────────────────────────────────────────────────────── */
+.row{ display:grid; grid-template-columns:1.02fr .98fr; gap:clamp(30px,4.6vw,68px);
+  align-items:center }
+.row + .row{ margin-top:clamp(48px,6vw,92px) }
+.row--hero{ grid-template-columns:1.14fr .86fr }
+@container page (max-width:900px){
+  .row,.row--hero{ grid-template-columns:1fr; gap:30px }
+  .row__v{ order:2 }
+}
+
+.flist{ list-style:none; margin:22px 0 0; padding:0 }
+.flist li{ position:relative; padding:13px 0 13px 26px; border-top:1px solid var(--line);
+  color:var(--ink-2); font-size:15.5px; line-height:1.58 }
+.flist li::before{ content:""; position:absolute; left:2px; top:21px; width:7px; height:7px;
+  border-radius:50%; background:var(--brand) }
+.flist li b{ color:var(--ink) }
+.bul{ padding-left:20px; color:var(--ink-2) }
+.bul li{ margin:0 0 9px }
+.bul li::marker{ color:var(--brand-deep) }
+
+/* ── data panel ─────────────────────────────────────────────────────── */
+.panel{ border:1px solid var(--line); border-radius:var(--r-lg);
+  background:linear-gradient(165deg,var(--raise),var(--plate));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  padding:clamp(22px,2.5vw,28px); display:flex; flex-direction:column; gap:13px }
+.panel__h{ display:flex; justify-content:space-between; align-items:center; gap:12px;
+  font-size:10.5px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--ink-3) }
+.fig{ font-size:clamp(32px,4.4vw,46px); font-weight:800; letter-spacing:-.04em; line-height:1 }
+.krow{ display:flex; justify-content:space-between; align-items:baseline; gap:14px;
+  font-size:14.5px; color:var(--ink-2) }
+.krow b{ color:var(--ink); font-weight:700 }
+.bar{ height:7px; border-radius:99px; background:#191C22; overflow:hidden }
+.bar i{ display:block; height:100%; border-radius:99px; background:var(--grad) }
+
+/* ── table ──────────────────────────────────────────────────────────── */
+.tablewrap{ overflow-x:auto; border:1px solid var(--line); border-radius:var(--r-lg);
+  background:linear-gradient(180deg,var(--plate-2),var(--plate));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045) }
+table{ width:100%; border-collapse:collapse; min-width:600px; font-size:15px }
+th,td{ text-align:left; padding:15px 20px; border-bottom:1px solid var(--line) }
+thead th{ font-size:10.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-3); background:rgba(255,255,255,.016) }
+tbody tr:last-child td{ border-bottom:0 }
+td.k{ color:var(--ink); font-weight:700 }
+td.them{ color:var(--ink-3) }
+td.us{ color:var(--brand); font-weight:700 }
+
+/* ── faq ────────────────────────────────────────────────────────────── */
+.faq{ border-top:1px solid var(--line) }
+.faq details{ border-bottom:1px solid var(--line) }
+.faq summary{ cursor:pointer; list-style:none; padding:22px 44px 22px 0; position:relative;
+  font-weight:700; font-size:17px; letter-spacing:-.02em; transition:color var(--t) }
+.faq summary::-webkit-details-marker{ display:none }
+.faq summary:hover{ color:var(--brand) }
+.faq summary::after{ content:""; position:absolute; right:10px; top:50%; width:10px; height:10px;
+  border-right:1.5px solid var(--brand); border-bottom:1.5px solid var(--brand);
+  transform:translateY(-70%) rotate(45deg); transition:transform var(--t) }
+.faq details[open] summary::after{ transform:translateY(-30%) rotate(225deg) }
+.faq .ans{ padding:0 clamp(0px,4vw,56px) 24px 0; color:var(--ink-2); font-size:16px }
+.faq .ans p:last-child{ margin-bottom:0 }
+
+/* ── pull quote ─────────────────────────────────────────────────────── */
+.pull{ border-left:2px solid var(--brand); padding-left:clamp(20px,3vw,32px);
+  margin:clamp(26px,4vw,44px) 0 }
+.pull p{ font-size:clamp(21px,2.7vw,32px); font-weight:800; letter-spacing:-.035em;
+  line-height:1.24; color:var(--ink); margin:0 }
+
+/* ── motion: scroll-driven, no JS on modern engines ─────────────────── */
+@keyframes rise{ from{ opacity:0; transform:translateY(18px) } to{ opacity:1; transform:none } }
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .rv{ animation:rise .01s linear both; animation-timeline:view();
+      animation-range:entry 4% cover 20% }
+  }
+}
+@supports not (animation-timeline: view()){
+  .js .rv{ opacity:0; transform:translateY(18px) }
+  .js .rv.in{ opacity:1; transform:none;
+    transition:opacity .6s var(--ease), transform .6s var(--ease) }
+}
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto }
+  .rv{ animation:none !important; opacity:1 !important; transform:none !important }
+  *,*::before,*::after{ transition-duration:.01ms !important }
+}
+
+/* ── cross-document view transitions ────────────────────────────────── */
+@view-transition{ navigation:auto }
+@media (prefers-reduced-motion: no-preference){
+  ::view-transition-old(root){ animation:vt-out .18s var(--ease) both }
+  ::view-transition-new(root){ animation:vt-in .28s var(--ease) both }
+}
+@keyframes vt-out{ to{ opacity:0 } }
+@keyframes vt-in{ from{ opacity:0; transform:translateY(8px) } }
+
+/* ── footer ─────────────────────────────────────────────────────────── */
+.foot{ border-top:1px solid var(--line); padding-block:clamp(44px,5vw,64px) 30px;
+  margin-top:clamp(48px,7vw,96px);
+  container-type:inline-size; container-name:page }   /* its own query container:
+     the footer sits outside <main>, so it must establish one or its grid never collapses */
+.foot__grid{ display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:34px }
+@container page (max-width:860px){ .foot__grid{ grid-template-columns:1fr 1fr } }
+@container page (max-width:520px){ .foot__grid{ grid-template-columns:1fr } }
+.foot .fh{ font-size:10.5px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--ink-3); margin:0 0 15px }
+.foot ul{ list-style:none; margin:0; padding:0 }
+.foot li{ margin:0 0 11px }
+.foot li a{ font-size:14.5px; color:var(--ink-2); transition:color var(--t) }
+.foot li a:hover{ color:var(--brand) }
+.foot__base{ display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap;
+  margin-top:clamp(32px,4vw,48px); padding-top:22px; border-top:1px solid var(--line);
+  font-size:12.5px; font-weight:600; color:var(--ink-3) }
 </style>
+<script type="application/ld+json">{
+ "@context":"https://schema.org",
+ "@graph":[
+  {"@type":"Organization","@id":"https://thebrinklabs.com/#org",
+   "name":"The Brink Labs","alternateName":"Brink Labs",
+   "url":"https://thebrinklabs.com/","logo":"https://thebrinklabs.com/assets/brinklabs-logo.svg",
+   "email":"support@thebrinklabs.com","foundingDate":"2026",
+   "slogan":"Software that answers to you.",
+   "description":"An independent software lab building offline-first, zero-telemetry applications that are bought once and owned forever.",
+   "knowsAbout":["Offline-first software","On-device privacy","Personal finance software","Zero-based budgeting","Android development"],
+   "makesOffer":{"@type":"Offer","itemOffered":{"@type":"SoftwareApplication",
+     "name":"MyneWallet: Budget Tracker","url":"https://thebrinklabs.com/mynewallet/"}}},
+  {"@type":"WebSite","@id":"https://thebrinklabs.com/#website","url":"https://thebrinklabs.com/",
+   "name":"The Brink Labs","publisher":{"@id":"https://thebrinklabs.com/#org"},"inLanguage":"en"},
+  {"@type":"WebPage","@id":"https://thebrinklabs.com/#webpage","url":"https://thebrinklabs.com/",
+   "name":"The Brink Labs — Software That Answers To You",
+   "isPartOf":{"@id":"https://thebrinklabs.com/#website"},
+   "about":{"@id":"https://thebrinklabs.com/#org"},"dateModified":"2026-08-23"}
+ ]
+}</script>
 </head>
 <body>
-
-<svg class="sprite skip" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="gBrass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EFDCAE"/><stop offset=".55" stop-color="#C9A96A"/><stop offset="1" stop-color="#8A7444"/></linearGradient>
-    <linearGradient id="gSteel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1E2430"/><stop offset="1" stop-color="#0C0F15"/></linearGradient>
-    <linearGradient id="gMyne" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8E7DFF"/><stop offset=".55" stop-color="#6C5CFF"/><stop offset="1" stop-color="#22C6E8"/></linearGradient>
-    <symbol id="mk-brink" viewBox="0 0 48 48"><rect x=".75" y=".75" width="46.5" height="46.5" rx="13" fill="url(#gSteel)" stroke="#2B313D" stroke-width="1.5"/><circle cx="24" cy="24" r="13.5" fill="none" stroke="url(#gBrass)" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="63 22" transform="rotate(-52 24 24)"/><circle cx="24" cy="24" r="7.2" fill="none" stroke="#4A5364" stroke-width="1.2"/><path d="M24 10.5v5.4M24 32.1v5.4" stroke="url(#gBrass)" stroke-width="1.8" stroke-linecap="round"/><circle cx="24" cy="24" r="2.1" fill="url(#gBrass)"/></symbol>
-    <symbol id="mk-myne" viewBox="0 0 48 48"><rect width="48" height="48" rx="12.5" fill="url(#gMyne)"/><rect x="10.5" y="14" width="27" height="20" rx="5.5" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/><rect x="25.5" y="21" width="8" height="6" rx="2" fill="#fff"/></symbol>
-    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6 4.6 5.7v6.1c0 4.6 3.1 8.2 7.4 9.6 4.3-1.4 7.4-5 7.4-9.6V5.7L12 2.6Z"/><path d="m8.9 12.2 2.1 2.1 4.1-4.3"/></symbol>
-    <symbol id="i-infinity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8.2a3.8 3.8 0 1 0 0 7.6c2.6 0 4-2.5 5-3.8 1-1.3 2.4-3.8 5-3.8a3.8 3.8 0 1 1 0 7.6c-2.6 0-4-2.5-5-3.8"/></symbol>
-    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4.4" y="10.2" width="15.2" height="11.2" rx="3"/><path d="M8.2 10.2V7.4a3.8 3.8 0 0 1 7.6 0v2.8"/><path d="M12 15v2.2"/></symbol>
-    <symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.4v17.2M5.6 6.4h12.8M4 20.6h16"/><path d="m8.6 6.6-3 6.6h6l-3-6.6ZM15.4 6.6l-3 6.6h6l-3-6.6Z"/></symbol>
-    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-  </defs>
-</svg>
-
-<header class="nav">
+<a class="skip" href="#main">Skip to content</a>
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><g/><clipPath id="44855bd6cd"><path d="M 667 575 L 874.992188 575 L 874.992188 679 L 667 679 Z M 667 575 " clip-rule="nonzero"/></clipPath><clipPath id="e69e84b334"><path d="M 729 481.449219 L 762 481.449219 L 762 514 L 729 514 Z M 729 481.449219 " clip-rule="nonzero"/></clipPath><clipPath id="670e10b986"><path d="M 625.242188 585 L 658 585 L 658 618 L 625.242188 618 Z M 625.242188 585 " clip-rule="nonzero"/></clipPath><clipPath id="cfd5bebc72"><path d="M 728 689 L 762 689 L 762 721.449219 L 728 721.449219 Z M 728 689 " clip-rule="nonzero"/></clipPath><clipPath id="bcb4068e95"><rect x="0" width="575" y="0" height="199"/></clipPath><clipPath id="7b8d31a11e"><rect x="0" width="248" y="0" height="76"/></clipPath></defs><symbol id="brink-mark" viewBox="621 477 258 249"><g clip-path="url(#44855bd6cd)"><path fill="#00f28f" d="M 745.238281 575.871094 C 731.160156 575.871094 719.730469 587.316406 719.730469 601.382812 C 719.730469 603.5625 719.972656 605.671875 720.507812 607.6875 C 721.773438 612.648438 720.429688 617.53125 716.804688 621.160156 L 712.972656 625.003906 C 709.324219 628.632812 704.429688 629.957031 699.460938 628.691406 C 697.457031 628.195312 695.339844 627.914062 693.167969 627.914062 C 679.089844 627.914062 667.695312 639.328125 667.65625 653.421875 C 667.65625 667.519531 679.089844 678.933594 693.167969 678.933594 C 707.277344 678.933594 718.675781 667.484375 718.675781 653.421875 C 718.675781 651.230469 718.433594 649.132812 717.898438 647.113281 C 716.632812 642.125 717.976562 637.253906 721.601562 633.625 L 725.417969 629.789062 C 729.085938 626.160156 733.976562 624.816406 738.945312 626.085938 C 740.949219 626.597656 743.046875 626.863281 745.238281 626.863281 C 747.414062 626.863281 749.53125 626.621094 751.53125 626.085938 C 756.539062 624.824219 761.414062 626.164062 765.039062 629.789062 L 768.628906 633.363281 C 772.257812 636.992188 773.601562 641.886719 772.332031 646.851562 C 771.820312 648.855469 771.554688 650.96875 771.554688 653.144531 C 771.554688 667.261719 782.984375 678.65625 797.0625 678.65625 C 811.121094 678.65625 822.550781 667.261719 822.550781 653.144531 C 822.550781 650.96875 822.308594 648.855469 821.796875 646.851562 C 820.507812 641.878906 821.851562 636.992188 825.480469 633.363281 L 829.316406 629.542969 C 832.984375 625.914062 837.855469 624.574219 842.828125 625.84375 C 844.832031 626.335938 846.945312 626.621094 849.121094 626.621094 C 863.199219 626.621094 874.628906 615.1875 874.628906 601.121094 C 874.628906 587.015625 863.199219 575.605469 849.121094 575.605469 C 835.042969 575.605469 823.609375 587.050781 823.609375 601.121094 C 823.609375 603.296875 823.855469 605.410156 824.386719 607.414062 C 825.613281 612.414062 824.292969 617.296875 820.664062 620.921875 L 816.832031 624.75 C 813.199219 628.378906 808.304688 629.722656 803.355469 628.453125 C 801.351562 627.957031 799.238281 627.675781 797.046875 627.675781 C 794.871094 627.675781 792.757812 627.917969 790.753906 628.453125 C 785.765625 629.714844 780.871094 628.375 777.242188 624.75 L 773.652344 621.171875 C 770.042969 617.542969 768.703125 612.660156 769.96875 607.699219 C 770.460938 605.683594 770.742188 603.578125 770.742188 601.394531 C 770.742188 587.277344 759.3125 575.871094 745.238281 575.871094 " fill-opacity="1" fill-rule="evenodd"/></g><path fill="#00f28f" d="M 781.230469 549.28125 C 781.230469 558.144531 788.429688 565.363281 797.273438 565.363281 C 806.136719 565.363281 813.316406 558.144531 813.316406 549.28125 C 813.355469 540.40625 806.136719 533.238281 797.273438 533.238281 C 788.414062 533.238281 781.230469 540.40625 781.230469 549.28125 " fill-opacity="1" fill-rule="evenodd"/><g clip-path="url(#e69e84b334)"><path fill="#00f28f" d="M 745.523438 513.566406 C 754.386719 513.566406 761.566406 506.359375 761.566406 497.484375 C 761.566406 488.628906 754.386719 481.449219 745.523438 481.449219 C 736.621094 481.449219 729.441406 488.628906 729.441406 497.492188 C 729.441406 506.359375 736.640625 513.566406 745.523438 513.566406 " fill-opacity="1" fill-rule="evenodd"/></g><path fill="#00f28f" d="M 709.492188 549.5625 C 709.492188 540.664062 702.3125 533.484375 693.449219 533.484375 C 684.546875 533.484375 677.367188 540.691406 677.367188 549.5625 C 677.367188 558.4375 684.585938 565.605469 693.449219 565.605469 C 702.3125 565.605469 709.492188 558.433594 709.492188 549.5625 " fill-opacity="1" fill-rule="evenodd"/><g clip-path="url(#670e10b986)"><path fill="#00f28f" d="M 657.417969 601.625 C 657.417969 592.726562 650.261719 585.546875 641.375 585.546875 C 632.515625 585.550781 625.332031 592.765625 625.332031 601.625 C 625.332031 610.488281 632.515625 617.667969 641.375 617.667969 C 650.253906 617.667969 657.417969 610.5 657.417969 601.625 " fill-opacity="1" fill-rule="evenodd"/></g><g clip-path="url(#cfd5bebc72)"><path fill="#00f28f" d="M 744.992188 689.125 C 736.089844 689.125 728.910156 696.347656 728.910156 705.207031 C 728.910156 714.070312 736.128906 721.289062 744.992188 721.25 C 753.851562 721.25 761.03125 714.070312 761.03125 705.207031 C 761.03125 696.308594 753.851562 689.125 744.992188 689.125 " fill-opacity="1" fill-rule="evenodd"/></g></symbol><symbol id="brink-lockup" viewBox="477 477 556 533"><g clip-path="url(#44855bd6cd)"><path fill="#00f28f" d="M 745.238281 575.871094 C 731.160156 575.871094 719.730469 587.316406 719.730469 601.382812 C 719.730469 603.5625 719.972656 605.671875 720.507812 607.6875 C 721.773438 612.648438 720.429688 617.53125 716.804688 621.160156 L 712.972656 625.003906 C 709.324219 628.632812 704.429688 629.957031 699.460938 628.691406 C 697.457031 628.195312 695.339844 627.914062 693.167969 627.914062 C 679.089844 627.914062 667.695312 639.328125 667.65625 653.421875 C 667.65625 667.519531 679.089844 678.933594 693.167969 678.933594 C 707.277344 678.933594 718.675781 667.484375 718.675781 653.421875 C 718.675781 651.230469 718.433594 649.132812 717.898438 647.113281 C 716.632812 642.125 717.976562 637.253906 721.601562 633.625 L 725.417969 629.789062 C 729.085938 626.160156 733.976562 624.816406 738.945312 626.085938 C 740.949219 626.597656 743.046875 626.863281 745.238281 626.863281 C 747.414062 626.863281 749.53125 626.621094 751.53125 626.085938 C 756.539062 624.824219 761.414062 626.164062 765.039062 629.789062 L 768.628906 633.363281 C 772.257812 636.992188 773.601562 641.886719 772.332031 646.851562 C 771.820312 648.855469 771.554688 650.96875 771.554688 653.144531 C 771.554688 667.261719 782.984375 678.65625 797.0625 678.65625 C 811.121094 678.65625 822.550781 667.261719 822.550781 653.144531 C 822.550781 650.96875 822.308594 648.855469 821.796875 646.851562 C 820.507812 641.878906 821.851562 636.992188 825.480469 633.363281 L 829.316406 629.542969 C 832.984375 625.914062 837.855469 624.574219 842.828125 625.84375 C 844.832031 626.335938 846.945312 626.621094 849.121094 626.621094 C 863.199219 626.621094 874.628906 615.1875 874.628906 601.121094 C 874.628906 587.015625 863.199219 575.605469 849.121094 575.605469 C 835.042969 575.605469 823.609375 587.050781 823.609375 601.121094 C 823.609375 603.296875 823.855469 605.410156 824.386719 607.414062 C 825.613281 612.414062 824.292969 617.296875 820.664062 620.921875 L 816.832031 624.75 C 813.199219 628.378906 808.304688 629.722656 803.355469 628.453125 C 801.351562 627.957031 799.238281 627.675781 797.046875 627.675781 C 794.871094 627.675781 792.757812 627.917969 790.753906 628.453125 C 785.765625 629.714844 780.871094 628.375 777.242188 624.75 L 773.652344 621.171875 C 770.042969 617.542969 768.703125 612.660156 769.96875 607.699219 C 770.460938 605.683594 770.742188 603.578125 770.742188 601.394531 C 770.742188 587.277344 759.3125 575.871094 745.238281 575.871094 " fill-opacity="1" fill-rule="evenodd"/></g><path fill="#00f28f" d="M 781.230469 549.28125 C 781.230469 558.144531 788.429688 565.363281 797.273438 565.363281 C 806.136719 565.363281 813.316406 558.144531 813.316406 549.28125 C 813.355469 540.40625 806.136719 533.238281 797.273438 533.238281 C 788.414062 533.238281 781.230469 540.40625 781.230469 549.28125 " fill-opacity="1" fill-rule="evenodd"/><g clip-path="url(#e69e84b334)"><path fill="#00f28f" d="M 745.523438 513.566406 C 754.386719 513.566406 761.566406 506.359375 761.566406 497.484375 C 761.566406 488.628906 754.386719 481.449219 745.523438 481.449219 C 736.621094 481.449219 729.441406 488.628906 729.441406 497.492188 C 729.441406 506.359375 736.640625 513.566406 745.523438 513.566406 " fill-opacity="1" fill-rule="evenodd"/></g><path fill="#00f28f" d="M 709.492188 549.5625 C 709.492188 540.664062 702.3125 533.484375 693.449219 533.484375 C 684.546875 533.484375 677.367188 540.691406 677.367188 549.5625 C 677.367188 558.4375 684.585938 565.605469 693.449219 565.605469 C 702.3125 565.605469 709.492188 558.433594 709.492188 549.5625 " fill-opacity="1" fill-rule="evenodd"/><g clip-path="url(#670e10b986)"><path fill="#00f28f" d="M 657.417969 601.625 C 657.417969 592.726562 650.261719 585.546875 641.375 585.546875 C 632.515625 585.550781 625.332031 592.765625 625.332031 601.625 C 625.332031 610.488281 632.515625 617.667969 641.375 617.667969 C 650.253906 617.667969 657.417969 610.5 657.417969 601.625 " fill-opacity="1" fill-rule="evenodd"/></g><g clip-path="url(#cfd5bebc72)"><path fill="#00f28f" d="M 744.992188 689.125 C 736.089844 689.125 728.910156 696.347656 728.910156 705.207031 C 728.910156 714.070312 736.128906 721.289062 744.992188 721.25 C 753.851562 721.25 761.03125 714.070312 761.03125 705.207031 C 761.03125 696.308594 753.851562 689.125 744.992188 689.125 " fill-opacity="1" fill-rule="evenodd"/></g><g transform="matrix(1, 0, 0, 1, 467, 735)"><g clip-path="url(#bcb4068e95)"><g fill="#ffffff" fill-opacity="1"><g transform="translate(2.044114, 168.452234)"><g><path d="M 88.5625 -90.71875 C 88.5625 -87.40625 87.816406 -84.125 86.328125 -80.875 C 84.847656 -77.625 82.726562 -75.175781 79.96875 -73.53125 C 86.132812 -72.757812 91.585938 -70.609375 96.328125 -67.078125 C 101.066406 -63.554688 104.757812 -59.175781 107.40625 -53.9375 C 110.050781 -48.707031 111.375 -43.007812 111.375 -36.84375 C 111.375 -30.457031 110.019531 -24.453125 107.3125 -18.828125 C 104.613281 -13.210938 100.675781 -8.671875 95.5 -5.203125 C 90.320312 -1.734375 83.878906 0 76.171875 0 L 12.0625 0 L 12.0625 -116.484375 L 63.28125 -116.484375 C 67.90625 -116.484375 72.144531 -115.328125 76 -113.015625 C 79.863281 -110.703125 82.921875 -107.617188 85.171875 -103.765625 C 87.429688 -99.910156 88.5625 -95.5625 88.5625 -90.71875 Z M 35.03125 -75.84375 L 56.34375 -75.84375 C 60.3125 -75.84375 63.148438 -76.914062 64.859375 -79.0625 C 66.566406 -81.207031 67.421875 -83.492188 67.421875 -85.921875 C 67.421875 -88.785156 66.316406 -91.179688 64.109375 -93.109375 C 61.910156 -95.035156 58.71875 -96 54.53125 -96 L 35.03125 -96 Z M 35.1875 -20.484375 L 63.28125 -20.484375 C 71.4375 -20.484375 77.332031 -22.273438 80.96875 -25.859375 C 84.601562 -29.441406 86.421875 -33.929688 86.421875 -39.328125 C 86.421875 -42.523438 85.617188 -45.550781 84.015625 -48.40625 C 82.421875 -51.269531 79.941406 -53.640625 76.578125 -55.515625 C 73.222656 -57.390625 68.847656 -58.328125 63.453125 -58.328125 L 35.1875 -58.328125 Z M 35.1875 -20.484375 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(127.270912, 168.452234)"><g><path d="M 84.265625 0 L 61.796875 -30.078125 C 61.140625 -29.960938 60.425781 -29.90625 59.65625 -29.90625 C 58.882812 -29.90625 58.113281 -29.90625 57.34375 -29.90625 L 35.6875 -29.90625 L 35.6875 0 L 12.0625 0 L 12.0625 -116.484375 L 63.453125 -116.484375 C 71.929688 -116.484375 79.085938 -115.328125 84.921875 -113.015625 C 90.765625 -110.703125 95.445312 -107.585938 98.96875 -103.671875 C 102.5 -99.765625 105.0625 -95.304688 106.65625 -90.296875 C 108.25 -85.285156 109.046875 -80.023438 109.046875 -74.515625 C 109.046875 -64.492188 107.035156 -56.175781 103.015625 -49.5625 C 99.003906 -42.957031 93.140625 -38.003906 85.421875 -34.703125 L 112.53125 0 Z M 35.6875 -49.40625 L 56.515625 -49.40625 C 65.984375 -49.40625 72.972656 -51.578125 77.484375 -55.921875 C 82.003906 -60.273438 84.265625 -65.867188 84.265625 -72.703125 C 84.265625 -76.773438 83.492188 -80.570312 81.953125 -84.09375 C 80.410156 -87.625 77.847656 -90.488281 74.265625 -92.6875 C 70.691406 -94.894531 65.820312 -96 59.65625 -96 L 35.6875 -96 Z M 35.6875 -49.40625 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(251.67168, 168.452234)"><g><path d="M 36.34375 0 L 12.5625 0 L 12.5625 -116.484375 L 36.34375 -116.484375 Z M 36.34375 0 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(308.66879, 168.452234)"><g><path d="M 116.828125 -116.484375 L 116.828125 0 L 105.25 0 L 35.6875 -73.359375 L 35.6875 0 L 12.0625 0 L 12.0625 -116.484375 L 23.625 -116.484375 L 93.03125 -43.125 L 93.03125 -116.484375 Z M 116.828125 -116.484375 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(445.790339, 168.452234)"><g><path d="M 116.15625 0 L 85.09375 0 L 48.40625 -40.640625 L 35.03125 -26.4375 L 35.03125 0 L 12.0625 0 L 12.0625 -116.484375 L 35.03125 -116.484375 L 35.03125 -60.46875 L 86.09375 -116.484375 L 114.671875 -116.484375 L 63.78125 -58.984375 Z M 116.15625 0 "/></g></g></g></g></g><g transform="matrix(1, 0, 0, 1, 636, 943)"><g clip-path="url(#7b8d31a11e)"><g fill="#b4b4b4" fill-opacity="1"><g transform="translate(1.213657, 62.517101)"><g><path d="M 35.4375 -4.46875 L 35.4375 0 L 5.359375 0 L 5.359375 -44.453125 L 10.78125 -44.453125 L 10.78125 -4.46875 Z M 35.4375 -4.46875 "/></g></g></g><g fill="#b4b4b4" fill-opacity="1"><g transform="translate(57.892295, 62.517101)"><g><path d="M 34.671875 -11.15625 L 11.796875 -11.15625 L 6.875 0 L 1.203125 0 L 21.75 -44.453125 L 24.71875 -44.453125 L 45.328125 0 L 39.65625 0 Z M 13.75 -15.578125 L 32.71875 -15.578125 L 23.203125 -37.078125 Z M 13.75 -15.578125 "/></g></g></g><g fill="#b4b4b4" fill-opacity="1"><g transform="translate(123.27077, 62.517101)"><g><path d="M 32.71875 -35.4375 C 32.71875 -34.132812 32.453125 -32.816406 31.921875 -31.484375 C 31.398438 -30.160156 30.570312 -29.082031 29.4375 -28.25 C 31.957031 -27.988281 34.109375 -27.164062 35.890625 -25.78125 C 37.679688 -24.394531 39.050781 -22.671875 40 -20.609375 C 40.945312 -18.554688 41.421875 -16.375 41.421875 -14.0625 C 41.421875 -11.625 40.90625 -9.332031 39.875 -7.1875 C 38.84375 -5.039062 37.335938 -3.304688 35.359375 -1.984375 C 33.390625 -0.660156 30.9375 0 28 0 L 5.359375 0 L 5.359375 -44.453125 L 22.890625 -44.453125 C 24.734375 -44.453125 26.390625 -44.050781 27.859375 -43.25 C 29.335938 -42.445312 30.515625 -41.375 31.390625 -40.03125 C 32.273438 -38.6875 32.71875 -37.15625 32.71875 -35.4375 Z M 10.59375 -28.75 L 22.703125 -28.75 C 23.960938 -28.75 24.96875 -29.039062 25.71875 -29.625 C 26.476562 -30.21875 27.023438 -30.941406 27.359375 -31.796875 C 27.691406 -32.660156 27.859375 -33.472656 27.859375 -34.234375 C 27.859375 -35.828125 27.238281 -37.160156 26 -38.234375 C 24.757812 -39.304688 23.15625 -39.84375 21.1875 -39.84375 L 10.59375 -39.84375 Z M 10.65625 -4.609375 L 25.46875 -4.609375 C 27.820312 -4.609375 29.753906 -5.054688 31.265625 -5.953125 C 32.785156 -6.859375 33.921875 -8.066406 34.671875 -9.578125 C 35.429688 -11.097656 35.8125 -12.757812 35.8125 -14.5625 C 35.8125 -16.238281 35.429688 -17.84375 34.671875 -19.375 C 33.921875 -20.914062 32.785156 -22.179688 31.265625 -23.171875 C 29.753906 -24.160156 27.84375 -24.65625 25.53125 -24.65625 L 10.65625 -24.65625 Z M 10.65625 -4.609375 "/></g></g></g><g fill="#b4b4b4" fill-opacity="1"><g transform="translate(186.379734, 62.517101)"><g><path d="M 21.4375 -24.65625 C 24.414062 -23.976562 27.09375 -23.15625 29.46875 -22.1875 C 31.84375 -21.226562 33.722656 -19.957031 35.109375 -18.375 C 36.503906 -16.800781 37.203125 -14.710938 37.203125 -12.109375 C 37.203125 -9.460938 36.515625 -7.191406 35.140625 -5.296875 C 33.773438 -3.398438 31.863281 -1.957031 29.40625 -0.96875 C 26.945312 0.0078125 24.0625 0.5 20.75 0.5 C 18.9375 0.5 17.328125 0.445312 15.921875 0.34375 C 14.515625 0.238281 13.171875 0.0507812 11.890625 -0.21875 C 10.609375 -0.488281 9.269531 -0.894531 7.875 -1.4375 C 6.488281 -1.988281 4.914062 -2.707031 3.15625 -3.59375 L 5.171875 -7.75 C 7.273438 -6.738281 9.125 -5.972656 10.71875 -5.453125 C 12.3125 -4.929688 13.90625 -4.582031 15.5 -4.40625 C 17.101562 -4.238281 18.914062 -4.15625 20.9375 -4.15625 C 24.207031 -4.15625 26.820312 -4.816406 28.78125 -6.140625 C 30.738281 -7.472656 31.71875 -9.335938 31.71875 -11.734375 C 31.71875 -13.285156 31.222656 -14.5625 30.234375 -15.5625 C 29.242188 -16.570312 27.875 -17.40625 26.125 -18.0625 C 24.382812 -18.71875 22.359375 -19.316406 20.046875 -19.859375 C 17.773438 -20.398438 15.648438 -20.988281 13.671875 -21.625 C 11.703125 -22.257812 9.957031 -23.023438 8.4375 -23.921875 C 6.925781 -24.828125 5.738281 -25.972656 4.875 -27.359375 C 4.019531 -28.742188 3.59375 -30.46875 3.59375 -32.53125 C 3.59375 -34.925781 4.222656 -37.046875 5.484375 -38.890625 C 6.742188 -40.742188 8.539062 -42.195312 10.875 -43.25 C 13.207031 -44.300781 15.992188 -44.828125 19.234375 -44.828125 C 22.171875 -44.828125 25.085938 -44.488281 27.984375 -43.8125 C 30.890625 -43.144531 33.375 -42.328125 35.4375 -41.359375 L 33.15625 -37.078125 C 31.894531 -37.703125 30.457031 -38.242188 28.84375 -38.703125 C 27.226562 -39.171875 25.578125 -39.53125 23.890625 -39.78125 C 22.210938 -40.03125 20.640625 -40.15625 19.171875 -40.15625 C 15.972656 -40.15625 13.476562 -39.472656 11.6875 -38.109375 C 9.90625 -36.742188 9.015625 -34.988281 9.015625 -32.84375 C 9.015625 -31.289062 9.539062 -30.019531 10.59375 -29.03125 C 11.644531 -28.039062 13.101562 -27.207031 14.96875 -26.53125 C 16.84375 -25.863281 19 -25.238281 21.4375 -24.65625 Z M 21.4375 -24.65625 "/></g></g></g></g></g></symbol><symbol id="myne-glyph" viewBox="0 0 24 24"><path d="M21 18V19C21 20.1 20.1 21 19 21H5C3.9 21 3 20.1 3 19V5C3 3.9 3.9 3 5 3H19C20.1 3 21 3.9 21 5V6H12C10.9 6 10 6.9 10 8V16C10 17.1 10.9 18 12 18H21ZM12 16H22V8H12V16ZM16 13.5C15.17 13.5 14.5 12.83 14.5 12C14.5 11.17 15.17 10.5 16 10.5C16.83 10.5 17.5 11.17 17.5 12C17.5 12.83 16.83 13.5 16 13.5Z" fill="currentColor"/></symbol><symbol id="myne-tile" viewBox="0 0 48 48"><defs><linearGradient id="mwg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00F28F"/><stop offset=".6" stop-color="#22D3EE"/><stop offset="1" stop-color="#60A5FA"/></linearGradient></defs><rect width="48" height="48" rx="13" fill="url(#mwg)"/><g transform="translate(10 10) scale(1.166)" color="#03110A"><path d="M21 18V19C21 20.1 20.1 21 19 21H5C3.9 21 3 20.1 3 19V5C3 3.9 3.9 3 5 3H19C20.1 3 21 3.9 21 5V6H12C10.9 6 10 6.9 10 8V16C10 17.1 10.9 18 12 18H21ZM12 16H22V8H12V16ZM16 13.5C15.17 13.5 14.5 12.83 14.5 12C14.5 11.17 15.17 10.5 16 10.5C16.83 10.5 17.5 11.17 17.5 12C17.5 12.83 16.83 13.5 16 13.5Z" fill="currentColor"/></g></symbol><symbol id="gplay" viewBox="0 0 646 250"><defs><linearGradient id="gpB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00E3FF"/><stop offset="1" stop-color="#00A0FF"/></linearGradient><linearGradient id="gpG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#00C25A"/><stop offset="1" stop-color="#2BEE7C"/></linearGradient><linearGradient id="gpA" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFE000"/><stop offset="1" stop-color="#FFBC00"/></linearGradient><linearGradient id="gpR" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF544A"/><stop offset="1" stop-color="#C31162"/></linearGradient></defs><rect x="1.5" y="1.5" width="643" height="247" rx="35" fill="#000" stroke="#A6A6A6" stroke-width="3"/><g transform="translate(40 62) scale(5.1)"><path d="M.7.35 8.1 8 .7 15.65C.3 15.3 0 14.75 0 14.05V1.95C0 1.25.3.7.7.35z" fill="url(#gpB)"/><path d="M.7.35C1.15-.03 1.8-.06 2.4.28L11.3 5.3 8.1 8 .7.35z" fill="url(#gpG)"/><path d="m11.3 5.3 2.75 1.55c.9.51.9 1.79 0 2.3L11.3 10.7 8.1 8l3.2-2.7z" fill="url(#gpA)"/><path d="M.7 15.65C1.15 16.03 1.8 16.06 2.4 15.72L11.3 10.7 8.1 8 .7 15.65z" fill="url(#gpR)"/></g><text x="152" y="96" fill="#FFF" font-family="Roboto,Arial,Helvetica,sans-serif" font-size="34" letter-spacing="3.2">GET IT ON</text><text x="150" y="180" fill="#FFF" font-family="Roboto,Arial,Helvetica,sans-serif" font-size="72" font-weight="500" letter-spacing="-.5">Google Play</text></symbol><symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6 4.6 5.7v6.1c0 4.6 3.1 8.2 7.4 9.6 4.3-1.4 7.4-5 7.4-9.6V5.7L12 2.6Z"/><path d="m8.9 12.2 2.1 2.1 4.1-4.3"/></symbol><symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13.2 2.4 4.6 13.6h6.2L10 21.6l8.8-11.2h-6.3l.7-8Z"/></symbol><symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4.4" y="10.2" width="15.2" height="11.2" rx="3"/><path d="M8.2 10.2V7.4a3.8 3.8 0 0 1 7.6 0v2.8"/><path d="M12 15v2.2"/></symbol><symbol id="i-infinity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8.2a3.8 3.8 0 1 0 0 7.6c2.6 0 4-2.5 5-3.8 1-1.3 2.4-3.8 5-3.8a3.8 3.8 0 1 1 0 7.6c-2.6 0-4-2.5-5-3.8"/></symbol><symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.6 20.4h16.8"/><path d="M6.6 20.4v-7.2M11 20.4V6.2M15.4 20.4v-10M19.8 20.4V9"/></symbol><symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.4v17.2M5.6 6.4h12.8M4 20.6h16"/><path d="m8.6 6.6-3 6.6h6l-3-6.6ZM15.4 6.6l-3 6.6h6l-3-6.6Z"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol></svg><header class="nav">
 <div class="nav__in">
   <a class="brand" href="/">
-    <svg class="brand__mk" viewBox="0 0 48 48"><use href="#mk-brink"/></svg>
+    <svg class="brand__mk" role="img" aria-label="The Brink Labs"><use href="#brink-mark"/></svg>
     <span class="brand__tx"><span class="brand__n">The Brink Labs</span><span class="brand__s">Independent Software Lab</span></span>
   </a>
-  <nav class="navlinks"><a href="#doctrine">The Doctrine</a><a href="#deployments">Deployments</a><a href="#standard">Standard</a></nav>
-  <a class="btn btn--gold btn--sm" href="/mynewallet/">MyneWallet <svg width="15" height="15" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a>
+  <nav class="navlinks" aria-label="Primary"><a href="#doctrine">The Doctrine</a><a href="#deployments">Deployments</a><a href="#standard">Standard</a><a href="mailto:support@thebrinklabs.com">Contact</a></nav>
+  <a class="go" href="/mynewallet/">MyneWallet <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></a>
 </div>
 </header>
 
+<style>
+  .halo{position:relative;display:grid;place-items:center;aspect-ratio:1;
+    width:min(80cqw,430px);margin-inline:auto}
+  .halo i{position:absolute;inset:0;border-radius:50%;border:1px solid var(--line)}
+  .halo i:nth-of-type(2){inset:11%;border-color:var(--brand-12)}
+  .halo i:nth-of-type(3){inset:24%;border-color:var(--line)}
+  .halo i:nth-of-type(4){inset:37%;border-color:var(--brand-12)}
+  .halo::before{content:"";position:absolute;inset:8%;border-radius:50%;
+    background:radial-gradient(circle at 50% 45%,
+      color-mix(in oklab,var(--brand) 16%,transparent),transparent 62%)}
+  .halo svg{position:relative;width:44%;height:auto}
+</style>
+
 <main id="main">
 
-<section class="band" style="padding-top:clamp(52px,7vw,96px)">
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="band" style="padding-top:clamp(46px,6vw,88px)">
   <div class="wrap">
-    <div class="row row--hero" style="align-items:center">
+    <div class="row row--hero">
       <div>
-        <p class="eyebrow rv">Independent Software Lab &middot; Est. 2026</p>
-        <h1 class="d1 rv" style="margin-bottom:26px">We Build Software<br>That Answers To <span class="gold">You.</span></h1>
-        <p class="lede rv" style="margin-bottom:34px">
-          Almost every app on your phone is quietly renting you back to yourself &mdash; your Attention, your Data, or your Card, every single month. The Brink Labs exists to build the <strong>Counter-Example</strong>.
+        <p class="label rv">Independent Software Lab &middot; Est. 2026</p>
+        <h1 class="d1 rv" style="margin-bottom:24px">
+          We Build Software<br>That Answers To <span class="on">You</span>.
+        </h1>
+        <p class="lede rv" style="margin-bottom:30px">
+          Almost every app on your phone is quietly renting you back to yourself &mdash; your
+          Attention, your Data, or your Card, every single month. The Brink Labs exists to build the
+          <strong>Counter-Example</strong>, and to make the counter-example the better product rather
+          than the principled compromise.
         </p>
-        <div class="chips rv" style="gap:12px;margin-bottom:34px">
-          <a class="btn btn--gold" href="#deployments">See What We Ship <svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn--ghost" href="#doctrine">Read The Doctrine</a>
+        <p class="rv" style="margin-bottom:30px">
+          <a class="go" href="#deployments">See what we ship
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </p>
+        <div class="chips rv">
+          <span class="chip"><b>0</b>&nbsp;Trackers Shipped</span>
+          <span class="chip"><b>0</b>&nbsp;Servers Holding Your Data</span>
+          <span class="chip"><b>1</b>&nbsp;Purchase. Forever.</span>
         </div>
       </div>
+
       <div class="row__v rv" aria-hidden="true">
-        <div class="ring">
-          <div class="ring__sheen"></div><i></i><i></i><i></i><i></i><i></i>
-          <div class="ring__core">
-            <svg width="76" height="76" viewBox="0 0 48 48"><use href="#mk-brink"/></svg>
-            <p class="num" style="font-size:10.5px;letter-spacing:.26em;color:var(--ink-3);margin:18px 0 0;text-transform:uppercase">On Device &middot; Or Not At All</p>
-          </div>
+        <div class="halo">
+          <i></i><i></i><i></i><i></i>
+          <svg><use href="#brink-mark"/></svg>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="band band--alt">
-  <div class="wrap">
-    <div class="narrow rv">
-      <p class="eyebrow">The Industry Standard</p>
-      <h2 class="d2" style="margin-bottom:24px">Three Business Models. All Of Them Aimed At You.</h2>
-    </div>
-    <div class="grid g3 rv" style="margin-top:clamp(34px,4vw,52px)">
-      <div class="card card--hover">
-        <span class="card__idx">MODEL 01</span>
-        <h3 class="h4" style="color:var(--alarm)">Sell The Attention</h3>
-        <p>Advertising turns every screen into inventory. The product is improved for the advertiser who wants a longer session.</p>
-      </div>
-      <div class="card card--hover">
-        <span class="card__idx">MODEL 02</span>
-        <h3 class="h4" style="color:var(--alarm)">Sell The Behaviour</h3>
-        <p>Aggregate what people do, categorise it, and license the pattern. Your data sits on somebody else's server, one breach from everyone.</p>
-      </div>
-      <div class="card card--hover">
-        <span class="card__idx">MODEL 03</span>
-        <h3 class="h4" style="color:var(--alarm)">Rent The Access</h3>
-        <p>Charge monthly for a tool you already learned. Stop paying and your own history locks behind a paywall.</p>
-      </div>
-    </div>
-    <div class="pull rv">
-      <p>There is a fourth model. You sell <span class="gold">the software</span>.</p>
-      <p style="font-family:var(--sans);font-size:17px;color:var(--ink-3);margin-top:18px">It is the oldest one, it is the only one with no hidden second customer. We took it back.</p>
-    </div>
-  </div>
-</section>
-
+<!-- ═══════════════ DOCTRINE ═══════════════ -->
 <section class="band" id="doctrine">
   <div class="wrap">
     <div class="rule rv"></div>
-    <div class="narrow rv" style="margin-bottom:clamp(34px,4vw,54px)">
-      <p class="eyebrow">The Doctrine</p>
-      <h2 class="d2" style="margin-bottom:20px">Four Laws. Every Product. No Exceptions.</h2>
+    <div class="narrow rv" style="margin-bottom:clamp(30px,4vw,50px)">
+      <p class="label">The Doctrine</p>
+      <h2 class="d2" style="margin-bottom:18px">Four Laws. Every Product. No Exceptions.</h2>
+      <p class="lede">Not marketing positions &mdash; build constraints. When a feature request
+        arrives, one of these decides the answer before anyone opens an editor.</p>
     </div>
+
     <div class="grid g2 rv">
-      <div class="card card--hover">
-        <span class="card__idx">LAW I</span>
-        <svg class="card__i" viewBox="0 0 24 24"><use href="#i-shield"/></svg>
-        <h3 class="d3" style="font-size:clamp(23px,2.4vw,29px);margin-bottom:12px">On-Device By Default</h3>
-        <p>If a feature can run on the phone, it runs on the phone. The network is a privilege we ask permission for.</p>
+      <article class="card card--hover">
+        <span class="idx">LAW I</span>
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield"/></svg>
+        <h3 class="d3" style="margin-bottom:10px">On-Device By Default</h3>
+        <p>If a feature can run on the phone, it runs on the phone. The network is a privilege we ask
+          permission for, never an assumption we design on top of. Software that needs a server needs
+          a company to keep paying for that server &mdash; and that is how software dies.</p>
+      </article>
+
+      <article class="card card--hover">
+        <span class="idx">LAW II</span>
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-infinity"/></svg>
+        <h3 class="d3" style="margin-bottom:10px">Owned, Not Rented</h3>
+        <p>You pay once. The software is then <strong>yours</strong> &mdash; through reinstalls, new
+          phones, and every update we ever ship. No renewal can take it away, because there is no
+          renewal. We would rather earn a purchase than trap a payment.</p>
+      </article>
+
+      <article class="card card--hover">
+        <span class="idx">LAW III</span>
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-lock"/></svg>
+        <h3 class="d3" style="margin-bottom:10px">Zero Telemetry</h3>
+        <p>No advertising SDK. No product analytics. No crash pipeline. We find out whether something
+          works by <strong>asking people</strong>, the way you are supposed to. A breach of our
+          infrastructure cannot expose you, because no infrastructure of ours is holding you.</p>
+      </article>
+
+      <article class="card card--hover">
+        <span class="idx">LAW IV</span>
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-scale"/></svg>
+        <h3 class="d3" style="margin-bottom:10px">Correctness Before Cleverness</h3>
+        <p>Money is stored as integers, never floating point. Every write is atomic. Liabilities carry
+          an explicit sign convention. A number that looks right and is wrong is worse than no number
+          at all, so we test the arithmetic harder than we test the animation.</p>
+      </article>
+    </div>
+
+    <div class="pull rv">
+      <p>Three business models aim at the user. There is a fourth: you sell
+        <span class="on">the software</span>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ DEPLOYMENTS ═══════════════ -->
+<section class="band" id="deployments">
+  <div class="wrap">
+    <div class="rule rv"></div>
+    <div class="narrow rv" style="margin-bottom:clamp(26px,3.5vw,44px)">
+      <p class="label">Active Deployments</p>
+      <h2 class="d2">What The Lab Has Shipped.</h2>
+    </div>
+
+    <div class="grid g2 rv">
+      <a class="card card--hover" href="/mynewallet/" style="display:block">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px">
+          <svg width="54" height="54" viewBox="0 0 48 48" role="img" aria-label="MyneWallet"
+            ><use href="#myne-tile"/></svg>
+          <span class="tag tag--live"><span class="pip"></span>Live on Google Play</span>
+        </div>
+        <h3 class="d3" style="margin-bottom:10px">MyneWallet: Budget Tracker</h3>
+        <p style="margin-bottom:20px">A private, offline budget planner and expense tracker.
+          Zero-based budgeting, a 60fps analysis engine, and an encrypted ledger that never leaves
+          the device. PRO is bought once and owned forever.</p>
+        <div class="chips" style="margin-bottom:22px">
+          <span class="chip">Android</span><span class="chip">v2.2.0</span>
+          <span class="chip">Offline-First</span><span class="chip">Zero Telemetry</span>
+        </div>
+        <span class="go">Open the product page
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      </a>
+
+      <article class="card" style="display:flex;flex-direction:column">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px">
+          <div style="width:54px;height:54px;border-radius:13px;border:1px dashed var(--line-hi);
+            display:grid;place-items:center;color:var(--ink-3);font-size:20px;font-weight:800">?</div>
+          <span class="tag">Classified</span>
+        </div>
+        <h3 class="d3" style="margin-bottom:10px;color:var(--ink-3)">Project Vanguard</h3>
+        <p class="muted" style="margin-bottom:20px">Next-generation utility and interactive media.
+          Architecture, scope and deployment window remain closed. It will obey the same four laws,
+          because everything here does.</p>
+        <div class="chips" style="margin-top:auto">
+          <span class="chip muted">In Development</span>
+          <span class="chip muted">Announcement Pending</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ STANDARD ═══════════════ -->
+<section class="band" id="standard">
+  <div class="wrap">
+    <div class="rule rv"></div>
+    <div class="row">
+      <div class="rv">
+        <p class="label">The Engineering Standard</p>
+        <h2 class="d2" style="margin-bottom:20px">Boring, Ruthless, Auditable.</h2>
+        <p class="lede" style="margin-bottom:4px">
+          Privacy-first software spent a decade being excused for being worse. We refuse the excuse.
+          The constraint is the design brief, not the apology.
+        </p>
+        <ul class="flist">
+          <li><b>Integer money, end to end.</b> Every amount stored in minor units. No float ever
+            touches a balance, so cents cannot drift.</li>
+          <li><b>Atomic writes.</b> A transaction, its ledger entry and its balance effect land in one
+            database transaction, or none of them do.</li>
+          <li><b>A frame budget, enforced.</b> 60fps is a requirement in review, not a hope.</li>
+          <li><b>Tested like infrastructure.</b> MyneWallet v2.2.0 shipped against 1,100+ automated
+            tests covering the arithmetic, the entitlement caps and the import engine.</li>
+          <li><b>Your data walks out with you.</b> Full CSV export and PDF statements in every product
+            that holds data. No lock-in, because there is nothing to lock you into.</li>
+        </ul>
       </div>
-      <div class="card card--hover">
-        <span class="card__idx">LAW II</span>
-        <svg class="card__i" viewBox="0 0 24 24"><use href="#i-infinity"/></svg>
-        <h3 class="d3" style="font-size:clamp(23px,2.4vw,29px);margin-bottom:12px">Owned, Not Rented</h3>
-        <p>You pay once. The software is then yours through reinstalls, new phones, and every update we ship.</p>
-      </div>
-      <div class="card card--hover">
-        <span class="card__idx">LAW III</span>
-        <svg class="card__i" viewBox="0 0 24 24"><use href="#i-lock"/></svg>
-        <h3 class="d3" style="font-size:clamp(23px,2.4vw,29px);margin-bottom:12px">Zero Telemetry</h3>
-        <p>No advertising SDK. No product analytics. We find out whether something works by asking people.</p>
-      </div>
-      <div class="card card--hover">
-        <span class="card__idx">LAW IV</span>
-        <svg class="card__i" viewBox="0 0 24 24"><use href="#i-scale"/></svg>
-        <h3 class="d3" style="font-size:clamp(23px,2.4vw,29px);margin-bottom:12px">Correctness Before Cleverness</h3>
-        <p>Money is stored as integers. Every write is atomic. We test the arithmetic harder than the animation.</p>
+
+      <div class="row__v rv">
+        <div class="panel">
+          <div class="panel__h"><span>Ship Report</span><span>v2.2.0</span></div>
+          <div class="krow"><span>Automated tests</span><b class="num">1,100+</b></div>
+          <div class="bar"><i style="width:100%"></i></div>
+          <div class="krow"><span>Third-party trackers</span><b class="num">0</b></div>
+          <div class="bar"><i style="width:2%"></i></div>
+          <div class="krow"><span>Servers holding user data</span><b class="num">0</b></div>
+          <div class="bar"><i style="width:2%"></i></div>
+          <div class="krow"><span>Network calls at rest</span><b class="num">0</b></div>
+          <div class="bar"><i style="width:2%"></i></div>
+          <div class="krow" style="margin-top:6px;padding-top:14px;border-top:1px solid var(--line)">
+            <span>Frame budget</span><b class="num">60 fps</b></div>
+          <div class="krow"><span>Works in airplane mode</span>
+            <b style="color:var(--brand)">Completely</b></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="band band--alt" id="deployments">
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section class="band band--tight">
   <div class="wrap">
-    <div class="narrow rv" style="margin-bottom:clamp(30px,4vw,48px)">
-      <p class="eyebrow">Active Deployments</p>
-      <h2 class="d2">What The Lab Has Shipped.</h2>
-    </div>
-    <div class="grid g2 rv">
-      <a class="card card--hover" href="/mynewallet/" style="display:block">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px">
-          <svg width="54" height="54" viewBox="0 0 48 48"><use href="#mk-myne"/></svg>
-          <span class="tag tag--live"><span class="dot"></span>Live on Google Play</span>
-        </div>
-        <h3 class="d3" style="font-size:clamp(24px,2.6vw,32px);margin-bottom:10px">MyneWallet: Budget Tracker</h3>
-        <p style="margin-bottom:20px">A private offline budget planner and expense tracker. Zero-based budgeting, a 60fps analysis engine, and an encrypted ledger that never leaves the device.</p>
-        <span style="display:inline-flex;align-items:center;gap:9px;color:var(--brass-hi);font-weight:700;font-size:15px">Open product page <svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span>
-      </a>
-      <div class="card" style="display:flex;flex-direction:column">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px">
-          <div style="width:54px;height:54px;border-radius:14px;border:1px dashed var(--edge-hi);display:grid;place-items:center;color:var(--ink-3);font-family:var(--mono);font-size:20px">?</div>
-          <span class="tag">Classified</span>
-        </div>
-        <h3 class="d3" style="font-size:clamp(24px,2.6vw,32px);margin-bottom:10px;color:var(--ink-3)">Project Vanguard</h3>
-        <p class="muted">Next-generation utility and interactive media. Architecture, scope and deployment window remain closed.</p>
-      </div>
+    <div class="rule rv"></div>
+    <div class="narrow rv" style="max-width:58ch">
+      <p class="label">Contact</p>
+      <h2 class="d2" style="margin-bottom:18px">Talk To The People Who Built It.</h2>
+      <p class="lede" style="margin-bottom:22px">
+        No ticket queue, no chatbot, no tier-one script. Support reaches the same inbox the
+        engineering does. Security reports are welcome and will never be met with a lawyer.
+      </p>
+      <a class="go" href="mailto:support@thebrinklabs.com">support@thebrinklabs.com
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
@@ -284,27 +611,45 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 <div class="wrap">
 <div class="foot__grid">
   <div>
-    <a class="brand" href="/" style="margin-bottom:16px">
-      <svg class="brand__mk" viewBox="0 0 48 48"><use href="#mk-brink"/></svg>
-      <span class="brand__tx"><span class="brand__n">The Brink Labs</span><span class="brand__s">Independent Software Lab</span></span>
+    <a href="/" aria-label="The Brink Labs">
+      <svg width="128" height="123" role="img" aria-label="The Brink Labs"><use href="#brink-lockup"/></svg>
     </a>
-    <p style="font-size:14.5px;color:var(--ink-3);max-width:34ch">Offline-first software you buy once and own forever. No advertising. No telemetry. No rent.</p>
+    <p class="small muted" style="max-width:32ch;margin-top:20px">Offline-first software you buy once and own forever. No advertising. No telemetry. No rent.</p>
   </div>
-  <div><p class="fh">Lab</p><ul><li><a href="/#doctrine">The Doctrine</a></li><li><a href="/#deployments">Deployments</a></li></ul></div>
-  <div><p class="fh">MyneWallet</p><ul><li><a href="/mynewallet/">Overview</a></li><li><a href="https://play.google.com/store/apps/details?id=com.thebrinklabs.mynewallet.expensetracker" target="_blank" rel="noopener">Google Play</a></li></ul></div>
-  <div><p class="fh">Legal &amp; Support</p><ul><li><a href="/mynewallet/privacy.html">Privacy Policy</a></li><li><a href="mailto:support@thebrinklabs.com">support@thebrinklabs.com</a></li></ul></div>
+  <div><p class="fh">Lab</p><ul>
+    <li><a href="/#doctrine">The Doctrine</a></li>
+    <li><a href="/#deployments">Deployments</a></li>
+    <li><a href="/#standard">Engineering Standard</a></li>
+  </ul></div>
+  <div><p class="fh">MyneWallet</p><ul>
+    <li><a href="/mynewallet/">Overview</a></li>
+    <li><a href="/mynewallet/#pricing">Pricing</a></li>
+    <li><a href="/mynewallet/#faq">FAQ</a></li>
+    <li><a href="https://play.google.com/store/apps/details?id=com.thebrinklabs.mynewallet.expensetracker" target="_blank" rel="noopener">Google Play</a></li>
+  </ul></div>
+  <div><p class="fh">Legal &amp; Support</p><ul>
+    <li><a href="/mynewallet/privacy.html">Privacy Policy</a></li>
+    <li><a href="/mynewallet/privacy.html#api">API Data Usage</a></li>
+    <li><a href="mailto:support@thebrinklabs.com">support@thebrinklabs.com</a></li>
+  </ul></div>
 </div>
 <div class="foot__base"><span>&copy; 2026 The Brink Labs. All rights reserved.</span><span>Built offline, on purpose.</span></div>
 </div>
 </footer>
 <script>
 (function(){
-  var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var els = document.querySelectorAll('.rv');
-  if (rm || !('IntersectionObserver' in window)) { for (var i=0;i<els.length;i++) els[i].classList.add('in'); return; }
-  var io = new IntersectionObserver(function(entries){
-    for (var i=0;i<entries.length;i++){ if (entries[i].isIntersecting){ entries[i].target.classList.add('in'); io.unobserve(entries[i].target); } }
-  }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+  if (CSS.supports('animation-timeline','view()')) return;   /* modern path is pure CSS */
+  var rm = matchMedia('(prefers-reduced-motion: reduce)').matches,
+      els = document.querySelectorAll('.rv');
+  if (rm || !('IntersectionObserver' in window)){
+    for (var i=0;i<els.length;i++) els[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function(es){
+    for (var i=0;i<es.length;i++) if (es[i].isIntersecting){
+      es[i].target.classList.add('in'); io.unobserve(es[i].target);
+    }
+  }, {rootMargin:'0px 0px -6% 0px', threshold:.05});
   for (var j=0;j<els.length;j++) io.observe(els[j]);
 })();
 </script>
