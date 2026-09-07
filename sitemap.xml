@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://thebrinklabs.com/</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+    <image:image><image:loc>https://thebrinklabs.com/assets/og-brink.png</image:loc>
+      <image:title>The Brink Labs — Software That Answers To You</image:title></image:image>
+  </url>
+
+  <url>
+    <loc>https://thebrinklabs.com/mynewallet/</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>weekly</changefreq><priority>1.0</priority>
+    <image:image><image:loc>https://thebrinklabs.com/assets/og-cover.png</image:loc>
+      <image:title>MyneWallet — Private Offline Budget Planner and Expense Tracker</image:title></image:image>
+  </url>
+
+  <url>
+    <loc>https://thebrinklabs.com/tools/</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <image:image><image:loc>https://thebrinklabs.com/assets/og-tools.png</image:loc>
+      <image:title>The Instruments — Free Private Finance Tools</image:title></image:image>
+  </url>
+
+  <url>
+    <loc>https://thebrinklabs.com/tools/zero-based-budget/</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <image:image><image:loc>https://thebrinklabs.com/assets/og-zbb.png</image:loc>
+      <image:title>Zero-Based Budget Calculator — Give Every Dollar A Job</image:title></image:image>
+  </url>
+
+  <url>
+    <loc>https://thebrinklabs.com/tools/subscription-audit/</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <image:image><image:loc>https://thebrinklabs.com/assets/og-audit.png</image:loc>
+      <image:title>Subscription Bleed Audit — What Renting Software Really Costs</image:title></image:image>
+  </url>
+
+  <url>
+    <loc>https://thebrinklabs.com/mynewallet/privacy.html</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>yearly</changefreq><priority>0.5</priority>
+  </url>
+
+</urlset>
