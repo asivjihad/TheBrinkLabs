@@ -4,42 +4,70 @@
 
   <url>
     <loc>https://thebrinklabs.com/</loc>
-    <lastmod>2026-09-06</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+    <lastmod>2026-09-07</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
     <image:image><image:loc>https://thebrinklabs.com/assets/og-brink.png</image:loc>
       <image:title>The Brink Labs — Software That Answers To You</image:title></image:image>
   </url>
 
   <url>
     <loc>https://thebrinklabs.com/mynewallet/</loc>
-    <lastmod>2026-09-06</lastmod><changefreq>weekly</changefreq><priority>1.0</priority>
+    <lastmod>2026-09-07</lastmod><changefreq>weekly</changefreq><priority>1.0</priority>
     <image:image><image:loc>https://thebrinklabs.com/assets/og-cover.png</image:loc>
       <image:title>MyneWallet — Private Offline Budget Planner and Expense Tracker</image:title></image:image>
   </url>
 
   <url>
     <loc>https://thebrinklabs.com/tools/</loc>
-    <lastmod>2026-09-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <lastmod>2026-09-07</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
     <image:image><image:loc>https://thebrinklabs.com/assets/og-tools.png</image:loc>
       <image:title>The Instruments — Free Private Finance Tools</image:title></image:image>
   </url>
 
   <url>
     <loc>https://thebrinklabs.com/tools/zero-based-budget/</loc>
-    <lastmod>2026-09-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <lastmod>2026-09-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
     <image:image><image:loc>https://thebrinklabs.com/assets/og-zbb.png</image:loc>
-      <image:title>Zero-Based Budget Calculator — Give Every Dollar A Job</image:title></image:image>
+      <image:title>Zero-Based Budget Calculator</image:title></image:image>
   </url>
 
   <url>
     <loc>https://thebrinklabs.com/tools/subscription-audit/</loc>
-    <lastmod>2026-09-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <lastmod>2026-09-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
     <image:image><image:loc>https://thebrinklabs.com/assets/og-audit.png</image:loc>
-      <image:title>Subscription Bleed Audit — What Renting Software Really Costs</image:title></image:image>
+      <image:title>Subscription Bleed Audit</image:title></image:image>
+  </url>
+
+  <url>
+    <loc>https://thebrinklabs.com/tools/debt-payoff/</loc>
+    <lastmod>2026-09-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <image:image><image:loc>https://thebrinklabs.com/assets/og-debt.png</image:loc>
+      <image:title>Debt Payoff Calculator — Avalanche vs Snowball</image:title></image:image>
+  </url>
+
+  <url>
+    <loc>https://thebrinklabs.com/tools/emergency-fund/</loc>
+    <lastmod>2026-09-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <image:image><image:loc>https://thebrinklabs.com/assets/og-fund.png</image:loc>
+      <image:title>Emergency Fund Calculator</image:title></image:image>
+  </url>
+
+  <url>
+    <loc>https://thebrinklabs.com/tools/true-hourly-wage/</loc>
+    <lastmod>2026-09-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <image:image><image:loc>https://thebrinklabs.com/assets/og-wage.png</image:loc>
+      <image:title>True Hourly Wage Calculator</image:title></image:image>
+  </url>
+
+  <url>
+    <loc>https://thebrinklabs.com/tools/net-worth/</loc>
+    <lastmod>2026-09-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <image:image><image:loc>https://thebrinklabs.com/assets/og-networth.png</image:loc>
+      <image:title>Net Worth Calculator — Assets Minus Liabilities</image:title></image:image>
   </url>
 
   <url>
     <loc>https://thebrinklabs.com/mynewallet/privacy.html</loc>
-    <lastmod>2026-09-06</lastmod><changefreq>yearly</changefreq><priority>0.5</priority>
+    <lastmod>2026-09-07</lastmod><changefreq>yearly</changefreq><priority>0.5</priority>
   </url>
 
 </urlset>

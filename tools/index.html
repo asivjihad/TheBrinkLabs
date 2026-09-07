@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; manifest-src 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Free Personal Finance Tools — The Instruments | The Brink Labs</title>
-<meta name="description" content="Free, private personal finance calculators from The Brink Labs. A zero-based budget calculator and a subscription cost audit, both running entirely in your browser. No accounts, no cookies, no uploads, no tracking.">
+<meta name="description" content="Five free personal finance calculators from The Brink Labs — budgeting, subscriptions, debt payoff, emergency fund and true hourly wage. All run in your browser.">
 <link rel="canonical" href="https://thebrinklabs.com/tools/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="theme-color" content="#030303">
@@ -27,6 +29,7 @@
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="alternate" type="text/markdown" href="https://thebrinklabs.com/tools/index.md" title="Markdown version of this page">
 <link rel="alternate" type="text/markdown" href="https://thebrinklabs.com/llms.txt" title="llms.txt — LLM discovery protocol">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +41,7 @@
 <script type="speculationrules">
 {"prerender":[{"where":{"href_matches":"/tools/*"},"eagerness":"moderate"}]}
 </script>
-<script>document.documentElement.className+=" js";</script>
+<script>(function(d){try{var t=localStorage.getItem("bl-theme");if(t==="light"||t==="dark")d.dataset.theme=t;}catch(e){}d.className+=" js";})(document.documentElement);</script>
 
 <style>
 
@@ -51,10 +54,15 @@
   color-scheme: dark;
   --void:#030303; --plate:#0A0B0E; --plate-2:#101216; --raise:#15171C;
   --line:#1A1C22; --line-hi:#282B33;
-  --ink:#FAFAFA; --ink-2:#9CA3AF; --ink-3:#6B7280;
+  --ink:#FAFAFA; --ink-2:#9CA3AF; --ink-3:#8A919F;
   --brand:#00F28F; --brand-2:#22D3EE; --brand-3:#60A5FA;
   --brand-deep:#00B268; --alarm:#FB7185; --amber:#FBBF24;
   --grad: linear-gradient(var(--ang), var(--brand) 0%, var(--brand) 22%, var(--brand-2) 74%, var(--brand-3) 100%);
+  --sheen: inset 0 1px 0 rgba(255,255,255,.045);
+  --sheen-hi: inset 0 1px 0 rgba(255,255,255,.06);
+  --well: rgba(255,255,255,.02); --th-bg: rgba(255,255,255,.016);
+  --track:#191C22; --dot: rgba(255,255,255,.10); --sel-fg:#03110A;
+  --shadow: 0 18px 44px -18px #000; --amb-a:11%; --amb-b:9%; --amb-c:6%; --dot-o:.55;
   --brand-6: color-mix(in oklab, var(--brand) 6%, transparent);
   --brand-12: color-mix(in oklab, var(--brand) 12%, transparent);
   --brand-24: color-mix(in oklab, var(--brand) 24%, transparent);
@@ -81,14 +89,14 @@ body{
 body::before{
   content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
   background:
-    radial-gradient(72rem 40rem at 8% -12%, color-mix(in oklab,var(--brand) 11%,transparent), transparent 62%),
-    radial-gradient(60rem 36rem at 96% 2%, color-mix(in oklab,var(--brand-2) 9%,transparent), transparent 58%),
-    radial-gradient(50rem 40rem at 50% 108%, color-mix(in oklab,var(--brand-3) 6%,transparent), transparent 62%),
+    radial-gradient(72rem 40rem at 8% -12%, color-mix(in oklab,var(--brand) var(--amb-a),transparent), transparent 62%),
+    radial-gradient(60rem 36rem at 96% 2%, color-mix(in oklab,var(--brand-2) var(--amb-b),transparent), transparent 58%),
+    radial-gradient(50rem 40rem at 50% 108%, color-mix(in oklab,var(--brand-3) var(--amb-c),transparent), transparent 62%),
     var(--void);
 }
 body::after{
-  content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.55;
-  background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.10) 1px, transparent 0);
+  content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:var(--dot-o);
+  background-image:radial-gradient(circle at 1px 1px, var(--dot) 1px, transparent 0);
   background-size:34px 34px;
   -webkit-mask-image:radial-gradient(120% 80% at 50% 0%, #000 0%, transparent 70%);
   mask-image:radial-gradient(120% 80% at 50% 0%, #000 0%, transparent 70%);
@@ -97,7 +105,7 @@ img,svg{ display:block; max-width:100% }
 a{ color:inherit; text-decoration:none }
 p{ margin:0 0 1.05em; text-wrap:pretty }
 strong,b{ font-weight:700; color:var(--ink) }
-::selection{ background:var(--brand); color:#03110A }
+::selection{ background:var(--brand); color:var(--sel-fg) }
 :focus-visible{ outline:2px solid var(--brand); outline-offset:3px; border-radius:8px }
 
 .sprite{ position:absolute; width:0; height:0; overflow:hidden }
@@ -169,10 +177,10 @@ h1,h2,h3{ margin:0; text-wrap:balance }
 
 .card{ position:relative; overflow:hidden; border-radius:var(--r-lg); border:1px solid var(--line);
   background:linear-gradient(180deg,var(--plate-2),var(--plate)); padding:clamp(22px,2.5vw,30px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.045);
+  box-shadow:var(--sheen);
   transition:border-color var(--t), transform var(--t), box-shadow var(--t) }
 .card--hover:hover{ border-color:var(--brand-24); transform:translateY(-3px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 20px 50px -30px var(--brand-24) }
+  box-shadow:var(--sheen-hi), 0 20px 50px -30px var(--brand-24) }
 .card > .i{ width:26px; height:26px; color:var(--brand); margin-bottom:16px }
 .card h3{ margin:0 0 8px }
 .card p{ margin:0; color:var(--ink-2); font-size:15.5px; line-height:1.6 }
@@ -197,12 +205,12 @@ h1,h2,h3{ margin:0; text-wrap:balance }
 .flist li b{ color:var(--ink) }
 
 .tablewrap{ overflow-x:auto; border:1px solid var(--line); border-radius:var(--r-lg);
-  background:linear-gradient(180deg,var(--plate-2),var(--plate)); box-shadow:inset 0 1px 0 rgba(255,255,255,.045) }
+  background:linear-gradient(180deg,var(--plate-2),var(--plate)); box-shadow:var(--sheen) }
 table{ width:100%; border-collapse:collapse; min-width:640px; font-size:15px }
 th,td{ text-align:left; padding:15px 20px; border-bottom:1px solid var(--line) }
-thead th{ font-size:10.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); background:rgba(255,255,255,.016) }
+thead th{ font-size:10.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); background:var(--th-bg) }
 tbody tr:last-child td{ border-bottom:0 }
-td.k{ color:var(--ink); font-weight:700 }
+td.k,th.k{ color:var(--ink); font-weight:700 }
 
 .faq{ border-top:1px solid var(--line) }
 .faq details{ border-bottom:1px solid var(--line) }
@@ -245,7 +253,8 @@ td.k{ color:var(--ink); font-weight:700 }
 
 .foot{ border-top:1px solid var(--line); padding-block:clamp(44px,5vw,64px) 30px; margin-top:clamp(48px,7vw,96px);
   container-type:inline-size; container-name:page }
-.foot__grid{ display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:34px }
+.foot__grid{ display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr 1fr; gap:34px }
+@container page (max-width:1080px){ .foot__grid{ grid-template-columns:1.4fr 1fr 1fr 1fr } }
 @container page (max-width:860px){ .foot__grid{ grid-template-columns:1fr 1fr } }
 @container page (max-width:520px){ .foot__grid{ grid-template-columns:1fr } }
 .foot .fh{ font-size:10.5px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-3); margin:0 0 15px }
@@ -263,30 +272,70 @@ td.k{ color:var(--ink); font-weight:700 }
   align-items:center; position:relative; overflow:hidden;
   border:1px solid var(--line); border-radius:var(--r-lg);
   background:linear-gradient(180deg,var(--plate-2),var(--plate));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.045);
+  box-shadow:var(--sheen);
   padding:clamp(24px,3vw,38px); transition:border-color var(--t), transform var(--t), box-shadow var(--t) }
 .tool:hover{ border-color:var(--brand-24); transform:translateY(-3px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 24px 56px -34px var(--brand-24) }
+  box-shadow:var(--sheen-hi), 0 24px 56px -34px var(--brand-24) }
 @container page (max-width:860px){ .tool{ grid-template-columns:1fr } .tool__v{ order:2 } }
 .tool + .tool{ margin-top:16px }
 .tool__n{ display:block; font-size:10.5px; font-weight:800; letter-spacing:.2em;
   color:var(--ink-3); margin-bottom:12px }
 .panel{ border:1px solid var(--line); border-radius:var(--r-lg);
   background:linear-gradient(165deg,var(--raise),var(--plate));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  box-shadow:var(--sheen);
   padding:clamp(20px,2.4vw,26px); display:flex; flex-direction:column; gap:12px }
 .panel__h{ display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:10.5px;
   font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-3) }
 .fig{ font-size:clamp(30px,4vw,42px); font-weight:800; letter-spacing:-.04em; line-height:1 }
 .krow{ display:flex; justify-content:space-between; align-items:baseline; gap:14px; font-size:14px; color:var(--ink-2) }
 .krow b{ color:var(--ink); font-weight:700 }
-.bar{ height:7px; border-radius:99px; background:#191C22; overflow:hidden }
+.bar{ height:7px; border-radius:99px; background:var(--track); overflow:hidden }
 .bar i{ display:block; height:100%; border-radius:99px; background:var(--grad) }
 .ring{ width:88px; height:88px; margin:2px auto 0 }
 .ring circle{ fill:none; stroke-width:13 }
+.sr-only{ position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden;
+  clip-path:inset(50%); white-space:nowrap }
+
+/* ── LIGHT THEME — opt-in only, set by the visitor via the nav switch ───── */
+:root[data-theme="light"]{
+  color-scheme: light;
+  --void:#F6F6F3; --plate:#FFFFFF; --plate-2:#FBFBF9; --raise:#FFFFFF;
+  --line:#E5E5E0; --line-hi:#D3D3CC;
+  --ink:#0A0B0D; --ink-2:#4F555E; --ink-3:#5A606A;
+  --brand:#00754D; --brand-2:#0B6E80; --brand-3:#2158C4;
+  --brand-deep:#00543A; --alarm:#C2334A; --amber:#8A5B00;
+  --ink-glass: color-mix(in oklab, #0A0B0D 3%, transparent);
+  --sheen: inset 0 1px 0 rgba(255,255,255,.9), 0 1px 2px rgba(16,18,22,.05);
+  --sheen-hi: inset 0 1px 0 rgba(255,255,255,.9), 0 1px 2px rgba(16,18,22,.06);
+  --well: rgba(10,11,13,.024); --th-bg: rgba(10,11,13,.028);
+  --track:#E7E7E2; --dot: rgba(10,12,16,.10); --sel-fg:#FFFFFF;
+  --shadow: 0 18px 44px -22px rgba(16,18,22,.30);
+  --amb-a:7%; --amb-b:6%; --amb-c:5%; --dot-o:.42;
+}
+:root[data-theme="light"] body::before{
+  background:
+    radial-gradient(72rem 40rem at 8% -12%, color-mix(in oklab,var(--brand) var(--amb-a),transparent), transparent 62%),
+    radial-gradient(60rem 36rem at 96% 2%, color-mix(in oklab,var(--brand-2) var(--amb-b),transparent), transparent 58%),
+    radial-gradient(50rem 40rem at 50% 108%, color-mix(in oklab,var(--brand-3) var(--amb-c),transparent), transparent 62%),
+    var(--void);
+}
+:root[data-theme="light"] .card--hover:hover{
+  box-shadow:var(--sheen-hi), 0 20px 44px -28px rgba(16,18,22,.34) }
+:root[data-theme="light"] .play:hover{ filter:drop-shadow(0 8px 20px rgba(16,18,22,.20)) }
+:root[data-theme="light"] .tag--live{ background:color-mix(in oklab,var(--brand) 9%,transparent) }
+.tsw{ flex:0 0 auto; display:inline-grid; place-items:center; width:36px; height:36px; padding:0;
+  border:1px solid var(--line-hi); border-radius:11px; background:var(--ink-glass); color:var(--ink-2);
+  cursor:pointer; font:inherit; transition:color var(--t), border-color var(--t), background var(--t) }
+.tsw:hover{ color:var(--brand); border-color:var(--brand-24); background:var(--brand-6) }
+.tsw svg{ width:17px; height:17px; grid-area:1/1 }
+.tsw .i-l{ display:none }
+:root[data-theme="light"] .tsw .i-l{ display:block }
+:root[data-theme="light"] .tsw .i-d{ display:none }
+html:not(.js) .tsw{ display:none }
 </style>
 
-<script type="application/ld+json">{
+<script type="application/ld+json">
+{
  "@context": "https://schema.org",
  "@graph": [
   {
@@ -320,7 +369,7 @@ td.k{ color:var(--ink); font-weight:700 }
    "name": "The Instruments",
    "description": "The Brink Labs' suite of free, client-side personal finance tools. Every instrument computes locally in the browser and transmits nothing.",
    "url": "https://thebrinklabs.com/tools/",
-   "numberOfItems": 2,
+   "numberOfItems": 6,
    "itemListOrder": "https://schema.org/ItemListOrderAscending",
    "publisher": {
     "@id": "https://thebrinklabs.com/#org"
@@ -367,6 +416,153 @@ td.k{ color:var(--ink); font-weight:700 }
        "@id": "https://thebrinklabs.com/#org"
       }
      }
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "item": {
+      "@type": "WebApplication",
+      "@id": "https://thebrinklabs.com/tools/debt-payoff/#tool",
+      "name": "Debt Payoff Calculator",
+      "url": "https://thebrinklabs.com/tools/debt-payoff/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+       "@type": "Offer",
+       "price": "0",
+       "priceCurrency": "USD"
+      },
+      "publisher": {
+       "@id": "https://thebrinklabs.com/#org"
+      }
+     }
+    },
+    {
+     "@type": "ListItem",
+     "position": 4,
+     "item": {
+      "@type": "WebApplication",
+      "@id": "https://thebrinklabs.com/tools/emergency-fund/#tool",
+      "name": "Emergency Fund Calculator",
+      "url": "https://thebrinklabs.com/tools/emergency-fund/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+       "@type": "Offer",
+       "price": "0",
+       "priceCurrency": "USD"
+      },
+      "publisher": {
+       "@id": "https://thebrinklabs.com/#org"
+      }
+     }
+    },
+    {
+     "@type": "ListItem",
+     "position": 5,
+     "item": {
+      "@type": "WebApplication",
+      "@id": "https://thebrinklabs.com/tools/true-hourly-wage/#tool",
+      "name": "True Hourly Wage Calculator",
+      "url": "https://thebrinklabs.com/tools/true-hourly-wage/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+       "@type": "Offer",
+       "price": "0",
+       "priceCurrency": "USD"
+      },
+      "publisher": {
+       "@id": "https://thebrinklabs.com/#org"
+      }
+     }
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "item": {
+      "@type": "WebApplication",
+      "@id": "https://thebrinklabs.com/tools/debt-payoff/#tool",
+      "name": "Debt Payoff Calculator",
+      "url": "https://thebrinklabs.com/tools/debt-payoff/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+       "@type": "Offer",
+       "price": "0",
+       "priceCurrency": "USD"
+      },
+      "publisher": {
+       "@id": "https://thebrinklabs.com/#org"
+      }
+     }
+    },
+    {
+     "@type": "ListItem",
+     "position": 4,
+     "item": {
+      "@type": "WebApplication",
+      "@id": "https://thebrinklabs.com/tools/emergency-fund/#tool",
+      "name": "Emergency Fund Calculator",
+      "url": "https://thebrinklabs.com/tools/emergency-fund/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+       "@type": "Offer",
+       "price": "0",
+       "priceCurrency": "USD"
+      },
+      "publisher": {
+       "@id": "https://thebrinklabs.com/#org"
+      }
+     }
+    },
+    {
+     "@type": "ListItem",
+     "position": 5,
+     "item": {
+      "@type": "WebApplication",
+      "@id": "https://thebrinklabs.com/tools/true-hourly-wage/#tool",
+      "name": "True Hourly Wage Calculator",
+      "url": "https://thebrinklabs.com/tools/true-hourly-wage/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+       "@type": "Offer",
+       "price": "0",
+       "priceCurrency": "USD"
+      },
+      "publisher": {
+       "@id": "https://thebrinklabs.com/#org"
+      }
+     }
+    },
+    {
+     "@type": "ListItem",
+     "position": 6,
+     "item": {
+      "@type": "WebApplication",
+      "@id": "https://thebrinklabs.com/tools/net-worth/#tool",
+      "name": "Net Worth Calculator",
+      "url": "https://thebrinklabs.com/tools/net-worth/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any modern web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+       "@type": "Offer",
+       "price": "0",
+       "priceCurrency": "USD"
+      },
+      "publisher": {
+       "@id": "https://thebrinklabs.com/#org"
+      }
+     }
     }
    ]
   },
@@ -388,7 +584,8 @@ td.k{ color:var(--ink); font-weight:700 }
    ]
   }
  ]
-}</script>
+}
+</script>
 </head>
 <body>
 <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
@@ -412,8 +609,7 @@ td.k{ color:var(--ink); font-weight:700 }
 <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13.2 2.4 4.6 13.6h6.2L10 21.6l8.8-11.2h-6.3l.7-8Z"/></symbol>
 <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.6 20.4h16.8"/><path d="M6.6 20.4v-7.2M11 20.4V6.2M15.4 20.4v-10M19.8 20.4V9"/></symbol>
 <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4.4" y="10.2" width="15.2" height="11.2" rx="3"/><path d="M8.2 10.2V7.4a3.8 3.8 0 0 1 7.6 0v2.8"/><path d="M12 15v2.2"/></symbol>
-<symbol id="i-infinity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8.2a3.8 3.8 0 1 0 0 7.6c2.6 0 4-2.5 5-3.8 1-1.3 2.4-3.8 5-3.8a3.8 3.8 0 1 1 0 7.6c-2.6 0-4-2.5-5-3.8"/></symbol>
-</svg>
+<symbol id="i-infinity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8.2a3.8 3.8 0 1 0 0 7.6c2.6 0 4-2.5 5-3.8 1-1.3 2.4-3.8 5-3.8a3.8 3.8 0 1 1 0 7.6c-2.6 0-4-2.5-5-3.8"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.4M12 19v2.4M4.4 12H2M22 12h-2.4M6.4 6.4 4.7 4.7M19.3 19.3l-1.7-1.7M17.6 6.4l1.7-1.7M4.7 19.3l1.7-1.7"/></symbol><symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 14.6A8.6 8.6 0 0 1 9.4 3.6a8.6 8.6 0 1 0 11 11Z"/></symbol></svg>
 <a class="skip" href="#instruments">Skip to the tools</a>
 
 <header class="nav">
@@ -428,6 +624,7 @@ td.k{ color:var(--ink); font-weight:700 }
     <a href="#why">Why Free</a>
     <a href="/mynewallet/">MyneWallet</a>
   </nav>
+  <button class="tsw" id="tsw" type="button" aria-pressed="false" aria-label="Switch to light theme"><svg class="i-d" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-moon"></use></svg><svg class="i-l" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-sun"></use></svg></button>
   <a class="go" href="/mynewallet/">MyneWallet <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
 </div>
 </header>
@@ -444,7 +641,7 @@ td.k{ color:var(--ink); font-weight:700 }
     and the numbers are gone, because there was never anywhere else for them to be.
   </p>
   <div class="chips" style="margin-top:24px">
-    <span class="chip"><span class="pip"></span> 2 instruments</span>
+    <span class="chip"><span class="pip"></span> 5 instruments</span>
     <span class="chip"><b>0</b> sign-ups</span>
     <span class="chip"><b>0</b> cookies</span>
     <span class="chip"><b>0</b> bytes stored</span>
@@ -502,6 +699,58 @@ td.k{ color:var(--ink); font-weight:700 }
         <div class="krow"><span>Never opened</span><b style="color:var(--alarm)">2</b></div>
         <div class="krow"><span>Recoverable / mo</span><b style="color:var(--brand)">$104.99</b></div>
       </div>
+    </div>
+  </a>
+
+  <a class="tool rv" href="/tools/debt-payoff/" style="display:grid">
+    <div>
+      <span class="tool__n">INSTRUMENT 03</span>
+      <p class="label label--solo" style="margin-bottom:12px">Debt · Payoff Order</p>
+      <h2 class="d3" style="margin-bottom:10px">Debt Payoff Calculator</h2>
+      <p class="small" style="max-width:56ch;margin-bottom:18px">Avalanche or snowball? Enter your debts and see both methods side by side — months to debt-free, total interest, and exactly what the choice costs you. Includes the attack order.</p>
+      <span class="go">Compare the methods <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"></use></svg></span>
+    </div>
+    <div class="tool__v">
+      <div class="panel"><div class="panel__h"><span>Avalanche saves</span><span>Example</span></div><div class="fig on num">$92</div><div class="bar"><i style="width:82%"></i></div><div class="krow"><span>Time to debt-free</span><b>2y 6m</b></div><div class="krow"><span>Interest avoided</span><b style="color:var(--brand)">$92.42</b></div></div>
+    </div>
+  </a>
+
+  <a class="tool rv" href="/tools/emergency-fund/" style="display:grid">
+    <div>
+      <span class="tool__n">INSTRUMENT 04</span>
+      <p class="label label--solo" style="margin-bottom:12px">Safety · Runway</p>
+      <h2 class="d3" style="margin-bottom:10px">Emergency Fund Calculator</h2>
+      <p class="small" style="max-width:56ch;margin-bottom:18px">Savings divided by the month you cannot avoid. See your runway in months, how far you are from a one, three, six or twelve-month cushion, and the date you reach each one.</p>
+      <span class="go">Find your runway <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"></use></svg></span>
+    </div>
+    <div class="tool__v">
+      <div class="panel"><div class="panel__h"><span>Runway</span><span>Example</span></div><div class="fig on num">2.0</div><div class="bar"><i style="width:33%"></i></div><div class="krow"><span>Months covered</span><b>2 of 6</b></div><div class="krow"><span>Short of six</span><b style="color:var(--alarm)">$8,700</b></div></div>
+    </div>
+  </a>
+
+  <a class="tool rv" href="/tools/true-hourly-wage/" style="display:grid">
+    <div>
+      <span class="tool__n">INSTRUMENT 05</span>
+      <p class="label label--solo" style="margin-bottom:12px">Income · Real Rate</p>
+      <h2 class="d3" style="margin-bottom:10px">True Hourly Wage Calculator</h2>
+      <p class="small" style="max-width:56ch;margin-bottom:18px">Your stated wage ignores the commute, the unpaid overtime and the costs you carry only because you work. Subtract those and price every purchase in hours of your life instead.</p>
+      <span class="go">Find the real rate <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"></use></svg></span>
+    </div>
+    <div class="tool__v">
+      <div class="panel"><div class="panel__h"><span>Stated → actual</span><span>Example</span></div><div class="fig num" style="color:var(--alarm)">−31%</div><div class="bar"><i style="width:69%"></i></div><div class="krow"><span>Stated</span><b>$20.77/h</b></div><div class="krow"><span>Actually</span><b style="color:var(--brand)">$14.33/h</b></div></div>
+    </div>
+  </a>
+
+  <a class="tool rv" href="/tools/net-worth/" style="display:grid">
+    <div>
+      <span class="tool__n">INSTRUMENT 06</span>
+      <p class="label label--solo" style="margin-bottom:12px">Position · The Balance Sheet</p>
+      <h2 class="d3" style="margin-bottom:10px">Net Worth Calculator</h2>
+      <p class="small" style="max-width:56ch;margin-bottom:18px">Everything you own against everything you owe. True net worth, liquid net worth and the debt-to-asset ratio that says how much room a setback would leave you.</p>
+      <span class="go">Measure the position <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"></use></svg></span>
+    </div>
+    <div class="tool__v">
+      <div class="panel"><div class="panel__h"><span>True net worth</span><span>Example</span></div><div class="fig on num">$42,650</div><div class="bar"><i style="width:62%"></i></div><div class="krow"><span>Assets − liabilities</span><b>$68,300 − $25,650</b></div><div class="krow"><span>Debt-to-asset</span><b style="color:var(--brand)">37.6%</b></div></div>
     </div>
   </a>
 </div>
@@ -577,6 +826,10 @@ td.k{ color:var(--ink); font-weight:700 }
     <li><a href="/tools/">All Instruments</a></li>
     <li><a href="/tools/zero-based-budget/">Zero-Based Budget</a></li>
     <li><a href="/tools/subscription-audit/">Subscription Audit</a></li>
+    <li><a href="/tools/debt-payoff/">Debt Payoff</a></li>
+    <li><a href="/tools/emergency-fund/">Emergency Fund</a></li>
+    <li><a href="/tools/true-hourly-wage/">True Hourly Wage</a></li>
+    <li><a href="/tools/net-worth/">Net Worth</a></li>
   </ul></div>
   <div><p class="fh">MyneWallet</p><ul>
     <li><a href="/mynewallet/">Overview</a></li>
@@ -589,5 +842,17 @@ td.k{ color:var(--ink); font-weight:700 }
 </div>
 </footer>
 
+<script>
+(function(){var d=document.documentElement,b=document.getElementById('tsw');if(!b)return;
+function paint(){var l=d.dataset.theme==='light';
+  b.setAttribute('aria-pressed',l?'true':'false');
+  b.setAttribute('aria-label',l?'Switch to dark theme':'Switch to light theme');
+  var m=document.querySelector('meta[name=theme-color]');if(m)m.content=l?'#F6F6F3':'#030303';}
+b.addEventListener('click',function(){var l=d.dataset.theme==='light';
+  d.dataset.theme=l?'dark':'light';
+  try{localStorage.setItem('bl-theme',d.dataset.theme);}catch(e){}
+  paint();});
+paint();})();
+</script>
 </body>
 </html>

@@ -2,6 +2,13 @@
 # The Brink Labs. Static site on GitHub Pages. Nothing here is private;
 # everything here is meant to be read, indexed, quoted and cited.
 
+# Content usage preference: search indexing and AI question-answering are welcome;
+# training on this content is not. Stated here as a comment rather than as a
+# "Content-Signal:" directive, because standard robots.txt parsers (and Lighthouse)
+# treat unknown directives as making the whole file invalid. Re-add the directive
+# once it is widely honoured; the preference itself is unchanged.
+#   search=yes, ai-input=yes, ai-train=no
+
 # ── Search crawlers ─────────────────────────────────────────────────────────
 User-agent: *
 Allow: /
@@ -72,4 +79,6 @@ Allow: /
 
 # ── Machine-readable index ──────────────────────────────────────────────────
 # LLM discovery protocol: https://thebrinklabs.com/llms.txt
+# Every page also has a markdown twin at <path>/index.md
+# Security contact: https://thebrinklabs.com/.well-known/security.txt
 Sitemap: https://thebrinklabs.com/sitemap.xml
