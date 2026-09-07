@@ -2,34 +2,39 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; manifest-src 'self'; form-action 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Zero-Based Budget Calculator — Give Every Dollar A Job</title>
-<meta name="description" content="Free zero-based budget calculator. Enter your take-home pay, assign every unit to an envelope, and drive To Assign to zero. Includes a 50/30/20 preset.">
-<link rel="canonical" href="https://thebrinklabs.com/tools/zero-based-budget/">
+<title>Debt Payoff Calculator — Avalanche vs Snowball</title>
+<meta name="description" content="Free debt payoff calculator comparing the avalanche and snowball methods side by side. See months to debt-free and total interest for both, in your browser.">
+<link rel="canonical" href="https://thebrinklabs.com/tools/debt-payoff/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="theme-color" content="#030303">
 <meta name="color-scheme" content="dark">
+<meta name="author" content="The Brink Labs">
+<meta name="format-detection" content="telephone=no">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Brink Labs">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="Zero-Based Budget Calculator — Give Every Dollar A Job">
-<meta property="og:description" content="Enter your take-home pay. Assign every unit a job. Watch To Assign hit zero. Free, private, and entirely in your browser.">
-<meta property="og:url" content="https://thebrinklabs.com/tools/zero-based-budget/">
-<meta property="og:image" content="https://thebrinklabs.com/assets/og-zbb.png">
+<meta property="og:title" content="Debt Payoff Calculator — Avalanche vs Snowball">
+<meta property="og:description" content="Two methods. Same debts. One is cheaper and one is easier to finish. See both, in your browser.">
+<meta property="og:url" content="https://thebrinklabs.com/tools/debt-payoff/">
+<meta property="og:image" content="https://thebrinklabs.com/assets/og-debt.png">
+<meta property="og:image:secure_url" content="https://thebrinklabs.com/assets/og-debt.png">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Zero-Based Budget Calculator — a free, private, in-browser budgeting sandbox by The Brink Labs.">
+<meta property="og:image:alt" content="Debt Payoff Calculator — avalanche vs snowball, free and private, by The Brink Labs.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Zero-Based Budget Calculator — Give Every Dollar A Job">
-<meta name="twitter:description" content="Enter your take-home pay. Assign every unit a job. Watch To Assign hit zero. Free, private, entirely in your browser.">
-<meta name="twitter:image" content="https://thebrinklabs.com/assets/og-zbb.png">
+<meta name="twitter:title" content="Debt Payoff Calculator — Avalanche vs Snowball">
+<meta name="twitter:description" content="Two methods. Same debts. One is cheaper and one is easier to finish. See both, in your browser.">
+<meta name="twitter:image" content="https://thebrinklabs.com/assets/og-debt.png">
+<meta name="twitter:image:alt" content="Debt Payoff Calculator — avalanche vs snowball, free and private, by The Brink Labs.">
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="alternate" type="text/markdown" href="https://thebrinklabs.com/tools/zero-based-budget/index.md" title="Markdown version of this page">
+<link rel="alternate" type="text/markdown" href="https://thebrinklabs.com/tools/debt-payoff/index.md" title="Markdown version of this page">
 <link rel="alternate" type="text/markdown" href="https://thebrinklabs.com/llms.txt" title="llms.txt — LLM discovery protocol">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,8 +42,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"></noscript>
-
-<script>(function(d){try{var t=localStorage.getItem("bl-theme");if(t==="light"||t==="dark")d.dataset.theme=t;}catch(e){}d.className+=" js";})(document.documentElement);</script>
+<script>(function(d){try{var t=localStorage.getItem("bl-theme");if(t==="light"||t==="dark")d.dataset.theme=t;}catch(e){}d.className+=" js";})(document.documentElement)</script>
 
 <style>
 
@@ -207,7 +211,7 @@ table{ width:100%; border-collapse:collapse; min-width:640px; font-size:15px }
 th,td{ text-align:left; padding:15px 20px; border-bottom:1px solid var(--line) }
 thead th{ font-size:10.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); background:var(--th-bg) }
 tbody tr:last-child td{ border-bottom:0 }
-td.k,th.k{ color:var(--ink); font-weight:700 }
+td.k{ color:var(--ink); font-weight:700 }
 
 .faq{ border-top:1px solid var(--line) }
 .faq details{ border-bottom:1px solid var(--line) }
@@ -263,141 +267,6 @@ td.k,th.k{ color:var(--ink); font-weight:700 }
   padding-top:22px; border-top:1px solid var(--line); font-size:12.5px; font-weight:600; color:var(--ink-3) }
 
 
-
-/* ============================================================================
-   THE ALLOCATOR — page-only styles
-   ========================================================================== */
-.hero{ padding-block:clamp(40px,6vw,80px) clamp(24px,3vw,40px) }
-.inst > div:first-child{ container-type:inline-size; container-name:ledger }
-.inst{ display:grid; grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr); gap:clamp(16px,2vw,26px); align-items:start }
-@container page (max-width:960px){ .inst{ grid-template-columns:1fr } }
-
-.pane{ border:1px solid var(--line); border-radius:var(--r-lg);
-  background:linear-gradient(180deg,var(--plate-2),var(--plate)); box-shadow:var(--sheen);
-  padding:clamp(18px,2.2vw,26px) }
-.pane__h{ display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:16px }
-.pane__t{ font-size:10.5px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-3) }
-
-/* income */
-.inc{ display:flex; align-items:center; gap:12px; border:1px solid var(--line-hi); border-radius:16px;
-  padding:14px 18px; background:var(--well); transition:border-color var(--t), background var(--t) }
-.inc:focus-within{ border-color:var(--brand-24); background:var(--brand-6) }
-.inc .cur{ font-size:26px; font-weight:800; color:var(--ink-3); line-height:1 }
-.inc input{ font:inherit; font-size:clamp(28px,4vw,40px); font-weight:800; letter-spacing:-.04em;
-  color:var(--ink); background:transparent; border:0; outline:none; width:100%; min-width:0;
-  font-variant-numeric:tabular-nums; padding:0 }
-.inc input::placeholder{ color:var(--ink-3) }
-.inc select{ font:inherit; font-size:11px; font-weight:800; letter-spacing:.14em; background:transparent;
-  border:1px solid var(--line); border-radius:8px; color:var(--ink-2); padding:6px 8px; cursor:pointer; flex:0 0 auto }
-.inc select option{ background:var(--plate-2); color:var(--ink) }
-
-/* presets */
-.pre{ display:flex; flex-wrap:wrap; gap:7px; margin-top:14px }
-.pre button{ font:inherit; font-size:12.5px; font-weight:700; color:var(--ink-2); cursor:pointer;
-  border:1px solid var(--line); background:var(--ink-glass); border-radius:999px; padding:7px 14px;
-  transition:color var(--t), border-color var(--t), background var(--t), transform var(--t) }
-.pre button:hover{ color:var(--ink); transform:translateY(-1px) }
-.pre button[aria-pressed="true"]{ color:var(--sel-fg); background:var(--brand); border-color:transparent }
-
-/* envelopes */
-.envs{ list-style:none; margin:16px 0 0; padding:0; display:flex; flex-direction:column; gap:7px }
-.env{ display:grid; grid-template-columns:minmax(96px,1fr) 74px 96px 30px 30px;
-  grid-template-areas:"n t a l x"; gap:6px; align-items:center;
-  border:1px solid var(--line); border-radius:14px; padding:7px 8px 7px 12px;
-  background:var(--well); transition:border-color var(--t), background var(--t) }
-.env:focus-within{ border-color:var(--brand-24); background:var(--brand-6) }
-.env[data-locked="1"]{ border-color:color-mix(in oklab,var(--brand-2) 26%,transparent) }
-.env .f-n{ grid-area:n } .env .f-t{ grid-area:t } .env .f-a{ grid-area:a }
-.env .f-l{ grid-area:l } .env .f-x{ grid-area:x }
-@container ledger (max-width:470px){
-  /* Row 2 needs the nature select to be the WIDE cell, not the narrow one:
-     "EXTRA" plus its arrow does not fit in two stacked icon columns. */
-  .env{ grid-template-columns:minmax(0,1fr) 40px 30px 30px;
-        grid-template-areas:"n n l x" "a t t t"; row-gap:6px }
-  .env .f-t select{ text-align:right; padding-right:20px }
-}
-.env input,.env select{ font:inherit; font-size:14.5px; font-weight:600; color:var(--ink); width:100%;
-  background:transparent; border:0; border-radius:9px; padding:7px 8px; min-width:0; font-variant-numeric:tabular-nums }
-.env input:focus,.env select:focus{ outline:none; background:color-mix(in oklab,var(--ink) 5%,transparent) }
-.env select{ appearance:none; cursor:pointer; font-size:11px; font-weight:800; letter-spacing:.08em;
-  text-transform:uppercase; padding-right:18px;
-  background-image:linear-gradient(45deg,transparent 50%,var(--ink-3) 50%),linear-gradient(135deg,var(--ink-3) 50%,transparent 50%);
-  background-position:calc(100% - 10px) 50%, calc(100% - 6px) 50%; background-size:4px 4px,4px 4px; background-repeat:no-repeat }
-.env select option{ background:var(--plate-2); color:var(--ink) }
-.env select[data-nature="need"]{ color:var(--brand) }
-.env select[data-nature="want"]{ color:var(--brand-2) }
-.env select[data-nature="extra"]{ color:var(--brand-3) }
-.f-a{ position:relative }
-.f-a input{ padding-left:18px; text-align:right }
-.f-a .c{ position:absolute; left:7px; top:50%; transform:translateY(-50%); font-size:12px; font-weight:700; color:var(--ink-3); pointer-events:none }
-.ico{ width:28px; height:28px; border-radius:8px; border:1px solid transparent; background:transparent;
-  color:var(--ink-3); cursor:pointer; display:grid; place-items:center; font-size:14px; line-height:1;
-  transition:color var(--t), background var(--t), border-color var(--t) }
-.ico:hover{ color:var(--ink); background:color-mix(in oklab,var(--ink) 6%,transparent) }
-.ico[aria-pressed="true"]{ color:var(--brand-2); border-color:color-mix(in oklab,var(--brand-2) 30%,transparent);
-  background:color-mix(in oklab,var(--brand-2) 10%,transparent) }
-.ico.kill:hover{ color:var(--alarm); background:var(--alarm-12); border-color:var(--alarm-24) }
-
-.addrow{ display:flex; gap:8px; margin-top:12px; flex-wrap:wrap }
-.btn{ font:inherit; font-size:14px; font-weight:700; cursor:pointer; border-radius:12px; padding:10px 16px;
-  border:1px solid var(--line-hi); background:var(--ink-glass); color:var(--ink-2);
-  transition:color var(--t), border-color var(--t), background var(--t), transform var(--t) }
-.btn:hover{ color:var(--ink); border-color:var(--brand-24); background:var(--brand-6); transform:translateY(-1px) }
-.btn--key{ color:var(--sel-fg); background:var(--brand); border-color:transparent }
-.btn--key:hover{ color:var(--sel-fg); filter:brightness(1.08) }
-.btn[disabled]{ opacity:.4; cursor:not-allowed; transform:none }
-
-/* verdict */
-.verdict{ position:sticky; top:84px }
-@container page (max-width:960px){ .verdict{ position:static } }
-.ta{ font-size:clamp(38px,6.6vw,58px); font-weight:800; letter-spacing:-.05em; line-height:1;
-  font-variant-numeric:tabular-nums; transition:color .25s var(--ease) }
-.ta[data-s="over"]{ color:var(--amber) }
-.ta[data-s="zero"]{ background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent }
-.ta[data-s="neg"]{ color:var(--alarm) }
-.vsub{ font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-3); margin:0 0 6px }
-@keyframes zap{ 0%{transform:scale(1)} 40%{transform:scale(1.045)} 100%{transform:scale(1)} }
-@keyframes nudge{ 0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(5px)} 60%{transform:translateX(-3px)} 80%{transform:translateX(2px)} }
-.ta.zap{ animation:zap .42s var(--ease) }
-.ta.nudge{ animation:nudge .38s ease-in-out }
-@media (prefers-reduced-motion: reduce){ .ta.zap,.ta.nudge{ animation:none } }
-
-.donut{ display:grid; grid-template-columns:140px minmax(0,1fr); gap:18px; align-items:center; margin-top:20px }
-@container page (max-width:420px){ .donut{ grid-template-columns:1fr; justify-items:center; text-align:center } }
-.donut svg{ width:140px; height:140px; overflow:visible }
-.donut .seg{ fill:none; stroke-width:15; stroke-linecap:butt;
-  transition:stroke-dasharray .45s var(--ease), stroke-dashoffset .45s var(--ease) }
-.donut .trk{ fill:none; stroke:var(--track); stroke-width:15 }
-.dc{ font-size:26px; font-weight:800; letter-spacing:-.04em; fill:var(--ink); font-variant-numeric:tabular-nums }
-.dl{ font-size:8.5px; font-weight:800; letter-spacing:.18em; fill:var(--ink-3); text-transform:uppercase }
-.keys{ display:flex; flex-direction:column; gap:9px; min-width:0 }
-.key{ display:flex; align-items:center; gap:9px; font-size:14px; color:var(--ink-2) }
-.key i{ width:9px; height:9px; border-radius:3px; flex:0 0 auto }
-.key b{ margin-left:auto; color:var(--ink); font-weight:800; font-variant-numeric:tabular-nums }
-.key span.p{ color:var(--ink-3); font-size:12.5px; font-variant-numeric:tabular-nums; width:44px; text-align:right }
-
-.split{ display:grid; grid-template-columns:1fr 1fr; gap:11px; margin-top:20px }
-.mini{ border:1px solid var(--line); border-radius:14px; padding:13px 15px; background:var(--well) }
-.mini .n{ font-size:21px; font-weight:800; letter-spacing:-.03em; font-variant-numeric:tabular-nums }
-.mini .l{ font-size:10px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); margin-top:4px }
-.mini .n.good{ color:var(--brand) } .mini .n.cy{ color:var(--brand-2) } .mini .n.bl{ color:var(--brand-3) }
-
-.note{ font-size:12px; color:var(--ink-3); line-height:1.6; margin-top:14px; border-left:2px solid var(--line-hi); padding-left:12px }
-.toast{ position:fixed; inset:auto 0 26px 0; margin-inline:auto; width:max-content; max-width:calc(100% - 40px);
-  background:var(--raise); border:1px solid var(--brand-24); color:var(--ink); font-size:14px; font-weight:600;
-  padding:12px 20px; border-radius:999px; box-shadow:var(--shadow); z-index:120;
-  opacity:0; transform:translateY(12px); pointer-events:none; transition:opacity .25s var(--ease), transform .25s var(--ease) }
-.toast.on{ opacity:1; transform:none }
-
-.fa{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 clamp(26px,3.4vw,56px); margin:0 }
-@container page (max-width:820px){ .fa{ grid-template-columns:1fr } }
-.fa > div{ padding:19px 0; border-top:1px solid var(--line) }
-.fa dt{ font-size:14px; font-weight:800; letter-spacing:.02em; color:var(--brand); margin:0 }
-.fa dd{ margin:8px 0 0; font-size:15.5px; line-height:1.6; color:var(--ink-2) }
-.fa dd b{ color:var(--ink); font-weight:700 }
-
-@media print{ body::before,body::after,.nav,.foot,.pre,.addrow,.btn{ display:none!important }
-  body{ background:#fff;color:#000 } .pane{ border-color:#ccc;background:#fff } }
 /* ── panel: the small data readout used in funnel bridges and hub cards ──
    Lived only in tools/index.html, so every other page that used <div class="panel">
    rendered it unstyled. Now part of the shared layer. */
@@ -417,7 +286,11 @@ td.k,th.k{ color:var(--ink); font-weight:700 }
 .sr-only{ position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden;
   clip-path:inset(50%); white-space:nowrap }
 
-/* ── LIGHT THEME — opt-in only, set by the visitor via the nav switch ───── */
+/* ============================================================================
+   LIGHT THEME — opt-in only, set by the user via the nav switch.
+   Same structure, same hairlines, same tabular numerals. Paper instead of void.
+   Every accent flips to a text-safe value, so a single token drives the switch.
+   ========================================================================== */
 :root[data-theme="light"]{
   color-scheme: light;
   --void:#F6F6F3; --plate:#FFFFFF; --plate-2:#FBFBF9; --raise:#FFFFFF;
@@ -440,10 +313,13 @@ td.k,th.k{ color:var(--ink); font-weight:700 }
     radial-gradient(50rem 40rem at 50% 108%, color-mix(in oklab,var(--brand-3) var(--amb-c),transparent), transparent 62%),
     var(--void);
 }
+/* the ground is paper, so cards need an edge rather than a glow */
 :root[data-theme="light"] .card--hover:hover{
   box-shadow:var(--sheen-hi), 0 20px 44px -28px rgba(16,18,22,.34) }
 :root[data-theme="light"] .play:hover{ filter:drop-shadow(0 8px 20px rgba(16,18,22,.20)) }
 :root[data-theme="light"] .tag--live{ background:color-mix(in oklab,var(--brand) 9%,transparent) }
+
+/* ── theme switch ─────────────────────────────────────────────────────── */
 .tsw{ flex:0 0 auto; display:inline-grid; place-items:center; width:36px; height:36px; padding:0;
   border:1px solid var(--line-hi); border-radius:11px; background:var(--ink-glass); color:var(--ink-2);
   cursor:pointer; font:inherit; transition:color var(--t), border-color var(--t), background var(--t) }
@@ -453,6 +329,125 @@ td.k,th.k{ color:var(--ink); font-weight:700 }
 :root[data-theme="light"] .tsw .i-l{ display:block }
 :root[data-theme="light"] .tsw .i-d{ display:none }
 html:not(.js) .tsw{ display:none }
+
+/* ── scroll progress hairline: pure CSS, no JS ───────────────────────── */
+.prog{ position:fixed; inset:0 0 auto 0; height:2px; z-index:100; transform-origin:0 50%;
+  background:var(--grad); transform:scaleX(0); pointer-events:none }
+@supports (animation-timeline: scroll()){
+  @media (prefers-reduced-motion: no-preference){
+    .prog{ animation:prog linear both; animation-timeline:scroll(root block) }
+  }
+}
+@keyframes prog{ to{ transform:scaleX(1) } }
+.foot__base a{ color:var(--ink-3); transition:color var(--t) }
+.foot__base a:hover{ color:var(--brand) }
+
+
+/* ── the payoff instrument ──────────────────────────────────────────── */
+.hero{ padding-block:clamp(40px,6vw,80px) clamp(24px,3vw,40px) }
+.inst > div:first-child{ container-type:inline-size; container-name:ledger }
+.inst{ display:grid; grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr); gap:clamp(16px,2vw,26px); align-items:start }
+@container page (max-width:960px){ .inst{ grid-template-columns:1fr } }
+.pane{ border:1px solid var(--line); border-radius:var(--r-lg);
+  background:linear-gradient(180deg,var(--plate-2),var(--plate)); box-shadow:var(--sheen);
+  padding:clamp(18px,2.2vw,26px) }
+.pane__h{ display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:16px }
+.pane__t{ font-size:10.5px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-3) }
+
+.rows{ list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column; gap:7px }
+.dbt{ display:grid; grid-template-columns:minmax(104px,1fr) 92px 68px 88px 30px;
+  grid-template-areas:"n b r m x"; gap:6px; align-items:center;
+  border:1px solid var(--line); border-radius:14px; padding:7px 8px 7px 12px;
+  background:var(--well); transition:border-color var(--t), background var(--t) }
+.dbt:focus-within{ border-color:var(--brand-24); background:var(--brand-6) }
+.dbt .f-n{grid-area:n} .dbt .f-b{grid-area:b} .dbt .f-r{grid-area:r} .dbt .f-m{grid-area:m} .dbt .f-x{grid-area:x}
+.colhead{ display:grid; grid-template-columns:minmax(104px,1fr) 92px 68px 88px 30px;
+  gap:6px; padding:0 8px 0 12px; font-size:9.5px }
+.colhead span:not(:first-child){ text-align:right }
+@container ledger (max-width:560px){
+  .dbt{ grid-template-columns:minmax(0,1fr) 72px 66px 72px; grid-template-areas:"n n n x" "b b r m"; row-gap:6px }
+  .dbt .f-x{ justify-self:end }
+  .colhead{ display:none }
+}
+.dbt input{ font:inherit; font-size:14.5px; font-weight:600; color:var(--ink); width:100%;
+  background:transparent; border:0; border-radius:9px; padding:7px 8px; min-width:0; font-variant-numeric:tabular-nums }
+.dbt input:focus{ outline:none; background:color-mix(in oklab,var(--ink) 5%,transparent) }
+.dbt input::placeholder{ color:var(--ink-3); font-weight:500 }
+.aff{ position:relative }
+.aff input{ text-align:right }
+.aff.pre input{ padding-left:18px } .aff.suf input{ padding-right:20px }
+.aff .s{ position:absolute; top:50%; transform:translateY(-50%); font-size:12px; font-weight:700; color:var(--ink-3); pointer-events:none }
+.aff.pre .s{ left:7px } .aff.suf .s{ right:8px }
+.ico{ width:28px; height:28px; border-radius:8px; border:1px solid transparent; background:transparent;
+  color:var(--ink-3); cursor:pointer; display:grid; place-items:center; font-size:15px; line-height:1;
+  transition:color var(--t), background var(--t), border-color var(--t) }
+.ico:hover{ color:var(--alarm); background:var(--alarm-12); border-color:var(--alarm-24) }
+.addrow{ display:flex; gap:8px; margin-top:12px; flex-wrap:wrap }
+.btn{ font:inherit; font-size:14px; font-weight:700; cursor:pointer; border-radius:12px; padding:10px 16px;
+  border:1px solid var(--line-hi); background:var(--ink-glass); color:var(--ink-2);
+  transition:color var(--t), border-color var(--t), background var(--t), transform var(--t) }
+.btn:hover{ color:var(--ink); border-color:var(--brand-24); background:var(--brand-6); transform:translateY(-1px) }
+.btn--key{ color:var(--sel-fg); background:var(--brand); border-color:transparent }
+.btn--key:hover{ color:var(--sel-fg); filter:brightness(1.08) }
+
+.dial label{ display:flex; justify-content:space-between; align-items:baseline; gap:10px;
+  font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); margin-bottom:7px }
+.dial label b{ color:var(--brand); font-size:14px; letter-spacing:0; text-transform:none; font-variant-numeric:tabular-nums }
+.dial input[type=range]{ -webkit-appearance:none; appearance:none; width:100%; height:4px; border-radius:99px;
+  background:linear-gradient(90deg,var(--brand) var(--p,0%), var(--track) var(--p,0%)); cursor:pointer }
+.dial input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:16px; height:16px; border-radius:50%;
+  background:var(--ink); border:3px solid var(--brand-deep); box-shadow:0 2px 8px color-mix(in oklab,var(--void) 62%,transparent) }
+.dial input[type=range]::-moz-range-thumb{ width:16px; height:16px; border-radius:50%; background:var(--ink);
+  border:3px solid var(--brand-deep); box-shadow:0 2px 8px color-mix(in oklab,var(--void) 62%,transparent) }
+
+.verdict{ position:sticky; top:84px }
+@container page (max-width:960px){ .verdict{ position:static } }
+.vs{ display:grid; grid-template-columns:1fr 1fr; gap:11px; align-items:stretch }
+.meth{ min-width:0; overflow:hidden; border:1px solid var(--line); border-radius:16px; padding:15px 16px; background:var(--well);
+  transition:border-color var(--t), background var(--t) }
+.meth[data-win="1"]{ border-color:var(--brand-24); background:var(--brand-6) }
+.meth .mh{ font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-3); margin:0 0 10px; min-height:19px; display:flex; align-items:center; flex-wrap:wrap; gap:4px }
+.meth[data-win="1"] .mh{ color:var(--brand) }
+.meth .big{ font-size:clamp(24px,3.4vw,32px); font-weight:800; letter-spacing:-.04em; line-height:1;
+  font-variant-numeric:tabular-nums; margin-bottom:3px; overflow-wrap:anywhere }
+.meth .lbl{ font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3) }
+.meth .sub{ margin-top:12px; padding-top:11px; border-top:1px solid var(--line); font-size:13.5px; color:var(--ink-2);
+  display:flex; justify-content:space-between; gap:8px }
+.meth .sub b{ color:var(--ink); font-variant-numeric:tabular-nums; overflow-wrap:anywhere; min-width:0 }
+.tagwin{ display:inline-flex; align-items:center; gap:6px; font-size:9px; font-weight:800; letter-spacing:.14em;
+  text-transform:uppercase; padding:3px 8px; border-radius:999px; border:1px solid var(--brand-24);
+  color:var(--brand); background:var(--brand-6); margin-left:6px; vertical-align:middle }
+.tagwin[hidden]{ display:none }
+
+.saving{ margin-top:16px; border:1px solid var(--brand-24); border-radius:16px; padding:16px 18px;
+  background:radial-gradient(40rem 12rem at 0% 0%, var(--brand-6), transparent 70%) }
+.saving .n{ font-size:clamp(26px,4vw,38px); font-weight:800; letter-spacing:-.045em; line-height:1; overflow-wrap:anywhere;
+  font-variant-numeric:tabular-nums; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent }
+.saving p{ margin:7px 0 0; font-size:13.5px; color:var(--ink-2) }
+
+.chart{ width:100%; height:auto; aspect-ratio:16/8; display:block; margin-top:18px; overflow:hidden }
+.chart .gl{ stroke:var(--line); stroke-width:1 }
+.chart .ax{ fill:var(--ink-3); font-size:9.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase }
+.chart .av{ fill:none; stroke:url(#gl-b); stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round }
+.chart .sn{ fill:none; stroke:var(--brand-3); stroke-width:2.2; stroke-dasharray:5 4; stroke-linecap:round }
+.legend{ display:flex; flex-wrap:wrap; gap:16px; margin-top:10px; font-size:12.5px; font-weight:600; color:var(--ink-2) }
+.legend span{ display:inline-flex; align-items:center; gap:8px }
+.legend i{ width:14px; height:3px; border-radius:99px; display:block }
+
+.order{ margin-top:18px }
+.order ol{ margin:10px 0 0; padding-left:20px; color:var(--ink-2); font-size:14.5px }
+.order li{ margin:0 0 7px } .order li::marker{ color:var(--brand); font-weight:800 }
+.order b{ color:var(--ink) }
+.note{ font-size:12px; color:var(--ink-3); line-height:1.6; margin-top:14px; border-left:2px solid var(--line-hi); padding-left:12px }
+.warn{ border-left-color:var(--alarm); color:var(--alarm) }
+.toast{ position:fixed; inset:auto 0 26px 0; margin-inline:auto; width:max-content; max-width:calc(100% - 40px);
+  background:var(--raise); border:1px solid var(--brand-24); color:var(--ink); font-size:14px; font-weight:600;
+  padding:12px 20px; border-radius:999px; box-shadow:var(--shadow); z-index:120;
+  opacity:0; transform:translateY(12px); pointer-events:none; transition:opacity .25s var(--ease), transform .25s var(--ease) }
+.toast.on{ opacity:1; transform:none }
+@media print{ body::before,body::after,.nav,.foot,.addrow,.btn{ display:none!important } }
+
 </style>
 
 <script type="application/ld+json">
@@ -461,16 +456,16 @@ html:not(.js) .tsw{ display:none }
  "@graph": [
   {
    "@type": "WebApplication",
-   "@id": "https://thebrinklabs.com/tools/zero-based-budget/#tool",
-   "name": "Zero-Based Budget Calculator",
+   "@id": "https://thebrinklabs.com/tools/debt-payoff/#tool",
+   "name": "Debt Payoff Calculator",
    "alternateName": [
-    "Zero-Based Cash Allocator",
-    "50/30/20 Budget Calculator",
-    "Envelope Budget Calculator"
+    "Avalanche vs Snowball Calculator",
+    "Debt Snowball Calculator",
+    "Debt Avalanche Calculator"
    ],
-   "url": "https://thebrinklabs.com/tools/zero-based-budget/",
+   "url": "https://thebrinklabs.com/tools/debt-payoff/",
    "applicationCategory": "FinanceApplication",
-   "applicationSubCategory": "Zero-based budgeting and income allocation calculator",
+   "applicationSubCategory": "Debt payoff comparison between the avalanche and snowball methods",
    "operatingSystem": "Any modern web browser",
    "browserRequirements": "Requires JavaScript. No account, no plugin, no server.",
    "isAccessibleForFree": true,
@@ -482,14 +477,13 @@ html:not(.js) .tsw{ display:none }
     "availability": "https://schema.org/InStock"
    },
    "featureList": [
-    "Allocates take-home pay across named envelopes until To Assign reaches zero",
-    "Built-in 50/30/20, 60/20/20 balanced, and debt-payoff presets",
-    "Classifies every envelope as a Need, Want or Extra",
-    "Live savings rate displayed as a share of take-home pay",
-    "Proportional rescaling of unlocked envelopes when income changes",
-    "Per-envelope locking excluded from Auto Assign",
-    "Auto Assign distributes the remainder to exactly zero",
-    "Daily discretionary spend and twelve-month build projection",
+    "Compares the avalanche and snowball methods on the same debts",
+    "Month-by-month amortisation with interest accrued on the real balance",
+    "Rolls a cleared debt's minimum payment into the next target",
+    "Adjustable extra monthly payment",
+    "Reports months to debt-free, total interest and total paid for each method",
+    "Names the exact attack order for the avalanche method",
+    "Detects the case where the payment never clears the balance",
     "Exports a CSV plan and a plain-text summary",
     "Runs entirely client-side with no cookies, no storage and no network calls"
    ],
@@ -506,10 +500,10 @@ html:not(.js) .tsw{ display:none }
   },
   {
    "@type": "HowTo",
-   "@id": "https://thebrinklabs.com/tools/zero-based-budget/#howto",
-   "name": "How to build a zero-based budget",
-   "description": "Zero-based budgeting assigns every unit of income a specific job before it is spent, until the amount left to assign reaches zero. These are the five steps, in order.",
-   "totalTime": "PT20M",
+   "@id": "https://thebrinklabs.com/tools/debt-payoff/#howto",
+   "name": "How to pay off debt fastest",
+   "description": "Two ordering methods produce very different interest totals on the same debts. These are the five steps to choose between them and execute.",
+   "totalTime": "PT5M",
    "estimatedCost": {
     "@type": "MonetaryAmount",
     "currency": "USD",
@@ -517,102 +511,94 @@ html:not(.js) .tsw{ display:none }
    },
    "tool": {
     "@type": "HowToTool",
-    "name": "Zero-Based Budget Calculator"
+    "name": "Debt Payoff Calculator"
    },
    "step": [
     {
      "@type": "HowToStep",
      "position": 1,
-     "name": "Start from money you actually have",
-     "text": "Enter your take-home pay for the period that has already landed, not a projection of what you expect to earn. Budgeting forecast income is how a plan drifts out of balance in week three."
+     "name": "List every debt with its rate",
+     "text": "Write down each balance, its annual interest rate and its minimum payment. The rate is the number that decides the order, and it is the one people most often cannot recall."
     },
     {
      "@type": "HowToStep",
      "position": 2,
-     "name": "Fund your obligations first",
-     "text": "Assign rent, loan payments, insurance and subscriptions before anything else. These are not decisions; they are already spent, and treating them as spendable is the most common error."
+     "name": "Find the money above the minimums",
+     "text": "Minimums alone barely move a balance. The payoff speed is set almost entirely by whatever you can add on top, so establish that figure before choosing a method."
     },
     {
      "@type": "HowToStep",
      "position": 3,
-     "name": "Give every remaining unit a destination",
-     "text": "Assign what is left across named envelopes and mark each one a Need, a Want or an Extra. Each envelope is a promise you have funded, not a target you hope to hit."
+     "name": "Pick an order: highest rate, or smallest balance",
+     "text": "Highest rate first is the avalanche and always costs less. Smallest balance first is the snowball and clears whole debts sooner. Both pay minimums on everything else."
     },
     {
      "@type": "HowToStep",
      "position": 4,
-     "name": "Drive the To Assign counter to zero",
-     "text": "The plan is complete when nothing is left unassigned. A positive balance is money without a job, which will find one on its own. A negative balance means the plan is over-committed and must be rebalanced now rather than discovered later."
+     "name": "Send every spare unit to one debt only",
+     "text": "Splitting the extra across several debts is the most common mistake. Concentration is what shortens the timeline; spreading it does almost nothing."
     },
     {
      "@type": "HowToStep",
      "position": 5,
-     "name": "Move money between envelopes instead of abandoning the plan",
-     "text": "Overspending in one envelope is normal. Covering it from another envelope, deliberately, is the method working. Ignoring it is the method failing."
+     "name": "Roll each cleared payment into the next",
+     "text": "When a debt clears, add its freed minimum to the attack on the next one. The payment never shrinks, so each debt falls faster than the one before it."
     }
    ],
    "about": {
-    "@id": "https://thebrinklabs.com/tools/zero-based-budget/#tool"
+    "@id": "https://thebrinklabs.com/tools/debt-payoff/#tool"
    }
   },
   {
    "@type": "FAQPage",
-   "@id": "https://thebrinklabs.com/tools/zero-based-budget/#faq",
+   "@id": "https://thebrinklabs.com/tools/debt-payoff/#faq",
    "mainEntity": [
     {
      "@type": "Question",
-     "name": "What is zero-based budgeting?",
+     "name": "What is the debt avalanche method?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Zero-based budgeting means assigning every unit of income a specific job before it is spent, until the amount left to assign reaches zero. Rather than tracking what you spent after the fact, you decide in advance what each unit is for. Zero does not mean an empty bank account — it means no unassigned money. Savings, investing and debt payoff are jobs like any other."
+      "text": "The avalanche method pays the minimum on every debt and directs every spare unit at the debt with the highest interest rate, regardless of its balance. When that debt clears, its payment rolls onto the next-highest rate. It is mathematically optimal: for a given monthly budget it always produces the lowest total interest, and it never finishes later than the snowball."
      }
     },
     {
      "@type": "Question",
-     "name": "How is zero-based budgeting different from the 50/30/20 rule?",
+     "name": "What is the debt snowball method?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "The 50/30/20 rule is a fixed ratio — half of take-home pay to needs, thirty percent to wants, twenty percent to savings and debt. Zero-based budgeting is a method rather than a ratio: you assign every unit to a named envelope, and the resulting split is an output rather than a target. Most people start from 50/30/20 because deciding from a blank page is hard, then let the real numbers move the ratio. This calculator does both — the presets give you a starting shape, and you edit until it matches your life."
+      "text": "The snowball method pays the minimum on every debt and directs every spare unit at the smallest balance, regardless of interest rate. When that debt clears, its payment rolls onto the next-smallest. It costs more in interest than the avalanche, but it removes whole debts from the list sooner, which is the only thing that makes month three feel different from month one."
      }
     },
     {
      "@type": "Question",
-     "name": "What counts as a need, a want or an extra?",
+     "name": "Which is better, avalanche or snowball?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "A need is a cost you cannot remove this month without a real consequence: housing, utilities, groceries, transport to work, insurance, minimum debt payments. A want is discretionary consumption — dining out, entertainment, shopping, most subscriptions. An extra is money that increases your position rather than being consumed: emergency fund, investing, and debt payoff above the minimum. The split matters more than the category, because it answers a question a category never can — how much of this month was genuinely non-negotiable."
+      "text": "Avalanche is always cheaper on paper. Whether it is better depends on whether you finish. Run both above: if the avalanche saves a large amount, take the cheaper road. If the two are within a small margin — which is common when balances are similar — take the one whose first win arrives soonest, because a method you abandon in month four costs more than either."
      }
     },
     {
      "@type": "Question",
-     "name": "What should I do if To Assign goes negative?",
+     "name": "Should I pay off debt or save first?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Rebalance immediately rather than leaving it. A negative To Assign means the plan commits money you do not have, and every hour it stays negative is an hour you are budgeting fiction. Take the shortfall out of the largest want envelope first, then extras, and only then reduce a need. A plan that is honest and uncomfortable beats a plan that is comfortable and wrong."
+      "text": "The common sequence is a small starter emergency fund first, then aggressive debt payoff, then a full fund. The reasoning is mechanical rather than moral: with no buffer at all, the next unexpected expense goes back onto the card you are paying down, which undoes the progress and the motivation together. Once a small buffer exists, every spare unit is worth more against a high interest rate than in a low-yield account."
      }
     },
     {
      "@type": "Question",
-     "name": "How do I budget on an irregular or freelance income?",
+     "name": "Does making extra payments actually help?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Budget the money that has already arrived, never the money you expect. Enter last month's actual take-home rather than an average, assign all of it, and repeat when the next payment lands. Over a few cycles the pattern in this tool becomes your floor, and anything above it goes to the extras envelopes. Forecast-based budgeting fails hardest exactly where income is least predictable."
+      "text": "Substantially, and non-linearly. Interest accrues on the balance, so every extra unit paid early reduces every future interest charge on that balance. Move the extra-payment dial above and watch both the months and the interest fall — the effect of an extra amount is far larger than the amount itself, and it is largest on the highest-rate debt."
      }
     },
     {
      "@type": "Question",
-     "name": "Is this budget calculator private?",
+     "name": "Is this debt calculator private?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Yes, by architecture rather than by promise. Every calculation runs inside your own browser. The page sets no cookies, writes nothing to local storage, loads no analytics or advertising script, and makes no network request carrying your figures. Closing the tab destroys the data because there is nowhere else for it to be. Open your browser's developer tools and check the network and storage panels — that is the only kind of privacy claim worth making."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "How much should I save each month?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "There is no universal number, and anyone quoting one is guessing about your life. What this tool gives you instead is your actual savings rate — the share of take-home pay going to extras — displayed in the centre of the ring as you move money. Watching that figure respond to a single cancelled want is more useful than a target, because it is yours, and because it moves when you do."
+      "text": "Yes, by architecture rather than by promise. Every calculation runs inside your own browser. The page sets no cookies, writes nothing to local storage, loads no analytics or advertising script, and makes no network request carrying your figures. Closing the tab destroys the data because there is nowhere else for it to be. Check the network and storage panels in your browser's developer tools — that is the only kind of privacy claim worth making."
      }
     }
    ]
@@ -635,25 +621,25 @@ html:not(.js) .tsw{ display:none }
     {
      "@type": "ListItem",
      "position": 3,
-     "name": "Zero-Based Budget Calculator",
-     "item": "https://thebrinklabs.com/tools/zero-based-budget/"
+     "name": "Debt Payoff Calculator",
+     "item": "https://thebrinklabs.com/tools/debt-payoff/"
     }
    ]
   },
   {
    "@type": "WebPage",
-   "@id": "https://thebrinklabs.com/tools/zero-based-budget/#webpage",
-   "url": "https://thebrinklabs.com/tools/zero-based-budget/",
-   "name": "Zero-Based Budget Calculator — Give Every Dollar A Job",
+   "@id": "https://thebrinklabs.com/tools/debt-payoff/#webpage",
+   "url": "https://thebrinklabs.com/tools/debt-payoff/",
+   "name": "Debt Payoff Calculator — Avalanche vs Snowball",
    "isPartOf": {
     "@id": "https://thebrinklabs.com/#website"
    },
    "about": {
-    "@id": "https://thebrinklabs.com/tools/zero-based-budget/#tool"
+    "@id": "https://thebrinklabs.com/tools/debt-payoff/#tool"
    },
-   "primaryImageOfPage": "https://thebrinklabs.com/assets/og-zbb.png",
+   "primaryImageOfPage": "https://thebrinklabs.com/assets/og-debt.png",
    "inLanguage": "en",
-   "dateModified": "2026-09-06",
+   "dateModified": "2026-09-07",
    "speakable": {
     "@type": "SpeakableSpecification",
     "cssSelector": [
@@ -666,6 +652,7 @@ html:not(.js) .tsw{ display:none }
 </script>
 </head>
 <body>
+<div class="prog" aria-hidden="true"></div>
 <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <clipPath id="44855bd6cd"><path d="M 667 575 L 874.992188 575 L 874.992188 679 L 667 679 Z M 667 575 " clip-rule="nonzero"/></clipPath>
@@ -687,7 +674,11 @@ html:not(.js) .tsw{ display:none }
 <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13.2 2.4 4.6 13.6h6.2L10 21.6l8.8-11.2h-6.3l.7-8Z"/></symbol>
 <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.6 20.4h16.8"/><path d="M6.6 20.4v-7.2M11 20.4V6.2M15.4 20.4v-10M19.8 20.4V9"/></symbol>
 <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4.4" y="10.2" width="15.2" height="11.2" rx="3"/><path d="M8.2 10.2V7.4a3.8 3.8 0 0 1 7.6 0v2.8"/><path d="M12 15v2.2"/></symbol>
-<symbol id="i-infinity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8.2a3.8 3.8 0 1 0 0 7.6c2.6 0 4-2.5 5-3.8 1-1.3 2.4-3.8 5-3.8a3.8 3.8 0 1 1 0 7.6c-2.6 0-4-2.5-5-3.8"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.4M12 19v2.4M4.4 12H2M22 12h-2.4M6.4 6.4 4.7 4.7M19.3 19.3l-1.7-1.7M17.6 6.4l1.7-1.7M4.7 19.3l1.7-1.7"/></symbol><symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 14.6A8.6 8.6 0 0 1 9.4 3.6a8.6 8.6 0 1 0 11 11Z"/></symbol></svg>
+<symbol id="i-infinity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8.2a3.8 3.8 0 1 0 0 7.6c2.6 0 4-2.5 5-3.8 1-1.3 2.4-3.8 5-3.8a3.8 3.8 0 1 1 0 7.6c-2.6 0-4-2.5-5-3.8"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.4M12 19v2.4M4.4 12H2M22 12h-2.4M6.4 6.4 4.7 4.7M19.3 19.3l-1.7-1.7M17.6 6.4l1.7-1.7M4.7 19.3l1.7-1.7"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 14.6A8.6 8.6 0 0 1 9.4 3.6a8.6 8.6 0 1 0 11 11Z"/></symbol>
+<symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.4v17.2M5 6.6h14"/><path d="M5 6.6 2.4 13h5.2ZM19 6.6 16.4 13h5.2Z"/><path d="M2.4 13a2.6 2.6 0 0 0 5.2 0"/><path d="M16.4 13a2.6 2.6 0 0 0 5.2 0"/><path d="M8.4 20.6h7.2"/></symbol>
+</svg>
 <a class="skip" href="#instrument">Skip to the calculator</a>
 
 <header class="nav">
@@ -698,7 +689,7 @@ html:not(.js) .tsw{ display:none }
   </a>
   <nav class="navlinks" aria-label="Primary">
     <a href="/tools/">All Tools</a>
-    <a href="#instrument">The Allocator</a>
+    <a href="#instrument">The Comparison</a>
     <a href="#method">Method</a>
     <a href="#answers">Answers</a>
     <a href="/mynewallet/">MyneWallet</a>
@@ -710,20 +701,21 @@ html:not(.js) .tsw{ display:none }
 
 <main>
 
+
 <section class="band hero">
 <div class="wrap">
-  <p class="label">Free Tool · Zero-Based Budget Calculator</p>
-  <h1 class="d1">Give Every Unit<br>Of Income <span class="on">A Job.</span></h1>
+  <p class="label">Free Tool · Debt Payoff Calculator</p>
+  <h1 class="d1">Two Roads Out.<br><span class="on">One Is Cheaper.</span></h1>
   <p class="lede aeo-answer" style="margin-top:20px">
-    A zero-based budget calculator, running entirely in your browser. Enter your take-home pay,
-    assign it across envelopes, and drive <b>To Assign</b> to zero — the point at which every unit
-    you earn already has a destination. <strong>Nothing is uploaded. Nothing is stored. No cookies.</strong>
+    The <b>avalanche</b> method kills your highest interest rate first and costs the least.
+    The <b>snowball</b> method kills your smallest balance first and feels the best. Enter your debts and
+    see both — months to free, total interest, and exactly what the choice costs you.
+    <strong>Nothing is uploaded. Nothing is stored. No cookies.</strong>
   </p>
   <div class="chips" style="margin-top:22px">
-    <span class="chip"><span class="pip"></span> Live in one number</span>
+    <span class="chip"><span class="pip"></span> Both methods, side by side</span>
     <span class="chip"><b>0</b> sign-ups</span>
     <span class="chip"><b>0</b> cookies</span>
-    <span class="chip">50/30/20 built in</span>
   </div>
 </div>
 </section>
@@ -731,74 +723,81 @@ html:not(.js) .tsw{ display:none }
 <section id="instrument" class="band band--tight">
 <div class="wrap">
   <div class="rule"></div>
-
-  <noscript><div class="pane" style="margin-bottom:22px">
-    <p class="h4" style="margin-bottom:8px">This calculator needs JavaScript.</p>
-    <p class="small" style="margin:0">It is the only thing on this page that does — because every calculation
-    runs on your machine rather than on a server we would otherwise have to operate. The written method and
-    answers below work without it.</p></div></noscript>
+  <noscript><div class="pane" style="margin-bottom:22px"><p class="h4" style="margin-bottom:8px">This calculator needs JavaScript.</p>
+    <p class="small" style="margin:0">It is the only thing here that does — every calculation runs on your machine
+    rather than a server we would otherwise have to operate. The written method below works without it.</p></div></noscript>
 
   <div class="inst">
     <div>
       <div class="pane">
-        <div class="pane__h"><span class="pane__t">01 — What Lands Each Month</span><span class="pane__t">Take-home</span></div>
-        <div class="inc">
-          <span class="cur" id="incCur">$</span>
-          <input type="text" id="income" inputmode="decimal" value="5,000" aria-label="Monthly take-home pay">
-          <select id="cur" aria-label="Currency">
-            <option value="USD">USD</option><option value="EUR">EUR</option><option value="GBP">GBP</option>
-            <option value="CAD">CAD</option><option value="AUD">AUD</option><option value="INR">INR</option>
-            <option value="BDT">BDT</option><option value="JPY">JPY</option><option value="AED">AED</option>
-          </select>
+        <div class="pane__h"><span class="pane__t">01 — What You Owe</span>
+          <label class="pane__t" style="color:var(--ink-3)">
+            <select id="cur" aria-label="Currency" style="font:inherit;font-size:11px;font-weight:800;letter-spacing:.14em;background:transparent;border:1px solid var(--line);border-radius:8px;color:var(--ink-2);padding:5px 8px;cursor:pointer">
+              <option value="USD">USD $</option><option value="EUR">EUR €</option><option value="GBP">GBP £</option>
+              <option value="CAD">CAD $</option><option value="AUD">AUD $</option><option value="INR">INR ₹</option>
+              <option value="BDT">BDT ৳</option><option value="JPY">JPY ¥</option><option value="AED">AED د.إ</option>
+            </select></label>
         </div>
-        <div class="pre" id="pre" role="group" aria-label="Allocation preset"></div>
-        <p class="tiny" style="margin:11px 0 0">
-          Use net pay, not gross — a plan built on money that never arrives fails in week three.
-          Changing this rescales every unlocked envelope and keeps your shape.
-        </p>
+        <div class="pane__t colhead">
+          <span>Debt</span><span>Balance</span><span>APR</span><span>Min / mo</span><span></span>
+        </div>
+        <ul class="rows" id="rows" aria-label="Your debts"></ul>
+        <div class="addrow">
+          <button class="btn" id="add" type="button">+ Add a debt</button>
+          <button class="btn" id="clear" type="button">Clear all</button>
+        </div>
       </div>
 
       <div class="pane" style="margin-top:14px">
-        <div class="pane__h"><span class="pane__t">02 — Where It Goes</span><span class="pane__t" id="envcount">—</span></div>
-        <ul class="envs" id="envs" aria-label="Your envelopes"></ul>
-        <div class="addrow">
-          <button class="btn btn--key" id="auto" type="button">Auto Assign the rest</button>
-          <button class="btn" id="add" type="button">+ Envelope</button>
-          <button class="btn" id="reset" type="button">Reset preset</button>
+        <div class="pane__h"><span class="pane__t">02 — What You Can Add</span><span class="pane__t" id="pool">—</span></div>
+        <div class="dial">
+          <label for="d-extra">Extra payment each month <b id="v-extra">—</b></label>
+          <input type="range" id="d-extra" min="0" max="2000" step="10" value="200">
         </div>
         <p class="note">
-          The lock keeps an envelope's amount fixed — Auto Assign and income changes will route around it.
-          Nature (Need / Want / Extra) is what turns a list of numbers into a judgement you can act on.
+          Every unit above the minimums goes to one debt at a time. When that debt clears, its minimum joins the
+          attack on the next — that rolling payment is the engine, and both methods use it. Only the order differs.
         </p>
       </div>
     </div>
 
     <div class="verdict">
       <div class="pane">
-        <div class="pane__h"><span class="pane__t">The Plan</span><span class="tag tag--live"><span class="pip"></span> Live</span></div>
-        <p class="vsub" id="talab">Left to assign</p>
-        <div class="ta num" id="ta" data-s="over">—</div>
-
-        <div class="donut">
-          <svg viewBox="0 0 140 140" role="img" aria-labelledby="dt">
-            <title id="dt">Share of income assigned to needs, wants and extras.</title>
-            <circle class="trk" cx="70" cy="70" r="54"></circle>
-            <g id="segs" transform="rotate(-90 70 70)"></g>
-            <text class="dc" x="70" y="68" text-anchor="middle" id="dcv">0%</text>
-            <text class="dl" x="70" y="86" text-anchor="middle">Savings rate</text>
-          </svg>
-          <div class="keys">
-            <div class="key"><i style="background:#00F28F"></i> Needs <span class="p" id="pn">0%</span><b id="vn">—</b></div>
-            <div class="key"><i style="background:#22D3EE"></i> Wants <span class="p" id="pw">0%</span><b id="vw">—</b></div>
-            <div class="key"><i style="background:#60A5FA"></i> Extras <span class="p" id="pe">0%</span><b id="ve">—</b></div>
+        <div class="pane__h"><span class="pane__t">The Verdict</span><span class="tag tag--live"><span class="pip"></span> Live</span></div>
+        <div class="vs">
+          <div class="meth" id="m-av">
+            <p class="mh">Avalanche <span class="tagwin" id="w-av" hidden>Cheapest</span></p>
+            <div class="big num" id="av-mo">—</div><div class="lbl">To debt-free</div>
+            <div class="sub"><span>Interest paid</span><b id="av-int">—</b></div>
+            <div class="sub" style="border-top:0;padding-top:0;margin-top:6px"><span>Total paid</span><b id="av-tot">—</b></div>
+          </div>
+          <div class="meth" id="m-sn">
+            <p class="mh">Snowball <span class="tagwin" id="w-sn" hidden>Fastest wins</span></p>
+            <div class="big num" id="sn-mo">—</div><div class="lbl">To debt-free</div>
+            <div class="sub"><span>Interest paid</span><b id="sn-int">—</b></div>
+            <div class="sub" style="border-top:0;padding-top:0;margin-top:6px"><span>Total paid</span><b id="sn-tot">—</b></div>
           </div>
         </div>
 
-        <div class="split">
-          <div class="mini"><div class="n num cy" id="daily">—</div><div class="l">Free to spend / day</div></div>
-          <div class="mini"><div class="n num" id="committed">—</div><div class="l">Committed monthly</div></div>
-          <div class="mini"><div class="n num bl" id="year">—</div><div class="l">Built in 12 months</div></div>
-          <div class="mini"><div class="n num good" id="biggest">—</div><div class="l">Largest envelope</div></div>
+        <div class="saving" id="saving">
+          <div class="n num" id="delta">—</div>
+          <p id="delta-txt">Add a debt to compare the two methods.</p>
+        </div>
+
+        <svg class="chart" id="chart" viewBox="0 0 640 320" preserveAspectRatio="none" role="img" aria-labelledby="ct">
+          <title id="ct">Total balance falling to zero under the avalanche and snowball methods.</title>
+          <defs><linearGradient id="gl-b" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#00F28F"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs>
+          <g id="cg"></g>
+        </svg>
+        <div class="legend">
+          <span><i style="background:linear-gradient(90deg,#00F28F,#22D3EE)"></i> Avalanche</span>
+          <span><i style="background:#60A5FA"></i> Snowball</span>
+        </div>
+
+        <div class="order">
+          <p class="pane__t">Attack order — avalanche</p>
+          <ol id="ord"></ol>
         </div>
 
         <div class="addrow" style="margin-top:18px">
@@ -814,40 +813,38 @@ html:not(.js) .tsw{ display:none }
 
 <section id="method" class="band band--tight">
 <div class="wrap">
-  <p class="label">03 — The Method</p>
-  <h2 class="d3" style="margin-bottom:8px">Four Moves. That Is The Whole System.</h2>
-  <div class="grid g4" style="margin-top:24px">
-    <div class="card"><span class="idx">01</span><h3 class="h4">Start from money you have</h3><p>Not forecast income. A plan built on money that has not landed drifts out of balance the first week it does not.</p></div>
-    <div class="card"><span class="idx">02</span><h3 class="h4">Fund obligations first</h3><p>Rent, loans, insurance, subscriptions. These are not decisions — treating them as spendable is the most common failure.</p></div>
-    <div class="card"><span class="idx">03</span><h3 class="h4">Drive To Assign to zero</h3><p>A positive balance is money without a job, and it will find one. A negative balance is a plan that is already broken.</p></div>
-    <div class="card"><span class="idx">04</span><h3 class="h4">Move money, don't abandon it</h3><p>Overspending one envelope is normal. Covering it from another, deliberately, is the method working.</p></div>
+  <p class="label">03 — Which One To Pick</p>
+  <h2 class="d3" style="margin-bottom:8px">Cheapest And Easiest Are Not The Same Answer.</h2>
+  <div class="grid g3" style="margin-top:22px">
+    <div class="card"><span class="idx">AVALANCHE</span><h3 class="h4">Highest rate first</h3><p>Mathematically optimal. Always pays the least total interest, and never finishes later. If the two are close, take this one.</p></div>
+    <div class="card"><span class="idx">SNOWBALL</span><h3 class="h4">Smallest balance first</h3><p>Clears individual debts sooner, which is the only method that gives you a visible win in the first few months. Costs more.</p></div>
+    <div class="card"><span class="idx">THE REAL RULE</span><h3 class="h4">The one you finish</h3><p>A plan abandoned in month four costs more than either. If the gap above is small, pick the one you will actually keep doing.</p></div>
   </div>
 </div>
 </section>
 
 <section class="band band--tight">
 <div class="wrap">
-  <div class="card rv grid g2" style="align-items:center;gap:clamp(24px,3vw,44px);text-align:left">
+  <div class="card rv grid g2" style="align-items:center;gap:clamp(24px,3vw,44px)">
     <div>
       <p class="label label--solo" style="margin-bottom:14px">Next Step</p>
-      <h2 class="d2">This Plan Lives In A Tab.<br><span class="on">Make It Live On Your Phone.</span></h2>
+      <h2 class="d2">A Plan Is Not A Payment.<br><span class="on">Track The Real One.</span></h2>
       <p class="lede" style="margin:16px 0 24px">
-        A plan you rebuild from scratch each month is a spreadsheet with better styling. MyneWallet keeps
-        these envelopes funded, tracks what actually leaves the account, and tells you what is safe to
-        spend right now — on your own device, with no account and no bank login.
+        This page models the plan. MyneWallet tracks the balance that actually moves — debts and loans as
+        first-class obligations, payoff plans, and a 30-Day Outlook naming the exact date your balance dips.
+        On your own device, with no account and no bank login.
       </p>
       <a class="play" href="https://play.google.com/store/apps/details?id=com.thebrinklabs.mynewallet.expensetracker" target="_blank" rel="noopener" aria-label="Get MyneWallet on Google Play">
-        <svg viewBox="0 0 646 250" role="img" aria-hidden="true"><use href="#gplay"></use></svg>
-      </a>
+        <svg viewBox="0 0 646 250" role="img" aria-hidden="true"><use href="#gplay"></use></svg></a>
       <p class="tiny" style="margin-top:16px">Free forever. One-time PRO unlock. No subscription, ever.</p>
     </div>
     <div class="panel">
-      <div class="panel__h"><span>In the app</span><span>Live</span></div>
-      <div class="krow"><span>To Assign</span><b class="on">0.00</b></div>
+      <div class="panel__h"><span>In the app</span><span>Obligations</span></div>
+      <div class="krow"><span>Debts &amp; loans</span><b>First-class records</b></div>
       <div class="bar"><i style="width:100%"></i></div>
-      <div class="krow"><span>Safe to Spend</span><b>Separated from committed</b></div>
-      <div class="krow"><span>Auto Assign</span><b>Last month · goals · split</b></div>
-      <div class="krow"><span>Over-assignment</span><b>Named to the cent</b></div>
+      <div class="krow"><span>Payoff plans</span><b class="on">PRO</b></div>
+      <div class="krow"><span>30-Day Outlook</span><b class="on">PRO</b></div>
+      <div class="krow"><span>Price-change detection</span><b>Included</b></div>
     </div>
   </div>
 </div>
@@ -857,45 +854,41 @@ html:not(.js) .tsw{ display:none }
 <div class="wrap">
   <div class="rule"></div>
   <p class="label">Straight Answers</p>
-  <h2 class="d2" style="margin-bottom:26px">Zero-Based Budgeting, Answered Plainly.</h2>
-
+  <h2 class="d2" style="margin-bottom:26px">Debt Payoff, Answered Plainly.</h2>
   <div class="faq">
     <details open>
-      <summary>What is zero-based budgeting?</summary>
-      <div class="ans aeo-answer"><p>Zero-based budgeting means assigning every unit of income a specific job before it is spent, until the amount left to assign reaches zero. Rather than tracking what you spent after the fact, you decide in advance what each unit is for. Zero does not mean an empty bank account — it means no unassigned money. Savings, investing and debt payoff are jobs like any other.</p></div>
+      <summary>What is the debt avalanche method?</summary>
+      <div class="ans aeo-answer"><p>The avalanche method pays the minimum on every debt and directs every spare unit at the debt with the <em>highest interest rate</em>, regardless of its balance. When that debt clears, its payment rolls onto the next-highest rate. It is mathematically optimal: for a given monthly budget it always produces the lowest total interest, and it never finishes later than the snowball.</p></div>
     </details>
     <details>
-      <summary>How is zero-based budgeting different from the 50/30/20 rule?</summary>
-      <div class="ans aeo-answer"><p>The 50/30/20 rule is a fixed ratio — half of take-home pay to needs, thirty percent to wants, twenty percent to savings and debt. Zero-based budgeting is a method rather than a ratio: you assign every unit to a named envelope, and the resulting split is an output rather than a target. Most people start from 50/30/20 because deciding from a blank page is hard, then let the real numbers move the ratio. This calculator does both — the presets give you a starting shape, and you edit until it matches your life.</p></div>
+      <summary>What is the debt snowball method?</summary>
+      <div class="ans aeo-answer"><p>The snowball method pays the minimum on every debt and directs every spare unit at the <em>smallest balance</em>, regardless of interest rate. When that debt clears, its payment rolls onto the next-smallest. It costs more in interest than the avalanche, but it removes whole debts from the list sooner, which is the only thing that makes month three feel different from month one.</p></div>
     </details>
     <details>
-      <summary>What counts as a need, a want or an extra?</summary>
-      <div class="ans aeo-answer"><p>A need is a cost you cannot remove this month without a real consequence: housing, utilities, groceries, transport to work, insurance, minimum debt payments. A want is discretionary consumption — dining out, entertainment, shopping, most subscriptions. An extra is money that increases your position rather than being consumed: emergency fund, investing, and debt payoff above the minimum. The split matters more than the category, because it answers a question a category never can — how much of this month was genuinely non-negotiable.</p></div>
+      <summary>Which is better, avalanche or snowball?</summary>
+      <div class="ans aeo-answer"><p>Avalanche is always cheaper on paper. Whether it is better depends on whether you finish. Run both above: if the avalanche saves a large amount, take the cheaper road. If the two are within a small margin — which is common when balances are similar — take the one whose first win arrives soonest, because a method you abandon in month four costs more than either.</p></div>
     </details>
     <details>
-      <summary>What should I do if To Assign goes negative?</summary>
-      <div class="ans aeo-answer"><p>Rebalance immediately rather than leaving it. A negative To Assign means the plan commits money you do not have, and every hour it stays negative is an hour you are budgeting fiction. Take the shortfall out of the largest want envelope first, then extras, and only then reduce a need. A plan that is honest and uncomfortable beats a plan that is comfortable and wrong.</p></div>
+      <summary>Should I pay off debt or save first?</summary>
+      <div class="ans aeo-answer"><p>The common sequence is a small starter emergency fund first, then aggressive debt payoff, then a full fund. The reasoning is mechanical rather than moral: with no buffer at all, the next unexpected expense goes back onto the card you are paying down, which undoes the progress and the motivation together. Once a small buffer exists, every spare unit is worth more against a high interest rate than in a low-yield account.</p></div>
     </details>
     <details>
-      <summary>How do I budget on an irregular or freelance income?</summary>
-      <div class="ans aeo-answer"><p>Budget the money that has already arrived, never the money you expect. Enter last month's actual take-home rather than an average, assign all of it, and repeat when the next payment lands. Over a few cycles the pattern in this tool becomes your floor, and anything above it goes to the extras envelopes. Forecast-based budgeting fails hardest exactly where income is least predictable.</p></div>
+      <summary>Does making extra payments actually help?</summary>
+      <div class="ans aeo-answer"><p>Substantially, and non-linearly. Interest accrues on the balance, so every extra unit paid early reduces every future interest charge on that balance. Move the extra-payment dial above and watch both the months and the interest fall — the effect of an extra amount is far larger than the amount itself, and it is largest on the highest-rate debt.</p></div>
     </details>
     <details>
-      <summary>Is this budget calculator private?</summary>
-      <div class="ans aeo-answer"><p>Yes, by architecture rather than by promise. Every calculation runs inside your own browser. The page sets no cookies, writes nothing to local storage, loads no analytics or advertising script, and makes no network request carrying your figures. Closing the tab destroys the data because there is nowhere else for it to be. Open your browser's developer tools and check the network and storage panels — that is the only kind of privacy claim worth making.</p></div>
-    </details>
-    <details>
-      <summary>How much should I save each month?</summary>
-      <div class="ans aeo-answer"><p>There is no universal number, and anyone quoting one is guessing about your life. What this tool gives you instead is your actual savings rate — the share of take-home pay going to extras — displayed in the centre of the ring as you move money. Watching that figure respond to a single cancelled want is more useful than a target, because it is yours, and because it moves when you do.</p></div>
+      <summary>Is this debt calculator private?</summary>
+      <div class="ans aeo-answer"><p>Yes, by architecture rather than by promise. Every calculation runs inside your own browser. The page sets no cookies, writes nothing to local storage, loads no analytics or advertising script, and makes no network request carrying your figures. Closing the tab destroys the data because there is nowhere else for it to be. Check the network and storage panels in your browser's developer tools — that is the only kind of privacy claim worth making.</p></div>
     </details>
   </div>
-
   <p class="tiny" style="margin-top:26px;max-width:74ch">
-    Educational and illustrative. Figures depend entirely on inputs you choose, and nothing here is financial
-    advice. The Brink Labs is a software lab, not a financial adviser.
+    Educational and illustrative. Real accounts vary in how interest is compounded, when it is posted, and how
+    minimum payments are recalculated, so treat these figures as a comparison between methods rather than a
+    statement about your specific accounts. Nothing here is financial advice.
   </p>
 </div>
 </section>
+
 
 </main>
 
@@ -925,361 +918,22 @@ html:not(.js) .tsw{ display:none }
   <div><p class="fh">MyneWallet</p><ul>
     <li><a href="/mynewallet/">Overview</a></li>
     <li><a href="/mynewallet/#pricing">Pricing</a></li>
-    <li><a href="/mynewallet/privacy.html">Privacy Policy</a></li>
+    <li><a href="/mynewallet/#faq">FAQ</a></li>
+    <li><a href="/tools/subscription-audit/">Subscription Audit</a></li>
     <li><a href="https://play.google.com/store/apps/details?id=com.thebrinklabs.mynewallet.expensetracker" target="_blank" rel="noopener">Google Play</a></li>
+  </ul></div>
+  <div><p class="fh">Legal &amp; Support</p><ul>
+    <li><a href="/mynewallet/privacy.html">Privacy Policy</a></li>
+    <li><a href="/mynewallet/privacy.html#api">API Data Usage</a></li>
+    <li><a href="mailto:support@thebrinklabs.com">support@thebrinklabs.com</a></li>
   </ul></div>
 </div>
 <div class="foot__base"><span>© 2026 The Brink Labs. All rights reserved.</span><span>Built offline, on purpose.</span></div>
 </div>
 </footer>
 
-
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script>
-(function(){
-"use strict";
-
-/* State is in-memory only: no localStorage, no cookie, no fetch. Reload wipes it. */
-var uid=0, S={ income:5000, cur:'USD', preset:'503020', envs:[] };
-var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-var $=function(s){ return document.querySelector(s); };
-
-var NATURE=[['need','Need'],['want','Want'],['extra','Extra']];
-var CURSYM={USD:'$',EUR:'€',GBP:'£',CAD:'$',AUD:'$',INR:'₹',BDT:'৳',JPY:'¥',AED:'د.إ'};
-var nf0,nf2;
-function setCur(c){
-  S.cur=c;
-  try{
-    nf0=new Intl.NumberFormat(undefined,{style:'currency',currency:c,maximumFractionDigits:0});
-    nf2=new Intl.NumberFormat(undefined,{style:'currency',currency:c,minimumFractionDigits:2,maximumFractionDigits:2});
-  }catch(e){
-    nf0={format:function(v){return CURSYM[c]+Math.round(v).toLocaleString();}};
-    nf2={format:function(v){return CURSYM[c]+v.toFixed(2);}};
-  }
-}
-setCur('USD');
-function m0(v){ return nf0.format(v||0); }
-function m2(v){ return nf2.format(v||0); }
-
-/* Presets are percentages of take-home. Each sums to exactly 100 except 'zero'. */
-var BASE=[
-  ['Housing & Bills','need'],['Groceries','need'],['Transport','need'],['Insurance','need'],
-  ['Dining & Fun','want'],['Shopping','want'],['Subscriptions','want'],
-  ['Emergency Fund','extra'],['Investing','extra'],['Debt Payoff','extra']
-];
-var PRESETS={
-  '503020':{ label:'50 / 30 / 20', pct:[28,12,7,3, 12,10,8, 8,8,4] },
-  'balanced':{ label:'Balanced 60/20/20', pct:[34,14,8,4, 8,7,5, 8,8,4] },
-  'payoff':{ label:'Debt Payoff 50/20/30', pct:[28,12,7,3, 8,7,5, 5,5,20] },
-  'zero':{ label:'Blank slate', pct:[0,0,0,0, 0,0,0, 0,0,0] }
-};
-
-function buildEnvs(key){
-  var p=PRESETS[key].pct, out=[];
-  for (var i=0;i<BASE.length;i++) out.push({id:++uid,name:BASE[i][0],nature:BASE[i][1],pct:p[i],amt:0,locked:false});
-  return out;
-}
-/* Distribute income by percentage, with the remainder landing on the last non-zero
-   row so the assigned total is exact to the cent rather than off by rounding. */
-function applyPreset(key){
-  S.preset=key; S.envs=buildEnvs(key);
-  var run=0, last=-1;
-  for (var i=0;i<S.envs.length;i++) if (S.envs[i].pct>0) last=i;
-  for (var j=0;j<S.envs.length;j++){
-    var e=S.envs[j];
-    if (e.pct<=0){ e.amt=0; continue; }
-    if (j===last){ e.amt=round2(S.income - run); }
-    else { e.amt=round2(S.income*e.pct/100); run=round2(run+e.amt); }
-  }
-}
-function round2(v){ return Math.round((v+Number.EPSILON)*100)/100; }
-function assigned(){ var t=0; for(var i=0;i<S.envs.length;i++) t=t+(Number(S.envs[i].amt)||0); return round2(t); }
-function toAssign(){ return round2(S.income - assigned()); }
-
-/* Scale unlocked envelopes so the shape survives an income change. */
-function rescale(oldInc, newInc){
-  var lockSum=0, freeSum=0, i;
-  for(i=0;i<S.envs.length;i++){ if(S.envs[i].locked) lockSum+=S.envs[i].amt; else freeSum+=S.envs[i].amt; }
-  var target=newInc-lockSum;
-  if (freeSum<=0 || target<=0) return;
-  var k=target/freeSum, run=0, last=-1;
-  for(i=0;i<S.envs.length;i++) if(!S.envs[i].locked && S.envs[i].amt>0) last=i;
-  for(i=0;i<S.envs.length;i++){
-    var e=S.envs[i]; if(e.locked||e.amt<=0) continue;
-    if(i===last) e.amt=round2(target-run); else { e.amt=round2(e.amt*k); run=round2(run+e.amt); }
-  }
-}
-
-/* Auto Assign: push the remainder across unlocked envelopes proportionally,
-   then land the rounding difference on one row so To Assign is exactly zero. */
-function autoAssign(){
-  var rest=toAssign(); if (Math.abs(rest)<0.005){ toast('Already at zero.'); return; }
-  var idx=[], sum=0, i;
-  for(i=0;i<S.envs.length;i++) if(!S.envs[i].locked){ idx.push(i); sum+=S.envs[i].amt; }
-  if(!idx.length){ toast('Every envelope is locked.'); return; }
-  if (sum<=0){
-    var each=round2(rest/idx.length), run=0;
-    for(i=0;i<idx.length;i++){
-      if(i===idx.length-1) S.envs[idx[i]].amt=round2(S.envs[idx[i]].amt+rest-run);
-      else { S.envs[idx[i]].amt=round2(S.envs[idx[i]].amt+each); run=round2(run+each); }
-    }
-  } else {
-    var run2=0;
-    for(i=0;i<idx.length;i++){
-      var e=S.envs[idx[i]];
-      if(i===idx.length-1) e.amt=round2(e.amt+rest-run2);
-      else { var d=round2(rest*(e.amt/sum)); e.amt=round2(Math.max(0,e.amt+d)); run2=round2(run2+d); }
-    }
-  }
-  paintEnvs(); render(); toast('Assigned to zero.');
-}
-
-/* ── rows ─────────────────────────────────────────────────────────────── */
-var envsEl=$('#envs');
-function opts(sel){ var h=''; for(var i=0;i<NATURE.length;i++) h+='<option value="'+NATURE[i][0]+'"'+(NATURE[i][0]===sel?' selected':'')+'>'+NATURE[i][1]+'</option>'; return h; }
-function makeRow(e){
-  var li=document.createElement('li');
-  li.className='env'; li.dataset.id=e.id; li.dataset.locked=e.locked?'1':'0';
-  li.innerHTML=
-    '<div class="f-n"><input type="text" aria-label="Envelope name" data-k="name" placeholder="Name this envelope"></div>'+
-    '<div class="f-t"><select aria-label="Nature" data-k="nature" data-nature="'+e.nature+'">'+opts(e.nature)+'</select></div>'+
-    '<div class="f-a"><span class="c">'+(CURSYM[S.cur]||'$')+'</span><input type="text" inputmode="decimal" aria-label="Amount" data-k="amt"></div>'+
-    '<div class="f-l"><button class="ico" type="button" data-a="lock" aria-pressed="'+(e.locked?'true':'false')+'" aria-label="Lock this amount">'+(e.locked?'■':'□')+'</button></div>'+
-    '<div class="f-x"><button class="ico kill" type="button" data-a="kill" aria-label="Remove envelope">×</button></div>';
-  li.querySelector('[data-k=name]').value=e.name;
-  li.querySelector('[data-k=amt]').value=e.amt?e.amt.toFixed(2):'';
-  return li;
-}
-function paintEnvs(){
-  var f=document.createDocumentFragment();
-  for(var i=0;i<S.envs.length;i++) f.appendChild(makeRow(S.envs[i]));
-  envsEl.replaceChildren(f);
-}
-function find(id){ for(var i=0;i<S.envs.length;i++) if(String(S.envs[i].id)===String(id)) return S.envs[i]; return null; }
-
-envsEl.addEventListener('input',function(ev){
-  var li=ev.target.closest('.env'); if(!li) return;
-  var e=find(li.dataset.id); if(!e) return;
-  var k=ev.target.dataset.k;
-  if(k==='amt'){
-    var c=ev.target.value.replace(/[^0-9.]/g,'').replace(/(\..*)\./g,'$1');
-    if(c!==ev.target.value) ev.target.value=c;
-    e.amt=round2(Number(c)||0);
-  } else if(k){ e[k]=ev.target.value; }
-  render();
-});
-envsEl.addEventListener('change',function(ev){
-  var li=ev.target.closest('.env'); if(!li) return;
-  var e=find(li.dataset.id); if(!e) return;
-  if(ev.target.dataset.k==='nature'){ e.nature=ev.target.value; ev.target.dataset.nature=e.nature; }
-  render();
-});
-envsEl.addEventListener('click',function(ev){
-  var b=ev.target.closest('.ico'); if(!b) return;
-  var li=b.closest('.env'), e=find(li.dataset.id); if(!e) return;
-  if(b.dataset.a==='kill'){ S.envs=S.envs.filter(function(x){return x.id!==e.id;}); li.remove(); render(); return; }
-  e.locked=!e.locked;
-  b.setAttribute('aria-pressed', e.locked?'true':'false');
-  b.textContent = e.locked?'■':'□';
-  li.dataset.locked = e.locked?'1':'0';
-});
-
-/* ── presets ──────────────────────────────────────────────────────────── */
-(function(){
-  var host=$('#pre'), f=document.createDocumentFragment();
-  for(var k in PRESETS){
-    var b=document.createElement('button');
-    b.type='button'; b.textContent=PRESETS[k].label; b.dataset.k=k;
-    b.setAttribute('aria-pressed', k===S.preset?'true':'false');
-    f.appendChild(b);
-  }
-  host.appendChild(f);
-  host.addEventListener('click',function(ev){
-    var b=ev.target.closest('button'); if(!b) return;
-    applyPreset(b.dataset.k);
-    var kids=host.children;
-    for(var i=0;i<kids.length;i++) kids[i].setAttribute('aria-pressed', kids[i].dataset.k===S.preset?'true':'false');
-    paintEnvs(); render();
-  });
-})();
-
-/* ── animated figures ─────────────────────────────────────────────────── */
-var anim={};
-function put(id,target,fmt){
-  var el=document.getElementById(id);
-  if(reduce){ el.textContent=fmt(target); return; }
-  var from=anim[id]==null?0:anim[id];
-  if(from===target){ el.textContent=fmt(target); return; }
-  anim[id]=target;
-  var t0=performance.now();
-  function step(t){
-    var p=Math.min(1,(t-t0)/380), e=1-Math.pow(1-p,3);
-    el.textContent=fmt(from+(target-from)*e);
-    if(p<1&&anim[id]===target) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-
-/* ── donut ────────────────────────────────────────────────────────────── */
-var C=2*Math.PI*54;
-function drawDonut(n,w,x,total){
-  var g=document.getElementById('segs');
-  var ns='http://www.w3.org/2000/svg';
-  var cols=['#00F28F','#22D3EE','#60A5FA'], vals=[n,w,x], run=0;
-  var frag=document.createDocumentFragment();
-  if(total>0){
-    for(var i=0;i<3;i++){
-      var f=vals[i]/total; if(f<=0){ run+=f; continue; }
-      var c=document.createElementNS(ns,'circle');
-      c.setAttribute('class','seg'); c.setAttribute('cx','70'); c.setAttribute('cy','70'); c.setAttribute('r','54');
-      c.setAttribute('stroke',cols[i]);
-      c.setAttribute('stroke-dasharray',(f*C).toFixed(2)+' '+(C-f*C).toFixed(2));
-      c.setAttribute('stroke-dashoffset',(-run*C).toFixed(2));
-      frag.appendChild(c); run+=f;
-    }
-  }
-  g.replaceChildren(frag);
-}
-
-/* ── render ───────────────────────────────────────────────────────────── */
-var lastState='over';
-function render(){
-  var n=0,w=0,x=0,i;
-  for(i=0;i<S.envs.length;i++){
-    var e=S.envs[i], a=Number(e.amt)||0;
-    if(e.nature==='need') n+=a; else if(e.nature==='want') w+=a; else x+=a;
-  }
-  var tot=round2(n+w+x), rest=toAssign();
-
-  var taEl=$('#ta'), lab=$('#talab');
-  var st = Math.abs(rest)<0.005 ? 'zero' : (rest>0?'over':'neg');
-  taEl.dataset.s=st;
-  lab.textContent = st==='zero' ? 'Every unit has a job' : (st==='over'?'Left to assign':'Over-assigned by');
-  put('ta', Math.abs(rest), m2);
-  if(st!==lastState && !reduce){
-    taEl.classList.remove('zap','nudge'); void taEl.offsetWidth;
-    taEl.classList.add(st==='zero'?'zap':(st==='neg'?'nudge':'zap'));
-  }
-  lastState=st;
-
-  drawDonut(n,w,x,tot);
-  var base = S.income>0 ? S.income : (tot||1);
-  $('#dcv').textContent = Math.round((x/base)*100)+'%';
-  $('#pn').textContent = tot>0?Math.round(n/tot*100)+'%':'0%';
-  $('#pw').textContent = tot>0?Math.round(w/tot*100)+'%':'0%';
-  $('#pe').textContent = tot>0?Math.round(x/tot*100)+'%':'0%';
-  $('#vn').textContent = m0(n); $('#vw').textContent = m0(w); $('#ve').textContent = m0(x);
-
-  put('daily', w/30.44, m2);
-  put('committed', n, m0);
-  put('year', x*12, m0);
-
-  var big=null;
-  for(i=0;i<S.envs.length;i++) if(!big||S.envs[i].amt>big.amt) big=S.envs[i];
-  var bEl=$('#biggest');
-  if(big&&big.amt>0){
-    bEl.textContent = (S.income>0?Math.round(big.amt/S.income*100)+'% ':'') ;
-    bEl.textContent += big.name||'Untitled';
-    bEl.style.fontSize = '17px';
-  } else { bEl.textContent='—'; bEl.style.fontSize=''; }
-
-  $('#envcount').textContent = S.envs.length + ' envelope' + (S.envs.length===1?'':'s');
-}
-
-/* ── income ───────────────────────────────────────────────────────────── */
-var incEl=$('#income');
-function readInc(){ return Math.max(0, Number(String(incEl.value).replace(/[^0-9.]/g,''))||0); }
-incEl.addEventListener('input',function(){
-  var c=incEl.value.replace(/[^0-9.,]/g,'');
-  if(c!==incEl.value) incEl.value=c;
-  var old=S.income, next=readInc();
-  S.income=next;
-  if(old>0&&next>0) rescale(old,next);
-  paintEnvs(); render();
-});
-incEl.addEventListener('blur',function(){
-  if(S.income>0) incEl.value=S.income.toLocaleString(undefined,{maximumFractionDigits:2});
-});
-$('#cur').addEventListener('change',function(ev){
-  setCur(ev.target.value);
-  $('#incCur').textContent=CURSYM[S.cur]||'$';
-  anim={}; paintEnvs(); render();
-});
-$('#auto').addEventListener('click',autoAssign);
-$('#add').addEventListener('click',function(){
-  S.envs.push({id:++uid,name:'',nature:'want',pct:0,amt:0,locked:false});
-  paintEnvs(); render();
-  var rows=envsEl.children; rows[rows.length-1].querySelector('[data-k=name]').focus();
-});
-$('#reset').addEventListener('click',function(){ applyPreset(S.preset); paintEnvs(); render(); toast('Preset restored.'); });
-$('#print').addEventListener('click',function(){ window.print(); });
-
-/* ── export ───────────────────────────────────────────────────────────── */
-function toast(msg){
-  var t=$('#toast'); t.textContent=msg; t.classList.add('on');
-  clearTimeout(toast._t); toast._t=setTimeout(function(){ t.classList.remove('on'); },2200);
-}
-function planText(){
-  var L=['ZERO-BASED BUDGET — thebrinklabs.com/tools/zero-based-budget/',''];
-  L.push('Take-home: '+m2(S.income));
-  L.push('Assigned:  '+m2(assigned()));
-  L.push('To Assign: '+m2(toAssign()));
-  L.push('');
-  var order={need:0,want:1,extra:2}, LBL={need:'NEED',want:'WANT',extra:'EXTRA'};
-  S.envs.slice().sort(function(a,b){ return (order[a.nature]-order[b.nature])||(b.amt-a.amt); })
-    .forEach(function(e){ if(e.amt>0) L.push('  ['+LBL[e.nature]+'] '+(e.name||'Untitled')+' — '+m2(e.amt)); });
-  L.push('');
-  L.push('Computed in-browser. Nothing was uploaded.');
-  return L.join('\n');
-}
-$('#copy').addEventListener('click',function(){
-  var t=planText();
-  if(navigator.clipboard&&navigator.clipboard.writeText){
-    navigator.clipboard.writeText(t).then(function(){toast('Plan copied.');},function(){fb(t);});
-  } else fb(t);
-});
-function fb(t){
-  var ta=document.createElement('textarea'); ta.value=t; ta.style.cssText='position:fixed;top:-1000px';
-  document.body.appendChild(ta); ta.select();
-  try{ document.execCommand('copy'); toast('Plan copied.'); }catch(e){ toast('Copy failed.'); }
-  ta.remove();
-}
-$('#csv').addEventListener('click',function(){
-  var q=function(s){ return '"'+String(s).replace(/"/g,'""')+'"'; };
-  var lines=['Envelope,Nature,Amount,PercentOfIncome,Currency'];
-  S.envs.forEach(function(e){
-    lines.push([q(e.name||'Untitled'),e.nature,e.amt.toFixed(2),
-      (S.income>0?(e.amt/S.income*100).toFixed(2):'0'),S.cur].join(','));
-  });
-  lines.push('');
-  lines.push([q('TAKE-HOME'),'',S.income.toFixed(2),'100',S.cur].join(','));
-  lines.push([q('TO ASSIGN'),'',toAssign().toFixed(2),'',S.cur].join(','));
-  var b=new Blob([lines.join('\n')],{type:'text/csv;charset=utf-8'});
-  var u=URL.createObjectURL(b), a=document.createElement('a');
-  a.href=u; a.download='zero-based-budget.csv';
-  document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(function(){URL.revokeObjectURL(u);},800);
-  toast('CSV downloaded.');
-});
-
-/* ── reveal fallback ──────────────────────────────────────────────────── */
-(function(){
-  if(CSS.supports('animation-timeline','view()')) return;
-  var els=document.querySelectorAll('.rv');
-  if(reduce||!('IntersectionObserver' in window)){ for(var i=0;i<els.length;i++) els[i].classList.add('in'); return; }
-  var io=new IntersectionObserver(function(es){
-    for(var i=0;i<es.length;i++) if(es[i].isIntersecting){ es[i].target.classList.add('in'); io.unobserve(es[i].target); }
-  },{rootMargin:'0px 0px -6% 0px',threshold:.05});
-  for(var j=0;j<els.length;j++) io.observe(els[j]);
-})();
-
-/* ── boot: a complete, correct plan is on screen before anything is typed ── */
-applyPreset('503020');
-paintEnvs();
-render();
-})();
-</script>
 <script>
 (function(){var d=document.documentElement,b=document.getElementById('tsw');if(!b)return;
 function paint(){var l=d.dataset.theme==='light';
@@ -1291,6 +945,283 @@ b.addEventListener('click',function(){var l=d.dataset.theme==='light';
   try{localStorage.setItem('bl-theme',d.dataset.theme);}catch(e){}
   paint();});
 paint();})();
+
+(function(){
+"use strict";
+/* In-memory only: no localStorage, no cookie, no fetch. Reload wipes it. */
+var uid=0, S={cur:'USD', extra:200, rows:[]};
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var $=function(s){return document.querySelector(s);};
+var CURSYM={USD:'$',EUR:'€',GBP:'£',CAD:'$',AUD:'$',INR:'₹',BDT:'৳',JPY:'¥',AED:'د.إ'};
+var nf0,nf2;
+function setCur(c){ S.cur=c;
+  try{ nf0=new Intl.NumberFormat(undefined,{style:'currency',currency:c,maximumFractionDigits:0});
+       nf2=new Intl.NumberFormat(undefined,{style:'currency',currency:c,minimumFractionDigits:2,maximumFractionDigits:2}); }
+  catch(e){ nf0={format:function(v){return CURSYM[c]+Math.round(v).toLocaleString();}};
+            nf2={format:function(v){return CURSYM[c]+v.toFixed(2);}}; } }
+setCur('USD');
+function m0(v){return nf0.format(v||0);} function m2(v){return nf2.format(v||0);}
+function r2(v){return Math.round((v+Number.EPSILON)*100)/100;}
+
+var SEED=[['Credit card','6200','24.9','155'],['Store card','900','18.9','30'],['Car loan','8600','6.9','245']];
+
+/* ── the simulation ──────────────────────────────────────────────────────
+   Monthly loop. Interest accrues on the balance, minimums are paid on every
+   debt, and the entire remaining pool is thrown at ONE target chosen by the
+   method. A cleared debt frees its minimum into the pool — that rolling
+   payment is shared by both methods; only the target order differs. */
+function simulate(list, extra, mode){
+  var d=list.map(function(x){return {name:x.name, bal:x.bal, apr:x.apr, min:x.min};});
+  var months=0, interest=0, paid=0, series=[], order=[], MAX=720;
+  var start=d.reduce(function(a,x){return a+x.bal;},0);
+  series.push(start);
+  var pool=d.reduce(function(a,x){return a+x.min;},0)+extra;
+  while(months<MAX){
+    var live=d.filter(function(x){return x.bal>0.005;});
+    if(!live.length) break;
+    /* accrue */
+    for(var i=0;i<live.length;i++){
+      var it=r2(live[i].bal*(live[i].apr/100/12));
+      live[i].bal=r2(live[i].bal+it); interest=r2(interest+it);
+    }
+    var budget=pool;
+    /* minimums first (never more than the balance) */
+    for(var j=0;j<live.length;j++){
+      var pay=Math.min(live[j].min, live[j].bal, budget);
+      live[j].bal=r2(live[j].bal-pay); budget=r2(budget-pay); paid=r2(paid+pay);
+    }
+    /* remainder to the single target, cascading if it clears mid-month */
+    var guard=0;
+    while(budget>0.005 && guard++<64){
+      var rem=d.filter(function(x){return x.bal>0.005;});
+      if(!rem.length) break;
+      rem.sort(mode==='av'
+        ? function(a,b){ return b.apr-a.apr || a.bal-b.bal; }
+        : function(a,b){ return a.bal-b.bal || b.apr-a.apr; });
+      var t=rem[0];
+      if(order.indexOf(t.name)<0) order.push(t.name);
+      var hit=Math.min(t.bal,budget);
+      t.bal=r2(t.bal-hit); budget=r2(budget-hit); paid=r2(paid+hit);
+    }
+    months++;
+    var tot=d.reduce(function(a,x){return a+Math.max(0,x.bal);},0);
+    series.push(tot);
+    /* If the balance has run away past 10x the opening figure the payment can never
+       clear it. Stop here: the numbers beyond this point are noise, and a 27-digit
+       total is an unbreakable string that would blow out the layout. */
+    if(tot>start*10 && start>0) return {months:months,interest:interest,paid:paid,series:series,order:order,done:false,start:start};
+    if(months>=MAX) break;
+  }
+  var done=d.every(function(x){return x.bal<=0.005;});
+  return {months:months, interest:interest, paid:paid, series:series, order:order, done:done, start:start};
+}
+
+/* ── rows ──────────────────────────────────────────────────────────────── */
+var rowsEl=$('#rows');
+function makeRow(r){
+  var li=document.createElement('li'); li.className='dbt'; li.dataset.id=r.id;
+  li.innerHTML=
+    '<div class="f-n"><input type="text" data-k="name" aria-label="Debt name" placeholder="What is it?"></div>'+
+    '<div class="f-b aff pre"><span class="s">'+(CURSYM[S.cur]||'$')+'</span><input type="text" inputmode="decimal" data-k="bal" aria-label="Balance" placeholder="0"></div>'+
+    '<div class="f-r aff suf"><span class="s">%</span><input type="text" inputmode="decimal" data-k="apr" aria-label="Annual interest rate" placeholder="0"></div>'+
+    '<div class="f-m aff pre"><span class="s">'+(CURSYM[S.cur]||'$')+'</span><input type="text" inputmode="decimal" data-k="min" aria-label="Minimum monthly payment" placeholder="0"></div>'+
+    '<div class="f-x"><button class="ico" type="button" aria-label="Remove this debt">×</button></div>';
+  li.querySelector('[data-k=name]').value=r.name;
+  li.querySelector('[data-k=bal]').value=r.bal; li.querySelector('[data-k=apr]').value=r.apr;
+  li.querySelector('[data-k=min]').value=r.min;
+  return li;
+}
+function paint(){ var f=document.createDocumentFragment();
+  for(var i=0;i<S.rows.length;i++) f.appendChild(makeRow(S.rows[i]));
+  rowsEl.replaceChildren(f); }
+function find(id){ for(var i=0;i<S.rows.length;i++) if(String(S.rows[i].id)===String(id)) return S.rows[i]; return null; }
+function addRow(v){ S.rows.push({id:++uid,name:v?v[0]:'',bal:v?v[1]:'',apr:v?v[2]:'',min:v?v[3]:''}); }
+
+rowsEl.addEventListener('input',function(e){
+  var li=e.target.closest('.dbt'); if(!li) return; var r=find(li.dataset.id); if(!r) return;
+  var k=e.target.dataset.k;
+  if(k==='name'){ r.name=e.target.value; }
+  else if(k){ var c=e.target.value.replace(/[^0-9.]/g,'').replace(/(\..*)\./g,'$1');
+    if(c!==e.target.value) e.target.value=c; r[k]=c; }
+  render();
+});
+rowsEl.addEventListener('click',function(e){
+  var b=e.target.closest('.ico'); if(!b) return;
+  var li=b.closest('.dbt');
+  S.rows=S.rows.filter(function(x){return String(x.id)!==li.dataset.id;});
+  li.remove(); render();
+});
+$('#add').addEventListener('click',function(){ addRow(null); paint(); render();
+  var k=rowsEl.children; k[k.length-1].querySelector('[data-k=name]').focus(); });
+$('#clear').addEventListener('click',function(){ S.rows=[]; rowsEl.replaceChildren(); anim={}; render(); });
+$('#cur').addEventListener('change',function(e){ setCur(e.target.value); anim={}; paint(); render(); });
+$('#print').addEventListener('click',function(){ window.print(); });
+
+/* ── animated figures ─────────────────────────────────────────────────── */
+var anim={};
+function put(id,target,fmt){
+  var el=document.getElementById(id);
+  if(reduce){ el.textContent=fmt(target); return; }
+  var from=anim[id]==null?0:anim[id];
+  if(from===target){ el.textContent=fmt(target); return; }
+  anim[id]=target; var t0=performance.now();
+  function step(t){ var p=Math.min(1,(t-t0)/380), e=1-Math.pow(1-p,3);
+    el.textContent=fmt(from+(target-from)*e);
+    if(p<1&&anim[id]===target) requestAnimationFrame(step); }
+  requestAnimationFrame(step);
+}
+function mo(v){ v=Math.round(v); if(v<=0) return '—';
+  var y=Math.floor(v/12), m=v%12;
+  return y? (y+'y '+(m?m+'m':'')).trim() : v+' mo'; }
+
+/* ── chart ─────────────────────────────────────────────────────────────── */
+function draw(a,s){
+  var g=document.getElementById('cg'), ns='http://www.w3.org/2000/svg';
+  if(!a || !a.series.length || a.start<=0){ g.replaceChildren(); return; }
+  var W=640,H=320,PL=54,PR=16,PT=14,PB=26;
+  var n=Math.max(a.series.length, s.series.length)-1;
+  /* balances GROW when the payment cannot cover the interest, so the scale must
+     come from the data rather than the opening balance, or the path escapes the box. */
+  var max=Math.max.apply(null,[a.start||1].concat(a.series,s.series))||1;
+  var x=function(i){return PL+(i/n)*(W-PL-PR);}, y=function(v){return H-PB-(v/max)*(H-PT-PB);};
+  var path=function(arr){ var d='',st=Math.max(1,Math.floor(arr.length/220));
+    for(var i=0;i<arr.length;i+=st) d+=(i?'L':'M')+x(i).toFixed(1)+' '+y(arr[i]).toFixed(1)+' ';
+    d+='L'+x(arr.length-1).toFixed(1)+' '+y(arr[arr.length-1]).toFixed(1); return d; };
+  var f=document.createDocumentFragment();
+  function el(t,at,cl){var e=document.createElementNS(ns,t);for(var k in at)e.setAttribute(k,at[k]);if(cl)e.setAttribute('class',cl);return e;}
+  for(var k2=0;k2<=3;k2++){ var v=max*k2/3, yy=y(v);
+    f.appendChild(el('line',{x1:PL,x2:W-PR,y1:yy.toFixed(1),y2:yy.toFixed(1)},'gl'));
+    var t=el('text',{x:0,y:(yy-5).toFixed(1)},'ax'); t.textContent=m0(v); f.appendChild(t); }
+  for(var j=0;j<=2;j++){ var i2=Math.round(n*j/2), tx=el('text',{x:(x(i2)-(j===2?52:0)).toFixed(1),y:H-6},'ax');
+    tx.textContent=(j===0?'NOW':'MONTH '+i2); f.appendChild(tx); }
+  /* avalanche first, dashed snowball on top: the two curves often coincide,
+     and the dashes are what makes the overlap readable rather than look like one line. */
+  f.appendChild(el('path',{d:path(a.series)},'av'));
+  f.appendChild(el('path',{d:path(s.series)},'sn'));
+  g.replaceChildren(f);
+}
+
+/* ── render ────────────────────────────────────────────────────────────── */
+var last=null;
+function render(){
+  var list=[];
+  for(var i=0;i<S.rows.length;i++){
+    var r=S.rows[i], bal=Number(r.bal)||0, apr=Number(r.apr)||0, min=Number(r.min)||0;
+    if(bal>0) list.push({name:r.name||'Untitled debt', bal:r2(bal), apr:apr, min:r2(min)});
+  }
+  var minsum=list.reduce(function(a,x){return a+x.min;},0);
+  $('#pool').textContent = list.length ? m0(minsum+S.extra)+' / mo total' : '—';
+
+  if(!list.length){
+    ['av-mo','sn-mo'].forEach(function(id){document.getElementById(id).textContent='—';});
+    ['av-int','av-tot','sn-int','sn-tot'].forEach(function(id){document.getElementById(id).textContent='—';});
+    $('#delta').textContent='—'; $('#delta-txt').textContent='Add a debt to compare the two methods.';
+    $('#ord').replaceChildren(); draw(null); anim={};
+    $('#w-av').hidden=true; $('#w-sn').hidden=true;
+    $('#m-av').dataset.win='0'; $('#m-sn').dataset.win='0';
+    last=null; return;
+  }
+
+  var a=simulate(list,S.extra,'av'), s=simulate(list,S.extra,'sn');
+  last={a:a,s:s,list:list};
+
+  var saved=r2(s.interest-a.interest), faster=s.months-a.months;
+  var ok=a.done&&s.done;
+  if(ok){
+    put('av-mo',a.months,mo); put('sn-mo',s.months,mo);
+    put('av-int',a.interest,m0); put('sn-int',s.interest,m0);
+    put('av-tot',a.paid,m0);     put('sn-tot',s.paid,m0);
+  }
+
+  if(ok){
+    $('#m-av').dataset.win = saved>0 ? '1':'0';
+    $('#m-sn').dataset.win = '0';
+    $('#w-av').hidden = !(saved>0);
+    $('#w-sn').hidden = true;
+  }
+
+  var stalled = !a.done || !s.done;
+  var box=$('#saving');
+  if(stalled){
+    ['av-mo','sn-mo','av-int','sn-int','av-tot','sn-tot'].forEach(function(id){
+      document.getElementById(id).textContent='—'; delete anim[id];
+    });
+    $('#w-av').hidden=true; $('#m-av').dataset.win='0';
+    box.style.borderColor='var(--alarm-24)';
+    $('#delta').textContent='Never';
+    $('#delta-txt').innerHTML='At this payment the balance does not clear — the interest is outrunning the payment. Raise the extra payment, or lower a rate, until both methods finish.';
+  } else {
+    box.style.borderColor='';
+    put('delta',saved,m0);
+    $('#delta-txt').innerHTML = saved>0.5
+      ? '<b>Avalanche saves you '+m2(saved)+' in interest</b>'+(faster>0? ' and finishes '+faster+' month'+(faster===1?'':'s')+' sooner':'')+'. Snowball clears its first debt sooner — that is what you trade.'
+      : 'Both methods cost the same here, because your debts are already in a similar order. Pick either and start.';
+  }
+
+  var ol=$('#ord'), f=document.createDocumentFragment();
+  a.order.forEach(function(nm){
+    var d=list.filter(function(x){return x.name===nm;})[0];
+    var li=document.createElement('li');
+    li.innerHTML='<b></b> — '+(d?d.apr.toFixed(1)+'% on '+m0(d.bal):'');
+    li.querySelector('b').textContent=nm;
+    f.appendChild(li);
+  });
+  ol.replaceChildren(f);
+  draw(a,s);
+}
+
+/* ── dial ──────────────────────────────────────────────────────────────── */
+(function(){
+  var el=$('#d-extra'), lab=$('#v-extra');
+  function sync(){ S.extra=Number(el.value); lab.textContent=m0(S.extra);
+    el.style.setProperty('--p', ((el.value-el.min)/(el.max-el.min)*100)+'%'); render(); }
+  el.addEventListener('input',sync); sync();
+})();
+
+/* ── export ────────────────────────────────────────────────────────────── */
+function toast(m){ var t=$('#toast'); t.textContent=m; t.classList.add('on');
+  clearTimeout(toast._t); toast._t=setTimeout(function(){t.classList.remove('on');},2200); }
+function planText(){
+  if(!last) return 'Nothing added yet.';
+  var L=['DEBT PAYOFF PLAN — thebrinklabs.com/tools/debt-payoff/',''];
+  L.push('Total owed: '+m2(last.a.start));
+  L.push('Minimums + extra: '+m2(last.list.reduce(function(a,x){return a+x.min;},0)+S.extra)+' / month');
+  L.push('');
+  L.push('AVALANCHE  '+last.a.months+' months, '+m2(last.a.interest)+' interest, '+m2(last.a.paid)+' total');
+  L.push('SNOWBALL   '+last.s.months+' months, '+m2(last.s.interest)+' interest, '+m2(last.s.paid)+' total');
+  L.push('');
+  L.push('Avalanche attack order:');
+  last.a.order.forEach(function(n,i){ L.push('  '+(i+1)+'. '+n); });
+  L.push('');
+  L.push('Computed in-browser. Nothing was uploaded.');
+  return L.join('\n');
+}
+$('#copy').addEventListener('click',function(){
+  var t=planText();
+  if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function(){toast('Plan copied.');},function(){fb(t);});
+  else fb(t);
+});
+function fb(t){ var ta=document.createElement('textarea'); ta.value=t; ta.style.cssText='position:fixed;top:-1000px';
+  document.body.appendChild(ta); ta.select();
+  try{document.execCommand('copy');toast('Plan copied.');}catch(e){toast('Copy failed.');} ta.remove(); }
+$('#csv').addEventListener('click',function(){
+  if(!last){ toast('Add a debt first.'); return; }
+  var q=function(x){return '"'+String(x).replace(/"/g,'""')+'"';};
+  var L=['Debt,Balance,APR,MinimumPayment,AvalancheOrder,Currency'];
+  last.list.forEach(function(d){ L.push([q(d.name),d.bal.toFixed(2),d.apr.toFixed(2),d.min.toFixed(2),last.a.order.indexOf(d.name)+1,S.cur].join(',')); });
+  L.push('');
+  L.push(['Method','Months','Interest','TotalPaid'].join(','));
+  L.push(['Avalanche',last.a.months,last.a.interest.toFixed(2),last.a.paid.toFixed(2)].join(','));
+  L.push(['Snowball',last.s.months,last.s.interest.toFixed(2),last.s.paid.toFixed(2)].join(','));
+  var b=new Blob([L.join('\n')],{type:'text/csv;charset=utf-8'}), u=URL.createObjectURL(b), a=document.createElement('a');
+  a.href=u; a.download='debt-payoff.csv'; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function(){URL.revokeObjectURL(u);},800); toast('CSV downloaded.');
+});
+
+/* ── boot: a working comparison before anything is typed ──────────────── */
+for(var z=0;z<SEED.length;z++) addRow(SEED[z]);
+paint(); render();
+})();
 </script>
 </body>
 </html>

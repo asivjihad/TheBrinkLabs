@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; manifest-src 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Subscription Bleed Audit — What Renting Software Really Costs | MyneWallet</title>
-<meta name="description" content="A free, private subscription cost calculator that runs entirely in your browser. Add what you pay, see the monthly bleed, the ten-year total, the cost per use of every service, and what that money would have become instead. Nothing is uploaded or stored.">
+<title>Subscription Bleed Audit — What Renting Really Costs</title>
+<meta name="description" content="Free subscription cost calculator. See the monthly bleed, the ten-year total, the cost per use of every service, and what that money would have become instead.">
 <link rel="canonical" href="https://thebrinklabs.com/tools/subscription-audit/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="theme-color" content="#030303">
@@ -27,6 +29,7 @@
 <link rel="icon" href="/mynewallet/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="manifest" href="/mynewallet/site.webmanifest">
+<link rel="alternate" type="text/markdown" href="https://thebrinklabs.com/tools/subscription-audit/index.md" title="Markdown version of this page">
 <link rel="alternate" type="text/markdown" href="https://thebrinklabs.com/llms.txt" title="llms.txt — LLM discovery protocol">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +38,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"></noscript>
 
-<script>document.documentElement.className+=" js";</script>
+<script>(function(d){try{var t=localStorage.getItem("bl-theme");if(t==="light"||t==="dark")d.dataset.theme=t;}catch(e){}d.className+=" js";})(document.documentElement);</script>
 
 <style>
 /* ============================================================================
@@ -47,10 +50,15 @@
   color-scheme: dark;
   --void:#030303; --plate:#0A0B0E; --plate-2:#101216; --raise:#15171C;
   --line:#1A1C22; --line-hi:#282B33;
-  --ink:#FAFAFA; --ink-2:#9CA3AF; --ink-3:#6B7280;
+  --ink:#FAFAFA; --ink-2:#9CA3AF; --ink-3:#8A919F;
   --brand:#00F28F; --brand-2:#22D3EE; --brand-3:#60A5FA;
   --brand-deep:#00B268; --alarm:#FB7185; --amber:#FBBF24;
   --grad: linear-gradient(var(--ang), var(--brand) 0%, var(--brand) 22%, var(--brand-2) 74%, var(--brand-3) 100%);
+  --sheen: inset 0 1px 0 rgba(255,255,255,.045);
+  --sheen-hi: inset 0 1px 0 rgba(255,255,255,.06);
+  --well: rgba(255,255,255,.02); --th-bg: rgba(255,255,255,.016);
+  --track:#191C22; --dot: rgba(255,255,255,.10); --sel-fg:#03110A;
+  --shadow: 0 18px 44px -18px #000; --amb-a:11%; --amb-b:9%; --amb-c:6%; --dot-o:.55;
   --brand-6: color-mix(in oklab, var(--brand) 6%, transparent);
   --brand-12: color-mix(in oklab, var(--brand) 12%, transparent);
   --brand-24: color-mix(in oklab, var(--brand) 24%, transparent);
@@ -77,14 +85,14 @@ body{
 body::before{
   content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
   background:
-    radial-gradient(72rem 40rem at 8% -12%, color-mix(in oklab,var(--brand) 11%,transparent), transparent 62%),
-    radial-gradient(60rem 36rem at 96% 2%, color-mix(in oklab,var(--brand-2) 9%,transparent), transparent 58%),
-    radial-gradient(50rem 40rem at 50% 108%, color-mix(in oklab,var(--brand-3) 6%,transparent), transparent 62%),
+    radial-gradient(72rem 40rem at 8% -12%, color-mix(in oklab,var(--brand) var(--amb-a),transparent), transparent 62%),
+    radial-gradient(60rem 36rem at 96% 2%, color-mix(in oklab,var(--brand-2) var(--amb-b),transparent), transparent 58%),
+    radial-gradient(50rem 40rem at 50% 108%, color-mix(in oklab,var(--brand-3) var(--amb-c),transparent), transparent 62%),
     var(--void);
 }
 body::after{
-  content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.55;
-  background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.10) 1px, transparent 0);
+  content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:var(--dot-o);
+  background-image:radial-gradient(circle at 1px 1px, var(--dot) 1px, transparent 0);
   background-size:34px 34px;
   -webkit-mask-image:radial-gradient(120% 80% at 50% 0%, #000 0%, transparent 70%);
   mask-image:radial-gradient(120% 80% at 50% 0%, #000 0%, transparent 70%);
@@ -93,7 +101,7 @@ img,svg{ display:block; max-width:100% }
 a{ color:inherit; text-decoration:none }
 p{ margin:0 0 1.05em; text-wrap:pretty }
 strong,b{ font-weight:700; color:var(--ink) }
-::selection{ background:var(--brand); color:#03110A }
+::selection{ background:var(--brand); color:var(--sel-fg) }
 :focus-visible{ outline:2px solid var(--brand); outline-offset:3px; border-radius:8px }
 
 .sprite{ position:absolute; width:0; height:0; overflow:hidden }
@@ -165,10 +173,10 @@ h1,h2,h3{ margin:0; text-wrap:balance }
 
 .card{ position:relative; overflow:hidden; border-radius:var(--r-lg); border:1px solid var(--line);
   background:linear-gradient(180deg,var(--plate-2),var(--plate)); padding:clamp(22px,2.5vw,30px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.045);
+  box-shadow:var(--sheen);
   transition:border-color var(--t), transform var(--t), box-shadow var(--t) }
 .card--hover:hover{ border-color:var(--brand-24); transform:translateY(-3px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 20px 50px -30px var(--brand-24) }
+  box-shadow:var(--sheen-hi), 0 20px 50px -30px var(--brand-24) }
 .card > .i{ width:26px; height:26px; color:var(--brand); margin-bottom:16px }
 .card h3{ margin:0 0 8px }
 .card p{ margin:0; color:var(--ink-2); font-size:15.5px; line-height:1.6 }
@@ -193,12 +201,12 @@ h1,h2,h3{ margin:0; text-wrap:balance }
 .flist li b{ color:var(--ink) }
 
 .tablewrap{ overflow-x:auto; border:1px solid var(--line); border-radius:var(--r-lg);
-  background:linear-gradient(180deg,var(--plate-2),var(--plate)); box-shadow:inset 0 1px 0 rgba(255,255,255,.045) }
+  background:linear-gradient(180deg,var(--plate-2),var(--plate)); box-shadow:var(--sheen) }
 table{ width:100%; border-collapse:collapse; min-width:640px; font-size:15px }
 th,td{ text-align:left; padding:15px 20px; border-bottom:1px solid var(--line) }
-thead th{ font-size:10.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); background:rgba(255,255,255,.016) }
+thead th{ font-size:10.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); background:var(--th-bg) }
 tbody tr:last-child td{ border-bottom:0 }
-td.k{ color:var(--ink); font-weight:700 }
+td.k,th.k{ color:var(--ink); font-weight:700 }
 
 .faq{ border-top:1px solid var(--line) }
 .faq details{ border-bottom:1px solid var(--line) }
@@ -241,7 +249,8 @@ td.k{ color:var(--ink); font-weight:700 }
 
 .foot{ border-top:1px solid var(--line); padding-block:clamp(44px,5vw,64px) 30px; margin-top:clamp(48px,7vw,96px);
   container-type:inline-size; container-name:page }
-.foot__grid{ display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:34px }
+.foot__grid{ display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr 1fr; gap:34px }
+@container page (max-width:1080px){ .foot__grid{ grid-template-columns:1.4fr 1fr 1fr 1fr } }
 @container page (max-width:860px){ .foot__grid{ grid-template-columns:1fr 1fr } }
 @container page (max-width:520px){ .foot__grid{ grid-template-columns:1fr } }
 .foot .fh{ font-size:10.5px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-3); margin:0 0 15px }
@@ -262,7 +271,7 @@ td.k{ color:var(--ink); font-weight:700 }
 @container page (max-width:960px){ .inst{ grid-template-columns:1fr } }
 
 .pane{ border:1px solid var(--line); border-radius:var(--r-lg);
-  background:linear-gradient(180deg,var(--plate-2),var(--plate)); box-shadow:inset 0 1px 0 rgba(255,255,255,.045);
+  background:linear-gradient(180deg,var(--plate-2),var(--plate)); box-shadow:var(--sheen);
   padding:clamp(18px,2.2vw,26px) }
 .pane__h{ display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:16px }
 .pane__t{ font-size:10.5px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-3) }
@@ -280,7 +289,7 @@ td.k{ color:var(--ink); font-weight:700 }
 .rows{ list-style:none; margin:16px 0 0; padding:0; display:flex; flex-direction:column; gap:8px }
 .sub{ display:grid; grid-template-columns:minmax(104px,1fr) 82px 84px 98px 30px;
   grid-template-areas:"n a c f x"; gap:6px; align-items:center;
-  border:1px solid var(--line); border-radius:14px; padding:8px 8px 8px 12px; background:rgba(255,255,255,.012);
+  border:1px solid var(--line); border-radius:14px; padding:8px 8px 8px 12px; background:var(--well);
   transition:border-color var(--t), background var(--t) }
 .sub:focus-within{ border-color:var(--brand-24); background:var(--brand-6) }
 .sub[data-v="zombie"]{ border-color:var(--alarm-24) }
@@ -297,12 +306,12 @@ td.k{ color:var(--ink); font-weight:700 }
   font-variant-numeric:tabular-nums;
 }
 .sub input::placeholder{ color:var(--ink-3); font-weight:500 }
-.sub input:focus,.sub select:focus{ outline:none; background:rgba(255,255,255,.04) }
+.sub input:focus,.sub select:focus{ outline:none; background:color-mix(in oklab,var(--ink) 5%,transparent) }
 .sub select{ appearance:none; cursor:pointer; color:var(--ink-2); font-size:13px;
   background-image:linear-gradient(45deg,transparent 50%,var(--ink-3) 50%),linear-gradient(135deg,var(--ink-3) 50%,transparent 50%);
   background-position:calc(100% - 13px) 50%, calc(100% - 8px) 50%; background-size:5px 5px,5px 5px;
   background-repeat:no-repeat; padding-right:24px }
-.sub select option{ background:#101216; color:#FAFAFA }
+.sub select option{ background:var(--plate-2); color:var(--ink) }
 .f-a{ position:relative }
 .f-a input{ padding-left:20px; text-align:right }
 .f-a .cur{ position:absolute; left:8px; top:50%; transform:translateY(-50%); font-size:13px; font-weight:700; color:var(--ink-3); pointer-events:none }
@@ -315,8 +324,8 @@ td.k{ color:var(--ink); font-weight:700 }
   border:1px solid var(--line-hi); background:var(--ink-glass); color:var(--ink-2);
   transition:color var(--t), border-color var(--t), background var(--t), transform var(--t) }
 .btn:hover{ color:var(--ink); border-color:var(--brand-24); background:var(--brand-6); transform:translateY(-1px) }
-.btn--key{ color:#03110A; background:var(--brand); border-color:transparent }
-.btn--key:hover{ color:#03110A; background:var(--brand); filter:brightness(1.08) }
+.btn--key{ color:var(--sel-fg); background:var(--brand); border-color:transparent }
+.btn--key:hover{ color:var(--sel-fg); background:var(--brand); filter:brightness(1.08) }
 .btn--ghost{ border-color:var(--line); }
 .btn[disabled]{ opacity:.4; cursor:not-allowed; transform:none }
 
@@ -327,11 +336,11 @@ td.k{ color:var(--ink); font-weight:700 }
   font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); margin-bottom:7px }
 .dial label b{ color:var(--brand); font-size:13px; letter-spacing:0; text-transform:none; font-variant-numeric:tabular-nums }
 .dial input[type=range]{ -webkit-appearance:none; appearance:none; width:100%; height:4px; border-radius:99px;
-  background:linear-gradient(90deg,var(--brand) var(--p,50%), #1D2027 var(--p,50%)); cursor:pointer }
+  background:linear-gradient(90deg,var(--brand) var(--p,50%), var(--track) var(--p,50%)); cursor:pointer }
 .dial input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:16px; height:16px; border-radius:50%;
-  background:var(--ink); border:3px solid var(--brand-deep); box-shadow:0 2px 8px rgba(0,0,0,.5); cursor:grab }
+  background:var(--ink); border:3px solid var(--brand-deep); box-shadow:0 2px 8px color-mix(in oklab,var(--void) 62%,transparent); cursor:grab }
 .dial input[type=range]::-moz-range-thumb{ width:16px; height:16px; border-radius:50%; background:var(--ink);
-  border:3px solid var(--brand-deep); box-shadow:0 2px 8px rgba(0,0,0,.5); cursor:grab }
+  border:3px solid var(--brand-deep); box-shadow:0 2px 8px color-mix(in oklab,var(--void) 62%,transparent); cursor:grab }
 .dial input[type=range]:active::-webkit-slider-thumb{ cursor:grabbing }
 
 /* verdict */
@@ -339,22 +348,22 @@ td.k{ color:var(--ink); font-weight:700 }
 @container page (max-width:960px){ .verdict{ position:static } }
 .big{ font-size:clamp(40px,7.2vw,62px); font-weight:800; letter-spacing:-.05em; line-height:.98;
   font-variant-numeric:tabular-nums; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent }
-.big--alarm{ background:linear-gradient(100deg,var(--alarm),#F0A0A8); -webkit-background-clip:text; background-clip:text; color:transparent }
+.big--alarm{ background:linear-gradient(100deg,var(--alarm),color-mix(in oklab,var(--alarm) 62%,var(--ink-2))); -webkit-background-clip:text; background-clip:text; color:transparent }
 .vsub{ font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-3); margin:0 0 6px }
 .split{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:18px }
-.mini{ border:1px solid var(--line); border-radius:14px; padding:13px 15px; background:rgba(255,255,255,.014) }
+.mini{ border:1px solid var(--line); border-radius:14px; padding:13px 15px; background:var(--well) }
 .mini .n{ font-size:22px; font-weight:800; letter-spacing:-.03em; font-variant-numeric:tabular-nums }
 .mini .l{ font-size:10px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); margin-top:4px }
 .mini .n.alarm{ color:var(--alarm) }
 .mini .n.good{ color:var(--brand) }
 
-.stack{ display:flex; height:9px; border-radius:99px; overflow:hidden; background:#191C22; margin-top:18px }
+.stack{ display:flex; height:9px; border-radius:99px; overflow:hidden; background:var(--track); margin-top:18px }
 .stack i{ display:block; height:100%; transition:width .4s var(--ease) }
 
 /* shadow chart */
 .chartwrap{ position:relative; margin-top:6px }
 .chart{ width:100%; height:auto; aspect-ratio:16/8.4; display:block; overflow:visible }
-.chart .gl{ stroke:#1A1C22; stroke-width:1 }
+.chart .gl{ stroke:var(--line); stroke-width:1 }
 .chart .ax{ fill:var(--ink-3); font-size:9.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase }
 .chart .paid{ fill:none; stroke:var(--alarm); stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round }
 .chart .fv{ fill:none; stroke:url(#gl-brand); stroke-width:2.8; stroke-linecap:round; stroke-linejoin:round }
@@ -389,7 +398,7 @@ th.right{ text-align:right }
 
 .toast{ position:fixed; inset:auto 0 26px 0; margin-inline:auto; width:max-content; max-width:calc(100% - 40px);
   background:var(--raise); border:1px solid var(--brand-24); color:var(--ink); font-size:14px; font-weight:600;
-  padding:12px 20px; border-radius:999px; box-shadow:0 18px 44px -18px #000; z-index:120;
+  padding:12px 20px; border-radius:999px; box-shadow:var(--shadow); z-index:120;
   opacity:0; transform:translateY(12px); pointer-events:none; transition:opacity .25s var(--ease), transform .25s var(--ease) }
 .toast.on{ opacity:1; transform:none }
 
@@ -397,6 +406,45 @@ th.right{ text-align:right }
   body::before,body::after,.nav,.foot,.cat,.addrow,.btn,.dials{ display:none !important }
   body{ background:#fff; color:#000 } .pane,.card,.tablewrap{ border-color:#ccc; background:#fff }
 }
+.sr-only{ position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden;
+  clip-path:inset(50%); white-space:nowrap }
+
+/* ── LIGHT THEME — opt-in only, set by the visitor via the nav switch ───── */
+:root[data-theme="light"]{
+  color-scheme: light;
+  --void:#F6F6F3; --plate:#FFFFFF; --plate-2:#FBFBF9; --raise:#FFFFFF;
+  --line:#E5E5E0; --line-hi:#D3D3CC;
+  --ink:#0A0B0D; --ink-2:#4F555E; --ink-3:#5A606A;
+  --brand:#00754D; --brand-2:#0B6E80; --brand-3:#2158C4;
+  --brand-deep:#00543A; --alarm:#C2334A; --amber:#8A5B00;
+  --ink-glass: color-mix(in oklab, #0A0B0D 3%, transparent);
+  --sheen: inset 0 1px 0 rgba(255,255,255,.9), 0 1px 2px rgba(16,18,22,.05);
+  --sheen-hi: inset 0 1px 0 rgba(255,255,255,.9), 0 1px 2px rgba(16,18,22,.06);
+  --well: rgba(10,11,13,.024); --th-bg: rgba(10,11,13,.028);
+  --track:#E7E7E2; --dot: rgba(10,12,16,.10); --sel-fg:#FFFFFF;
+  --shadow: 0 18px 44px -22px rgba(16,18,22,.30);
+  --amb-a:7%; --amb-b:6%; --amb-c:5%; --dot-o:.42;
+}
+:root[data-theme="light"] body::before{
+  background:
+    radial-gradient(72rem 40rem at 8% -12%, color-mix(in oklab,var(--brand) var(--amb-a),transparent), transparent 62%),
+    radial-gradient(60rem 36rem at 96% 2%, color-mix(in oklab,var(--brand-2) var(--amb-b),transparent), transparent 58%),
+    radial-gradient(50rem 40rem at 50% 108%, color-mix(in oklab,var(--brand-3) var(--amb-c),transparent), transparent 62%),
+    var(--void);
+}
+:root[data-theme="light"] .card--hover:hover{
+  box-shadow:var(--sheen-hi), 0 20px 44px -28px rgba(16,18,22,.34) }
+:root[data-theme="light"] .play:hover{ filter:drop-shadow(0 8px 20px rgba(16,18,22,.20)) }
+:root[data-theme="light"] .tag--live{ background:color-mix(in oklab,var(--brand) 9%,transparent) }
+.tsw{ flex:0 0 auto; display:inline-grid; place-items:center; width:36px; height:36px; padding:0;
+  border:1px solid var(--line-hi); border-radius:11px; background:var(--ink-glass); color:var(--ink-2);
+  cursor:pointer; font:inherit; transition:color var(--t), border-color var(--t), background var(--t) }
+.tsw:hover{ color:var(--brand); border-color:var(--brand-24); background:var(--brand-6) }
+.tsw svg{ width:17px; height:17px; grid-area:1/1 }
+.tsw .i-l{ display:none }
+:root[data-theme="light"] .tsw .i-l{ display:block }
+:root[data-theme="light"] .tsw .i-d{ display:none }
+html:not(.js) .tsw{ display:none }
 </style>
 
 <script type="application/ld+json">
@@ -625,8 +673,7 @@ th.right{ text-align:right }
 <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13.2 2.4 4.6 13.6h6.2L10 21.6l8.8-11.2h-6.3l.7-8Z"/></symbol>
 <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.6 20.4h16.8"/><path d="M6.6 20.4v-7.2M11 20.4V6.2M15.4 20.4v-10M19.8 20.4V9"/></symbol>
 <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4.4" y="10.2" width="15.2" height="11.2" rx="3"/><path d="M8.2 10.2V7.4a3.8 3.8 0 0 1 7.6 0v2.8"/><path d="M12 15v2.2"/></symbol>
-<symbol id="i-infinity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8.2a3.8 3.8 0 1 0 0 7.6c2.6 0 4-2.5 5-3.8 1-1.3 2.4-3.8 5-3.8a3.8 3.8 0 1 1 0 7.6c-2.6 0-4-2.5-5-3.8"/></symbol>
-</svg>
+<symbol id="i-infinity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8.2a3.8 3.8 0 1 0 0 7.6c2.6 0 4-2.5 5-3.8 1-1.3 2.4-3.8 5-3.8a3.8 3.8 0 1 1 0 7.6c-2.6 0-4-2.5-5-3.8"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.4M12 19v2.4M4.4 12H2M22 12h-2.4M6.4 6.4 4.7 4.7M19.3 19.3l-1.7-1.7M17.6 6.4l1.7-1.7M4.7 19.3l1.7-1.7"/></symbol><symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 14.6A8.6 8.6 0 0 1 9.4 3.6a8.6 8.6 0 1 0 11 11Z"/></symbol></svg>
 
 <a class="skip" href="#instrument">Skip to the calculator</a>
 
@@ -643,6 +690,7 @@ th.right{ text-align:right }
     <a href="#answers">Answers</a>
     <a href="/mynewallet/">MyneWallet</a>
   </nav>
+  <button class="tsw" id="tsw" type="button" aria-pressed="false" aria-label="Switch to light theme"><svg class="i-d" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-moon"></use></svg><svg class="i-l" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-sun"></use></svg></button>
   <a class="play play--sm" href="https://play.google.com/store/apps/details?id=com.thebrinklabs.mynewallet.expensetracker" target="_blank" rel="noopener" aria-label="Get MyneWallet on Google Play"><svg viewBox="0 0 646 250" role="img" aria-hidden="true"><use href="#gplay"></use></svg></a>
 </div>
 </header>
@@ -980,6 +1028,15 @@ th.right{ text-align:right }
     <li><a href="/#deployments">Deployments</a></li>
     <li><a href="/#standard">Engineering Standard</a></li>
   </ul></div>
+  <div><p class="fh">Free Tools</p><ul>
+    <li><a href="/tools/">All Instruments</a></li>
+    <li><a href="/tools/zero-based-budget/">Zero-Based Budget</a></li>
+    <li><a href="/tools/subscription-audit/">Subscription Audit</a></li>
+    <li><a href="/tools/debt-payoff/">Debt Payoff</a></li>
+    <li><a href="/tools/emergency-fund/">Emergency Fund</a></li>
+    <li><a href="/tools/true-hourly-wage/">True Hourly Wage</a></li>
+    <li><a href="/tools/net-worth/">Net Worth</a></li>
+  </ul></div>
   <div><p class="fh">MyneWallet</p><ul>
     <li><a href="/mynewallet/">Overview</a></li>
     <li><a href="/mynewallet/#pricing">Pricing</a></li>
@@ -1106,13 +1163,12 @@ function markRows(){
   }
 }
 
-function addRow(name){
+function addRow(name, focusIt){
   var r = {id:++uid, name:name||'', amt:'', cyc:'m', freq:'monthly'};
   S.rows.push(r);
   var li = makeRow(r);
   rowsEl.appendChild(li);
-  var target = li.querySelector(name ? '[data-k=amt]' : '[data-k=name]');
-  target.focus();
+  if (focusIt !== false) li.querySelector(name ? '[data-k=amt]' : '[data-k=name]').focus();
   render();
 }
 
@@ -1241,7 +1297,7 @@ function paintLedger(live){
   for (var i=0;i<sorted.length;i++){
     var s = sorted[i], tr = document.createElement('tr');
     tr.innerHTML =
-      '<td class="k"></td>'+
+      '<th scope="row" class="k"></th>'+
       '<td class="right">'+m2(s.mo)+'</td>'+
       '<td class="right">'+m2(s.mo*12)+'</td>'+
       '<td class="right">'+(s.cpu===Infinity?'∞':(s.cpu==null?'—':m2(s.cpu)))+'</td>'+
@@ -1440,9 +1496,21 @@ $('#csv').addEventListener('click', function(){
 })();
 
 /* ── boot ──────────────────────────────────────────────────────────────── */
-addRow('');
+addRow('', false);   /* seed row: never steal focus or scroll on load */
 render();
 })();
+</script>
+<script>
+(function(){var d=document.documentElement,b=document.getElementById('tsw');if(!b)return;
+function paint(){var l=d.dataset.theme==='light';
+  b.setAttribute('aria-pressed',l?'true':'false');
+  b.setAttribute('aria-label',l?'Switch to dark theme':'Switch to light theme');
+  var m=document.querySelector('meta[name=theme-color]');if(m)m.content=l?'#F6F6F3':'#030303';}
+b.addEventListener('click',function(){var l=d.dataset.theme==='light';
+  d.dataset.theme=l?'dark':'light';
+  try{localStorage.setItem('bl-theme',d.dataset.theme);}catch(e){}
+  paint();});
+paint();})();
 </script>
 </body>
 </html>
