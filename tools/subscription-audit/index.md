@@ -1,17 +1,17 @@
-# Subscription Bleed Audit — What Renting Really Costs
+# Subscription Audit — What Renting Really Costs
 
-> Free subscription cost calculator. See the monthly bleed, the ten-year total, the cost per use of every service, and what that money would have become instead.
+> Add every subscription to see the monthly bleed, the cost per actual use, and what a decade of those payments would have become instead.
 
 Canonical: https://thebrinklabs.com/tools/subscription-audit/  
 Source: The Brink Labs · support@thebrinklabs.com · Last reviewed 2026-09-07
 
 ---
 
-Free Tool · Runs In Your Browser
+Instrument 02 · Stop the leaks
 
 ## What Is Renting Actually Costing You?
 
-Add every subscription you pay for. This page normalises the billing cycles, compounds the annual price rises, ranks each service by what it costs you per actual use, and shows the one number nobody puts on an invoice — what that money would have become if you had kept it. Nothing is uploaded. Nothing is stored. There are no cookies on this page.
+Nobody decides to spend $1,164 a year on subscriptions. It arrives $12.99 at a time, and the invoice never shows the total. Add every recurring charge and this page normalises the cycles, prices each service by what it costs you per actual use, and tells you what the habit costs over a decade.
 These add a row with an empty price on purpose. We don’t quote other companies’ prices — they change, they differ by country, and a wrong number is worse than no number. Type what you actually pay.
 Defaults are ordinary long-run assumptions, not predictions, and every one of them is yours to change. Set the return to 0% and the tool simply stops counting forgone growth. This is arithmetic that illustrates a trade-off — it is not investment advice, and no return is guaranteed.
 Bleeding every month
@@ -38,12 +38,12 @@ A subscription you never see again is not saved money. It is unassigned money.
 - Every freed dollar gets a destination. Zero-based envelopes mean the money you just recovered is assigned before it evaporates.
 - Bought once. The app that tells you subscriptions are expensive is not, itself, a subscription.
 Illustrative of the in-app obligations view.
-Free Forever · One-Time PRO Unlock · Android
+Where It Goes Next
 
-## Stop Renting. Start Owning.
+## You Found Them Once. They Renew Anyway.
 
-MyneWallet tracks every obligation on your own device — no account, no bank login, no monthly rent. Give the money you just recovered a job before it finds one of its own.
-Free to download. No advertisements. No trial expiry.
+An audit is a snapshot. The charges keep arriving, the prices quietly rise, and the trial you meant to cancel bills in eleven days. MyneWallet holds every recurring charge as a real record with a renewal date and price-change detection, so the next one is expected rather than discovered.
+Android. One-time unlock for the full engine. No subscription, ever.
 Straight Answers
 
 ## Subscription Maths, Answered Plainly.
@@ -79,6 +79,12 @@ Track them as scheduled obligations rather than as surprises. A recurring charge
 
 Only for services you have already proven you use. Annual billing typically discounts the monthly rate by ten to twenty percent, but it converts a decision you revisit twelve times a year into one you revisit once — which is precisely the mechanism that creates zombie subscriptions. Run this audit first. Pay annually for what survives it; stay monthly on anything you are still deciding about.
 Educational and illustrative. Figures depend entirely on assumptions you choose, no investment return is guaranteed, and nothing here is financial advice. The Brink Labs is a software lab, not a financial adviser.
+Next Instrument
+
+## Emergency Fund Calculator
+
+Savings divided by the month you cannot avoid.
+All 6 instruments
 
 ---
 

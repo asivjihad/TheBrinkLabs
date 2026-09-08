@@ -1,17 +1,17 @@
-# True Hourly Wage Calculator — What An Hour Really Pays
+# True Hourly Wage Calculator — What An Hour Pays
 
-> Free true hourly wage calculator. Subtract unpaid overtime, commuting and work-only costs from take-home pay to see what an hour of your life actually earns.
+> Subtract unpaid overtime, commuting and work-only costs from take-home pay to find your real hourly rate, then price any purchase in hours.
 
 Canonical: https://thebrinklabs.com/tools/true-hourly-wage/  
 Source: The Brink Labs · support@thebrinklabs.com · Last reviewed 2026-09-07
 
 ---
 
-Free Tool · True Hourly Wage Calculator
+Instrument 05 · Price your hours
 
 ## What An Hour Of Your Life Actually Pays.
 
-Your stated wage divides pay by contracted hours. It ignores the commute you are not paid for, the overtime you do not bill, and the costs you carry only because you have a job. Subtract those and the real figure appears — usually a good deal lower. Nothing is uploaded. Nothing is stored. No cookies.
+Your stated wage divides pay by contracted hours. It ignores the commute you are not paid for, the overtime you do not bill, and the costs that exist only because you have a job. Subtract those and the real rate appears — usually a third lower, and far harder to argue with.
 Count the round trip, plus any getting-ready time that only exists because you go to work. These hours are spent on the job whether or not anyone pays for them.
 Childcare, parking, tools, a second car, courses you would not otherwise take. Only what disappears the day the job does.
 - Pay in your hand—
@@ -22,13 +22,12 @@ Childcare, parking, tools, a second car, courses you would not otherwise take. O
 What does something really cost?
 Enter a monthly price to see it in hours of your life.
 Take-home pay is used deliberately: tax has already gone, so this is the money that reaches you. Paid hours are contracted hours × 52 ÷ 12, which spreads the year evenly rather than assuming four-week months.
-Next Step
+Where It Goes Next
 
-## Now Price Everything In Hours.
+## One Rate. Every Purchase.
 
-Once you know the real rate, every recurring charge has a second price tag measured in hours of your life. MyneWallet tracks those charges as first-class obligations and flags a renewal that comes back higher — on your own device, with no account and no bank login.
-Free forever. One-time PRO unlock. No subscription, ever.
-Run the audit
+The number is only useful when it is in front of you at the moment you are deciding. MyneWallet classifies every expense as a Need, a Want or an Extra and shows what the Wants actually cost you — the same arithmetic, applied continuously rather than once.
+Android. One-time unlock for the full engine. No subscription, ever.
 Straight Answers
 
 ## Real Wages, Answered Plainly.
@@ -57,6 +56,12 @@ It converts prices into hours, which is a unit people are far worse at ignoring.
 
 Yes, by architecture rather than by promise. Every calculation runs inside your own browser. The page sets no cookies, writes nothing to local storage, loads no analytics or advertising script, and makes no network request carrying your figures. Closing the tab destroys the data because there is nowhere else for it to be. Check the network and storage panels in your browser's developer tools — that is the only kind of privacy claim worth making.
 Educational and illustrative. This is a personal comparison tool, not a payroll or tax calculation, and nothing here is financial advice. The Brink Labs is a software lab, not a financial adviser.
+Next Instrument
+
+## Net Worth Calculator
+
+Everything you own against everything you owe.
+All 6 instruments
 
 ---
 

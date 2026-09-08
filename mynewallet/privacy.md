@@ -1,17 +1,17 @@
-# Privacy Policy — MyneWallet | The Brink Labs
+# MyneWallet Privacy Policy — The Brink Labs
 
-> MyneWallet collects no personal data. No account, no servers, no analytics. Your financial records stay in an encrypted database on your own device.
+> MyneWallet collects no personal data. No account, no analytics, no advertising SDK, and no server that receives your ledger. Fourteen sections, plainly written.
 
 Canonical: https://thebrinklabs.com/mynewallet/privacy.html  
 Source: The Brink Labs · support@thebrinklabs.com · Last reviewed 2026-09-07
 
 ---
 
-The Brink Labs · MyneWallet
+MyneWallet · Legal
 
-## Privacy Policy.
+## Privacy Policy Without The Fog.
 
-Most privacy policies are written to explain what a company does with your data. This one is short because there is nothing to explain. MyneWallet has no user accounts, no servers and no analytics. Your financial records are written to your own device and they stay there.
+Most privacy policies are written to be survivable in court and unreadable everywhere else. This one is short because the app collects nothing: there is no account, no analytics, no advertising network and no server of ours that your ledger ever reaches. The eight answers below are the whole story; the fourteen sections after them are the same story, in the language a regulator expects.
 The One-Minute Version
 
 ## Eight Questions. Eight Answers.

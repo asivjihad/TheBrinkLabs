@@ -1,28 +1,28 @@
-# Net Worth Calculator — Assets Minus Liabilities, Privately
+# Net Worth Calculator — Assets Minus Liabilities
 
-> Free net worth calculator. List what you own and what you owe to get your true net worth, liquid net worth and debt-to-asset ratio. Nothing is uploaded or stored.
+> List what you own and what you owe to get your true net worth, liquid net worth and debt-to-asset ratio. Nothing is uploaded or stored.
 
 Canonical: https://thebrinklabs.com/tools/net-worth/  
 Source: The Brink Labs · support@thebrinklabs.com · Last reviewed 2026-09-07
 
 ---
 
-Free Tool · Net Worth Calculator
+Instrument 06 · Measure the position
 
 ## What You Own, Minus What You Owe.
 
-Net worth is total assets minus total liabilities. It is the only figure that survives a good month and a bad one intact, and it is the number a balance sheet exists to produce. Both ledgers below are already filled in — change them to yours. Nothing is uploaded. Nothing is stored. No cookies.
+Net worth is the only figure that survives a good month and a bad one intact. Both ledgers below are already filled in — change them to yours and you get your true net worth, the liquid net worth that is harsher and more honest, and the ratio that says how much room a setback leaves you.
 Value it at what you could actually sell it for today, not what you paid.
 The outstanding balance, not the monthly payment and not the original amount borrowed.
 An asset is something you could convert to money. A liability is money someone can require you to repay. A credit limit is neither — it is capacity to create a liability, so it never appears here. Value a car and a house at resale, not at purchase, and count a mortgage at its outstanding balance while the property sits on the other side at its market value.
 Enter your figures to see where you stand.
 Liquid net worth counts only cash and instant-access savings against short-term debt. It is deliberately harsher than net worth, because a strong balance sheet made entirely of property and pensions still cannot pay a bill this week.
-Next Step
+Where It Goes Next
 
 ## One Number Is A Snapshot. A Line Is The Truth.
 
-Tracking net worth manually on a spreadsheet is exhausting. Track your live liquid assets, liabilities, and 30-day outlook inside the MyneWallet vault on Android.
-Free forever. One-time PRO unlock. No subscription, ever.
+Tracking net worth by hand on a spreadsheet is exhausting, which is why almost nobody does it twice. MyneWallet keeps your live liquid assets, your liabilities and a 30-day outlook in one place and draws the line for you — inside the vault on your own Android device.
+Android. One-time unlock for the full engine. No subscription, ever.
 Straight Answers
 
 ## Net Worth, Answered Plainly.
@@ -55,6 +55,12 @@ Monthly or quarterly is enough. Net worth moves slowly by design, and checking i
 
 Yes, by architecture rather than by promise. Every calculation runs inside your own browser. The page sets no cookies, writes none of your figures to storage, loads no analytics or advertising script, and makes no network request carrying your data. Closing the tab destroys it because there is nowhere else for it to be. Check the network and storage panels in your browser's developer tools — that is the only kind of privacy claim worth making.
 Educational and illustrative. Figures depend entirely on inputs you choose, and nothing here is financial advice. The Brink Labs is a software lab, not a financial adviser.
+Next Instrument
+
+## Zero-Based Budget Calculator
+
+Give every unit of income a job before you spend it.
+All 6 instruments
 
 ---
 

@@ -1,17 +1,17 @@
-# Zero-Based Budget Calculator — Give Every Dollar A Job
+# Zero-Based Budget Calculator — Assign Every Unit
 
-> Free zero-based budget calculator. Enter your take-home pay, assign every unit to an envelope, and drive To Assign to zero. Includes a 50/30/20 preset.
+> Zero-based budget calculator with 50/30/20, balanced and debt-payoff presets. Assign every unit of take-home pay until To Assign reads zero.
 
 Canonical: https://thebrinklabs.com/tools/zero-based-budget/  
 Source: The Brink Labs · support@thebrinklabs.com · Last reviewed 2026-09-07
 
 ---
 
-Free Tool · Zero-Based Budget Calculator
+Instrument 01 · Allocate
 
 ## Give Every Unit Of Income A Job.
 
-A zero-based budget calculator, running entirely in your browser. Enter your take-home pay, assign it across envelopes, and drive To Assign to zero — the point at which every unit you earn already has a destination. Nothing is uploaded. Nothing is stored. No cookies.
+A budget is not a limit, it is an instruction. Enter what actually lands in your account and assign every unit of it somewhere before you spend any of it. The plan is finished when To Assign reads zero — and at that moment every envelope on the screen is a decision you have already made.
 Use net pay, not gross — a plan built on money that never arrives fails in week three. Changing this rescales every unlocked envelope and keeps your shape.
 The lock keeps an envelope's amount fixed — Auto Assign and income changes will route around it. Nature (Need / Want / Extra) is what turns a list of numbers into a judgement you can act on.
 Left to assign
@@ -34,12 +34,12 @@ A positive balance is money without a job, and it will find one. A negative bala
 ### Move money, don't abandon it
 
 Overspending one envelope is normal. Covering it from another, deliberately, is the method working.
-Next Step
+Where It Goes Next
 
-## This Plan Lives In A Tab. Make It Live On Your Phone.
+## A Plan Is Easy Once. The Month Is The Hard Part.
 
-A plan you rebuild from scratch each month is a spreadsheet with better styling. MyneWallet keeps these envelopes funded, tracks what actually leaves the account, and tells you what is safe to spend right now — on your own device, with no account and no bank login.
-Free forever. One-time PRO unlock. No subscription, ever.
+Allocating is the pleasant half. The difficult half is the Tuesday you buy lunch and have to know, right then, whether that money was already promised to something. MyneWallet carries the same envelopes into the actual month and answers that in two taps, on your phone, with no account.
+Android. One-time unlock for the full engine. No subscription, ever.
 Straight Answers
 
 ## Zero-Based Budgeting, Answered Plainly.
@@ -72,6 +72,12 @@ Yes, by architecture rather than by promise. Every calculation runs inside your 
 
 There is no universal number, and anyone quoting one is guessing about your life. What this tool gives you instead is your actual savings rate — the share of take-home pay going to extras — displayed in the centre of the ring as you move money. Watching that figure respond to a single cancelled want is more useful than a target, because it is yours, and because it moves when you do.
 Educational and illustrative. Figures depend entirely on inputs you choose, and nothing here is financial advice. The Brink Labs is a software lab, not a financial adviser.
+Next Instrument
+
+## Subscription Bleed Audit
+
+What renting software really costs, per use and per decade.
+All 6 instruments
 
 ---
 
