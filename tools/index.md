@@ -1,76 +1,70 @@
-# Free Personal Finance Tools — The Instruments | The Brink Labs
+# The Instruments — Six Private Finance Calculators
 
-> Five free personal finance calculators from The Brink Labs — budgeting, subscriptions, debt payoff, emergency fund and true hourly wage. All run in your browser.
+> Six personal finance calculators from The Brink Labs — budgeting, subscriptions, emergency fund, debt payoff, hourly wage and net worth.
 
 Canonical: https://thebrinklabs.com/tools/  
 Source: The Brink Labs · support@thebrinklabs.com · Last reviewed 2026-09-07
 
 ---
 
-Free · No Sign-Up · Nothing Leaves Your Device
+The Instruments
 
-## The Instruments.
+## Six Calculators. Nothing Leaves The Page.
 
-Small, sharp personal finance tools from The Brink Labs. Each one runs entirely inside your own browser — no account, no cookies, no storage, no upload, no analytics. Close the tab and the numbers are gone, because there was never anywhere else for them to be.
-Budgeting · Zero-Based
+Small, exact tools for the questions money actually raises. Each one runs entirely inside your own browser — no account, no cookies, no upload, no server that could see your figures even if we wanted it to. Every one boots on a worked example, so you start by changing a number rather than facing an empty form.
+Allocate
 
 ## Zero-Based Budget Calculator
 
-Enter your take-home pay and assign every unit a job until To Assign reads zero. Ships with 50/30/20, balanced and debt-payoff presets, marks each envelope a Need, Want or Extra, and shows your real savings rate as you move money. A complete plan is on screen before you type anything.
-Spending · Recurring Charges
+Enter what actually lands in your account, then hand every unit of it a job — rent, groceries, the trip in March, the card you are digging out of. The plan is finished when To Assign reads zero, not when you feel like stopping.
+Stop the leaks
 
 ## Subscription Bleed Audit
 
-Add every recurring charge you pay. The audit normalises the billing cycles, compounds the annual price rises, ranks each service by what it costs you per actual use, flags the ones you never open, and shows what a decade of those payments would have become instead.
-Debt · Payoff Order
-
-## Debt Payoff Calculator
-
-Avalanche or snowball? Enter your debts and see both methods side by side — months to debt-free, total interest, and exactly what the choice costs you. Includes the attack order.
-Safety · Runway
+Add every recurring charge. It normalises the billing cycles, ranks each service by what it costs you per actual use, flags the ones you never open, and prices the whole habit over a decade.
+Build a floor
 
 ## Emergency Fund Calculator
 
-Savings divided by the month you cannot avoid. See your runway in months, how far you are from a one, three, six or twelve-month cushion, and the date you reach each one.
-Income · Real Rate
+Savings divided by the month you cannot avoid. It is the single most useful number in personal finance and almost nobody knows theirs. Two fields, and you will.
+Clear the debt
+
+## Debt Payoff Calculator
+
+Highest rate first, or smallest balance first? Enter your debts and see both played out side by side — months to clear, total interest, and exactly what the choice costs.
+Price your hours
 
 ## True Hourly Wage Calculator
 
-Your stated wage ignores the commute, the unpaid overtime and the costs you carry only because you work. Subtract those and price every purchase in hours of your life instead.
-Position · The Balance Sheet
+Your stated wage ignores the commute, the unpaid overtime and the costs that exist only because you work. Subtract them, and then price everything you buy in hours instead of currency.
+Measure the position
 
 ## Net Worth Calculator
 
-Everything you own against everything you owe. True net worth, liquid net worth and the debt-to-asset ratio that says how much room a setback would leave you.
-Why These Are Free
+Two ledgers, one figure. True net worth, the liquid net worth that is harsher and more honest, and the debt-to-asset ratio that says how much room a bad month would leave you.
+Why They Cost Nothing
 
-## A Calculator That Wants Your Email Is Not A Calculator.
+## A Calculator That Phones Home Is Not A Calculator.
 
-The usual arrangement is that a free finance tool is bait: you get a number, it gets your email address, your income bracket and a cookie that follows you for eighteen months. That trade is invisible, and it is the entire business model.
-We would rather show you the architecture than promise you a policy.
-These instruments take nothing, because taking nothing is the same thing MyneWallet does — and a claim you can verify in your own developer tools is worth more than a paragraph of assurances. If they are useful, the app is the same idea with a memory.
+Most finance tools on the web are lead-generation with arithmetic attached. Yours is the data; the maths is the bait. We took the opposite position, and these 6 instruments are the proof rather than the promise.
 
-### No account
+### Open the network tab
 
-Nothing to sign up for, nothing to verify, nothing to delete later.
+Type your salary in, watch nothing leave. There is no endpoint, no analytics beacon and no third-party script to fire one. That is a fact you can verify in ten seconds, which is more than a privacy policy offers.
 
-### No storage
+### The maths is checked
 
-No cookies and no local storage. Reloading the page wipes it.
+Every instrument is verified against a second, independently written implementation before it ships. Debt Payoff agrees to the cent across a 30-month simulation. Arithmetic about someone's money is not a place for approximately.
 
-### No upload
+### Nothing to maintain
 
-Your figures never leave the tab. There is no endpoint to send them to.
+No tax tables, no CPI feed, no jurisdiction logic to rot. Each one answers a question that was true in 1990 and will be true in 2050, which is why they can stay up without becoming a liability.
+The Same Argument, Every Day
 
-### No expiry
+## A Calculator Answers Once. A Ledger Keeps Answering.
 
-Free permanently. No trial, no gate, no "unlock the full result".
-Free Forever · One-Time PRO Unlock · Android
-
-## The Same Idea, With A Memory.
-
-MyneWallet is these instruments made permanent: envelopes that stay funded, obligations that announce themselves, and an analysis engine that runs on your phone instead of someone's server.
-No account. No bank login. No advertisements. No subscription.
+These instruments settle a question in thirty seconds. MyneWallet is what happens when you want the same answer on a Tuesday in March without typing anything in — the same architecture, the same refusal to phone home, running against a ledger that lives on your phone.
+Android. One-time unlock for the full engine. No subscription, ever.
 
 ---
 

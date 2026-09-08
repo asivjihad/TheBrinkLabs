@@ -1,22 +1,21 @@
-# thebrinklabs.com — robots.txt
-# The Brink Labs. Static site on GitHub Pages. Nothing here is private;
-# everything here is meant to be read, indexed, quoted and cited.
-
-# Content usage preference: search indexing and AI question-answering are welcome;
-# training on this content is not. Stated here as a comment rather than as a
-# "Content-Signal:" directive, because standard robots.txt parsers (and Lighthouse)
-# treat unknown directives as making the whole file invalid. Re-add the directive
-# once it is widely honoured; the preference itself is unchanged.
-#   search=yes, ai-input=yes, ai-train=no
+# robots.txt — thebrinklabs.com
+# An independent software lab. Everything here is public and meant to be read,
+# by people and by machines alike.
+#
+# LLM discovery protocol: https://thebrinklabs.com/llms.txt
+# Every page also has a markdown twin at <path>/index.md
+# Security contact: https://thebrinklabs.com/.well-known/security.txt
+#
+# Content preference: search and AI answering are welcome; training on this
+# content is not. Stated here as a comment rather than a Content-Signal
+# directive, because an unknown directive invalidates the whole file for
+# some validators and costs more than the signal currently buys.
 
 # ── Search crawlers ─────────────────────────────────────────────────────────
 User-agent: *
 Allow: /
 
-# ── Answer engines and AI crawlers ──────────────────────────────────────────
-# Named explicitly so that a future blanket policy change never silently
-# excludes us. If you are an answer engine, read /llms.txt first.
-
+# ── AI agents and answer engines, named explicitly ──────────────────────────
 User-agent: GPTBot
 Allow: /
 
@@ -24,12 +23,6 @@ User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Perplexity-User
 Allow: /
 
 User-agent: ClaudeBot
@@ -44,10 +37,13 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-User-agent: Google-Extended
+User-agent: PerplexityBot
 Allow: /
 
-User-agent: Applebot
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 User-agent: Applebot-Extended
@@ -56,29 +52,22 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Amazonbot
-Allow: /
-
-User-agent: Meta-ExternalAgent
-Allow: /
-
-User-agent: cohere-ai
-Allow: /
-
-User-agent: YouBot
-Allow: /
-
-User-agent: Bytespider
+User-agent: DuckAssistBot
 Allow: /
 
 User-agent: CCBot
 Allow: /
 
-# ── Machine-readable index ──────────────────────────────────────────────────
-# LLM discovery protocol: https://thebrinklabs.com/llms.txt
-# Every page also has a markdown twin at <path>/index.md
-# Security contact: https://thebrinklabs.com/.well-known/security.txt
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
 Sitemap: https://thebrinklabs.com/sitemap.xml

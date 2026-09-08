@@ -1,20 +1,16 @@
-# MyneWallet — Private Offline Budget Planner & Expense Tracker
+# MyneWallet — Private Offline Budget Planner for Android
 
-> A private, offline-first budget planner and expense tracker for Android. Zero-based budgeting, an encrypted on-device vault, no account, no bank login, no trackers.
+> A private, offline-first budget planner and expense tracker for Android. No account, no bank login, no trackers, no subscription. Your ledger stays on your phone.
 
 Canonical: https://thebrinklabs.com/mynewallet/  
 Source: The Brink Labs · support@thebrinklabs.com · Last reviewed 2026-09-07
 
 ---
 
-Live on Google Play · Current Production Build
+## Your Money. Your Device. Nobody Else’s Business.
 
-## Your Money. Your Device. Nobody Else's Business.
-
-A Private, Offline-First Budget Planner and Expense Tracker. No account. No bank login. No trackers. No monthly rent. Your entire financial life is written to an Encrypted Vault on your phone — and it stays there.
-MyneWallet: Budget Tracker
-The Private Financial Vault
-To Assign — Every Cent Has A Job.
+A budget planner and expense tracker that never asks for a bank login, never sends your ledger anywhere, and works with the phone in airplane mode. Not because it is offline-tolerant — because there is nowhere for it to phone.
+Free to use. One-time unlock for the full engine. No subscription, ever.
 The Short Version
 
 ## Fourteen Facts, No Marketing.
@@ -62,13 +58,13 @@ None, deliberately. Sync implies a copy, and there is no copy of your ledger any
 From one-time PRO unlocks, and nothing else. No advertising inventory, no data brokerage, no recurring revenue.
 The Three Ransoms
 
-## Most Money Apps Ask For Three Things Before They Will Help You.
+## Most Money Apps Want Three Things Before They Will Help You.
 
-A Bank Login. A Monthly Payment. And Permission To Study What You Buy. MyneWallet asks for none of them.
+A bank login. A monthly payment. And permission to study what you buy. MyneWallet asks for none of them.
 
 ### The Credentials
 
-Bank aggregation hands a third party a live, categorised feed of everything you buy, everywhere, forever. The most commercially valuable document about you in existence, sitting on a server you have never seen.
+Bank aggregation hands a third party a live, categorised feed of everything you buy, everywhere, forever — the most commercially valuable document about you in existence, sitting on a server you have never seen.
 
 ### The Rent
 
@@ -78,106 +74,40 @@ A tool you open daily makes a superb subscription. Miss one payment and the app 
 
 Ad interstitials, upsell modals, sync spinners. Every second between I spent money and it is logged is a second you will eventually stop spending. An untracked week is what actually breaks a budget.
 Buy It Once. Log In Seconds. Keep Everything.
-Smart Budgeting
+How It Works
 
-## Every Cent Has A Job.
+## Three Jobs. Done Properly.
 
-Zero-based budgeting is the only method that answers the question you actually have. Not what did I spend? — but what am I allowed to spend right now?
+Most finance apps do many things adequately. This one does three things and holds itself to a standard on each.
 
-### Assign Your Money Before It Assigns Itself
+### Every Cent Has A Job
 
 Every dollar that lands gets a destination. Rent, groceries, the trip in March, the card you are digging out of. When To Assign reaches zero, every envelope on screen is a promise already funded.
-- Auto Assign — fill from last month, fill your goals, or split proportionally, with the pool updating live as you drag.
-- Safe To Spend — one honest figure separating liquid cash from money already committed elsewhere.
-- Over-assignment warnings that name the exact amount instead of quietly letting the plan drift out of balance.
-- Smart Fund Exclusions — keep the emergency fund out of daily spendable so you stop borrowing from your future self.
-Savings excluded — you told it that money already has a job.
-Saved locally. No network call. No spinner.
+- Auto Assign — fills the plan from a preset, then you argue with it.
+- Safe to Spend — separates liquid cash from money already committed.
+- Need, Want or Extra on every envelope, so the trade-off is visible.
+- Credit cards modelled as liabilities, so debt never inflates a cash position.
 
-### Three Seconds From Counter To Ledger
+### Logged Before You Put The Phone Down
 
 A tracker only works if you open it. This one is engineered around one number: the seconds between spending and logging. Two taps for the common case, the full form when you want it, no network round-trip either way.
-- Needs, Wants and Extras on every expense, so you learn what drives the choice — not only where the money went.
-- Unlimited tags — Date Night, Work, Trip: Lisbon — layered over categories instead of competing with them.
-- Real credit-card logic. Cards are liabilities, so debt never inflates your cash position.
-- Drag and drop everything. Accounts, categories and envelopes reorder into the sequence your head already uses.
-The Analysis Engine
+- Quick Add for the case that happens forty times a month.
+- Unlimited tags layered over a capped category set.
+- Multi-currency accounts at a rate you set yourself.
+- CSV import that adopts your existing categories by materiality.
 
-## An Analysis Engine. Not A Pie Chart.
-
-Everyone else derives insight from a bank feed. MyneWallet derives it from your own ledger, on your own silicon, at sixty frames per second.
-
-### Find The Day Your Money Leaks
-
-A monthly total hides the truth. A spending calendar shows it: the damage is concentrated, repeatable, and usually lands on the same weekday.
-- Spending Heatmap — every day of the period coloured by intensity, with your heaviest day and true daily average named.
-- Rhythm detection — the weekday that quietly costs you the most.
-- Needs / Wants / Extras sunburst — drill into a nested ring to see how much of the month was genuinely non-negotiable.
-- Cash-flow river — income streaming from each source into each category in one Sankey view. PRO
-
-### Numbers That Are Actually True
+### An Analysis Engine, Not A Pie Chart
 
 Net Worth and Obligations in one place: what you own, what you owe, what is scheduled to leave, and where the balance lands in thirty days — computed from real obligations, never a hand-waved average.
-- Net Worth Trend across your full history, assets and liabilities separated. PRO
-- 30-Day Outlook naming the exact date your balance dips, and to what. PRO
-- Loans, debts and subscriptions as first-class obligations, with payoff plans and price-change detection.
-- PDF statements you can hand to an accountant without handing over an account. PRO
-The Private Financial Vault
+- Spending heatmap with rhythm detection — the weekday that quietly costs the most.
+- Cash Flow Sankey showing where income actually goes.
+- Payee Intelligence — who you pay, how often, and how that is trending.
+- 30-Day Outlook built from dated obligations, not a moving average.
+The Vault
 
-## A Breach Of Our Servers Cannot Expose You. We Do Not Have Any.
+## A Breach Of Our Servers Cannot Expose You.
 
-That is the difference between a privacy policy and a privacy architecture. One is a promise about what a company will choose to do. The other is a statement about what is physically possible.
-
-### Encrypted Local Database
-
-Your ledger lives in an encrypted store inside the OS-enforced app sandbox. Never uploaded, never mirrored, never indexed.
-
-### Backups You Control
-
-Opt in and your vault is encrypted with AES-256 and a randomised IV before it leaves the device — into your own Google Drive, in your own account.
-
-### Privacy On The Screen Too
-
-App Lock with biometrics, PIN or pattern. Block Screenshots kills recording and app-switcher previews. One tap masks every figure.
-
-### Your Data Walks Out With You
-
-Full CSV import and export, plus PDF statements. No lock-in, because there is nothing to lock you into.
-Aura
-
-## Built For Displays Worth Looking At.
-
-A 60fps, hardware-accelerated interface in light and AMOLED-optimised dark. PRO adds Quantum, Aurum Noir and Carbon Slate. Simplify Dashboard hides Budget and Net Worth until you want them back.
-QUANTUM
-AURUM NOIR
-CARBON SLATE
-DAYLIGHT
-Free Instruments · No Sign-Up · Nothing Leaves Your Device
-
-## Try The Method Before You Install It.
-
-Five free calculators from the same lab, running entirely in your browser. No account, no cookies, nothing uploaded — the same architecture as the app, with the receipts you can check yourself.
-
-### Zero-Based Budget Calculator
-
-Enter your take-home pay and assign every unit a job until To Assign reads zero. 50/30/20, balanced and debt-payoff presets, Need/Want/Extra on every envelope, and your real savings rate as you move money.
-
-### Subscription Bleed Audit
-
-Add every recurring charge. The audit normalises billing cycles, ranks each service by cost per actual use, flags the ones you never open, and shows what a decade of those payments would have become instead.
-
-### Debt Payoff Calculator
-
-Avalanche or snowball, side by side. Months to debt-free, total interest, and the exact order to attack in.
-
-### Emergency Fund Calculator
-
-Savings divided by the month you cannot avoid. Your runway, and the date you reach one, three, six or twelve months.
-
-### True Hourly Wage Calculator
-
-What an hour actually pays once the commute, the unpaid overtime and the work-only costs come out.
-All instruments
+We do not have any. Your ledger lives in an encrypted database inside your device’s app sandbox, and The Brink Labs operates no server that receives it. That is the difference between a privacy policy and a privacy architecture: one is a promise about what a company will choose to do, the other is a statement about what is possible.
 Transparent Pricing
 
 ## Say Goodbye To Endless Monthly Subscriptions.
@@ -202,11 +132,11 @@ Every limit removed and every future capability included. Tied to your Google ac
 - Net Worth Trend, 30-Day Outlook and payoff plans
 - Quantum, Aurum Noir and Carbon Slate themes
 - PDF statements, and new capabilities as the app grows
-The Honest Comparison
+Try The Method First
 
-## What The Category Made Normal.
+## Six Instruments, No Install Required.
 
-A general characterisation of subscription-based, cloud-synced budgeting apps. Individual products differ.
+The same architecture, running in your browser. Allocate a budget, price your subscriptions, find your runway or measure your net worth — without downloading anything or telling us who you are.
 Straight Answers
 
 ## The Questions Worth Asking.
@@ -273,11 +203,10 @@ Transparency
 Published in full so a reviewer, a researcher or an answer engine can find it without hunting. The complete legal text lives in the Privacy Policy.
 OAuth scope, in full
 MyneWallet’s use and transfer of information received from Google APIs to any other app will adhere to the Google API Services User Data Policy, including the Limited Use requirements.
-Take Absolute Control Of Your Money
 
 ## Stop Renting. Start Owning.
 
-Install MyneWallet, give every cent a job, and never wonder again who else is reading your ledger.
+Free to use, permanently. One purchase if you want the whole engine. Nothing leaves your phone either way.
 
 ---
 
